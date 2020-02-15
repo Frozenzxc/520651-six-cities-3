@@ -1,23 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
+import Offers from "../../mocks/offers";
 
-const cardTitleClickHandler = () => {};
+const App = ({offersCount}) => {
 
-const App = ({offersCount, offerTitles}) => {
+  const handleCardTitleClick = () => {};
 
   return (
     <Main
       offersCount={offersCount}
-      offerTitles={offerTitles}
-      onCardTitleClick={cardTitleClickHandler}
+      offers={Offers}
+      onCardTitleClick={handleCardTitleClick}
     />
   );
 };
 
 App.propTypes = {
   offersCount: PropTypes.number.isRequired,
-  offerTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  offers: PropTypes.array.isRequired
 };
 
 export default App;
