@@ -1,12 +1,13 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-
+import {offerShape} from "../../prop-types.jsx";
 
 class PlaceCard extends PureComponent {
   constructor(props) {
     super(props);
 
     this.handleHover = this.handleHover.bind(this);
+    this.hanldeTitleClick = this.hanldeTitleClick.bind(this);
   }
 
   handleHover() {
@@ -14,26 +15,35 @@ class PlaceCard extends PureComponent {
     this.props.onMouseEnter(offer);
   }
 
+  hanldeTitleClick() {
+    const offer = this.props.offer;
+    this.props.onClick(offer);
+  }
+
   render() {
-    const {onCardTitleClick, offer} = this.props;
+    const {offer} = this.props;
     const {
-      id,
       title,
       price,
+      src,
+      type,
+      raiting,
+      premium,
     } = offer;
+
+    const cardRaiting = raiting * 20 + `%`;
 
     return (
       <article
         className="cities__place-card place-card"
-        key={id}
         onMouseEnter={this.handleHover}
       >
-        <div className="place-card__mark">
+        {premium ? <div className="place-card__mark">
           <span>Premium</span>
-        </div>
+        </div> : ``}
         <div className="cities__image-wrapper place-card__image-wrapper">
           <a href="#">
-            <img className="place-card__image" src="img/apartment-01.jpg" width="260"
+            <img className="place-card__image" src={src[0]} width="260"
               height="200" alt="Place image"/>
           </a>
         </div>
@@ -52,16 +62,16 @@ class PlaceCard extends PureComponent {
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{width: `80%`}} />
+              <span style={{width: cardRaiting}} />
               <span className="visually-hidden">Rating</span>
             </div>
           </div>
           <h2
-            onClick={onCardTitleClick}
+            onClick={this.hanldeTitleClick}
             className="place-card__name">
             <a href="#">{title}</a>
           </h2>
-          <p className="place-card__type">Apartment</p>
+          <p className="place-card__type">{type}</p>
         </div>
       </article>
     );
@@ -69,14 +79,10 @@ class PlaceCard extends PureComponent {
 }
 
 PlaceCard.propTypes = {
+  onClick: PropTypes.func,
   onCardHover: PropTypes.func,
   onMouseEnter: PropTypes.func,
-  onCardTitleClick: PropTypes.func.isRequired,
-  offer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-  }).isRequired,
+  offer: offerShape,
 };
 
 export default PlaceCard;

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import PlacesList from "../places-list/places-list.jsx";
+import {offerShape} from "../../prop-types.jsx";
 
 const Main = ({offersCount, offers, onCardTitleClick}) => {
 
@@ -105,7 +106,7 @@ const Main = ({offersCount, offers, onCardTitleClick}) => {
 Main.propTypes = {
   offersCount: PropTypes.number.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
-  offers: PropTypes.array,
+  offers: PropTypes.arrayOf(offerShape),
 };
 
 export default Main;

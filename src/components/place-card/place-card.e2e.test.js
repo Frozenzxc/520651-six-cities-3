@@ -2,14 +2,11 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import PlaceCard from "./place-card";
+import offers from "../../test-mocks/test-offers";
 
 configure({adapter: new Adapter()});
 
-const offer = {
-  id: 1,
-  title: `Beautiful & luxurious apartment at great location`,
-  price: 200,
-};
+const offer = offers[0];
 
 it(`should hover over the PlaceCard, information about the property appears in the handler`, function () {
   const handleMouseEnter = jest.fn();
@@ -17,7 +14,7 @@ it(`should hover over the PlaceCard, information about the property appears in t
 
   const placeCard = shallow(<PlaceCard
     onMouseEnter={handleMouseEnter}
-    onCardTitleClick={handleCardTitleClick}
+    onClick={handleCardTitleClick}
     offer={offer}
   />);
 

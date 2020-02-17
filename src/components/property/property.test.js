@@ -1,16 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PlaceCard from "./place-card";
+import Property from "./property";
 import offers from "../../test-mocks/test-offers";
 
 const offer = offers[0];
 
-it(`PlaceCard is rendered correctly`, () => {
+it(`Property is rendered correctly`, () => {
   const tree = renderer.create(
-      <PlaceCard
-        offer={offer}
-        onCardTitleClick={() => {}}
-      />
+      <Property
+        offer={offer}/>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();
