@@ -8,8 +8,8 @@ const MAX_RAITING = 5;
 const MAX_PHOTOS = 6;
 const MAX_GUESTS = 10;
 
-const generatePhotos = (photos) => {
-  return photos
+const generatePhotos = (desc) => {
+  return desc
         .filter(() => Math.random() > 0.5)
         .slice(0, getRandomIntegerNumber(1, MAX_PHOTOS));
 };

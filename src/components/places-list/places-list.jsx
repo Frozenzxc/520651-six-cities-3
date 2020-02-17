@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import PlaceCard from "../place-card/place-card.jsx";
+import {offerShape} from "../../prop-types.jsx";
 
 
 class PlacesList extends PureComponent {
@@ -28,7 +29,7 @@ class PlacesList extends PureComponent {
         {offers.map((offer) =>
           <PlaceCard
             onMouseEnter={this.handleCardHover}
-            onCardTitleClick={onCardTitleClick}
+            onClick={onCardTitleClick}
             offer={offer}
             key={offer.id}
           />
@@ -42,9 +43,7 @@ class PlacesList extends PureComponent {
 PlacesList.propTypes = {
   handleCardHover: PropTypes.func,
   onCardTitleClick: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-  }))
+  offers: PropTypes.arrayOf(offerShape),
 };
 
 export default PlacesList;

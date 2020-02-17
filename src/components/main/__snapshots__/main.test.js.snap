@@ -228,13 +228,7 @@ exports[`Should Main component render correctly 1`] = `
               className="cities__place-card place-card"
               onMouseEnter={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
+              
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -245,7 +239,7 @@ exports[`Should Main component render correctly 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="img/apartment-02.jpg"
                     width="260"
                   />
                 </a>
@@ -300,7 +294,7 @@ exports[`Should Main component render correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "80%",
+                          "width": "100%",
                         }
                       }
                     />
@@ -324,7 +318,7 @@ exports[`Should Main component render correctly 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Apartment
+                  apartment
                 </p>
               </div>
             </article>
@@ -404,7 +398,7 @@ exports[`Should Main component render correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "80%",
+                          "width": "20%",
                         }
                       }
                     />
@@ -428,7 +422,7 @@ exports[`Should Main component render correctly 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Apartment
+                  house
                 </p>
               </div>
             </article>
@@ -436,13 +430,7 @@ exports[`Should Main component render correctly 1`] = `
               className="cities__place-card place-card"
               onMouseEnter={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
+              
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -453,7 +441,7 @@ exports[`Should Main component render correctly 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="img/apartment-02.jpg"
                     width="260"
                   />
                 </a>
@@ -508,7 +496,7 @@ exports[`Should Main component render correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "80%",
+                          "width": "100%",
                         }
                       }
                     />
@@ -532,7 +520,7 @@ exports[`Should Main component render correctly 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Apartment
+                  hotel
                 </p>
               </div>
             </article>
@@ -540,13 +528,7 @@ exports[`Should Main component render correctly 1`] = `
               className="cities__place-card place-card"
               onMouseEnter={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
+              
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -612,7 +594,7 @@ exports[`Should Main component render correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "80%",
+                          "width": "100%",
                         }
                       }
                     />
@@ -636,7 +618,7 @@ exports[`Should Main component render correctly 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Apartment
+                  room
                 </p>
               </div>
             </article>
