@@ -8,20 +8,20 @@ class Property extends PureComponent {
 
   render() {
     const {
-      title,
-      price,
-      src,
-      premium,
-      type,
-      raiting,
-      description,
       bedroomsCount,
+      description,
+      host,
       maxGuests,
       options,
-      host
+      premium,
+      price,
+      rating,
+      src,
+      title,
+      type,
     } = this.props.offer;
 
-    const cardRaiting = raiting * 20 + `%`;
+    const cardRating = rating * 20;
 
     return (
       <main className="page__main page__main--property">
@@ -40,9 +40,9 @@ class Property extends PureComponent {
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {premium ? <div className="property__mark">
+              {premium && <div className="property__mark">
                 <span>Premium</span>
-              </div> : ``}
+              </div>}
               <div className="property__name-wrapper">
                 <h1 className="property__name">{title}</h1>
                 <button className="property__bookmark-button button" type="button">
@@ -54,10 +54,10 @@ class Property extends PureComponent {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: cardRaiting}}/>
+                  <span style={{width: cardRating + `%`}}/>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{raiting}</span>
+                <span className="property__rating-value rating__value">{rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
@@ -77,9 +77,9 @@ class Property extends PureComponent {
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {options.map((option, i) => {
+                  {options.map((option) => {
                     return (
-                      <li className="property__inside-item" key={`option-${i}`}>
+                      <li className="property__inside-item" key={`option-${option}`}>
                         {option}
                       </li>
                     );

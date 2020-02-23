@@ -22,15 +22,6 @@ exports[`Property is rendered correctly 1`] = `
             src="img/apartment-01.jpg"
           />
         </div>
-        <div
-          className="property__image-wrapper"
-        >
-          <img
-            alt="Photo studio"
-            className="property__image"
-            src="img/apartment-03.jpg"
-          />
-        </div>
       </div>
     </div>
     <div
@@ -39,7 +30,6 @@ exports[`Property is rendered correctly 1`] = `
       <div
         className="property__wrapper"
       >
-        
         <div
           className="property__name-wrapper"
         >
@@ -99,12 +89,12 @@ exports[`Property is rendered correctly 1`] = `
           <li
             className="property__feature property__feature--entire"
           >
-            hotel
+            house
           </li>
           <li
             className="property__feature property__feature--bedrooms"
           >
-            4
+            2
              Bedrooms
           </li>
           <li
@@ -145,6 +135,11 @@ exports[`Property is rendered correctly 1`] = `
               className="property__inside-item"
             >
               Heating
+            </li>
+            <li
+              className="property__inside-item"
+            >
+              Baby seat
             </li>
           </ul>
         </div>

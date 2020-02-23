@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import PlacesList from "../places-list/places-list.jsx";
 import {offerShape} from "../../prop-types.jsx";
-
+import Map from "../map/map.jsx";
+import leaflet from "leaflet";
 const Main = ({offersCount, offers, onCardTitleClick}) => {
 
   return (
@@ -94,7 +95,12 @@ const Main = ({offersCount, offers, onCardTitleClick}) => {
               />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"/>
+              <section className="cities__map map">
+                <Map
+                  offers={offers}
+                  leaflet={leaflet}
+                />
+              </section>
             </div>
           </div>
         </div>
