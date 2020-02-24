@@ -25,8 +25,8 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {offersCount, offers} = this.props;
-    const {step, activeCard} = this.state;
+    const {offers, offersCount} = this.props;
+    const {activeCard, step} = this.state;
 
     if (step === -1) {
       return (

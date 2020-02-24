@@ -1,46 +1,47 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {offerShape} from "../../prop-types.jsx";
+import {getCardRating} from "../../common";
 
 class PlaceCard extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.handleHover = this.handleHover.bind(this);
-    this.hanldeTitleClick = this.hanldeTitleClick.bind(this);
+    this._handleHover = this._handleHover.bind(this);
+    this._handleTitleClick = this._handleTitleClick.bind(this);
   }
 
-  handleHover() {
+  _handleHover() {
     const offer = this.props.offer;
     this.props.onMouseEnter(offer);
   }
 
-  hanldeTitleClick() {
-    const offer = this.props.offer;
-    this.props.onClick(offer);
+  _handleTitleClick() {
+    const {offer, onClick} = this.props;
+    onClick(offer);
   }
 
   render() {
     const {offer} = this.props;
     const {
-      title,
-      price,
-      src,
-      type,
-      raiting,
       premium,
+      price,
+      rating,
+      src,
+      title,
+      type,
     } = offer;
 
-    const cardRaiting = raiting * 20 + `%`;
+    const cardRating = getCardRating(rating);
 
     return (
       <article
         className="cities__place-card place-card"
-        onMouseEnter={this.handleHover}
+        onMouseEnter={this._handleHover}
       >
-        {premium ? <div className="place-card__mark">
+        {premium && <div className="place-card__mark">
           <span>Premium</span>
-        </div> : ``}
+        </div>}
         <div className="cities__image-wrapper place-card__image-wrapper">
           <a href="#">
             <img className="place-card__image" src={src[0]} width="260"
@@ -62,12 +63,12 @@ class PlaceCard extends PureComponent {
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{width: cardRaiting}} />
+              <span style={{width: cardRating}} />
               <span className="visually-hidden">Rating</span>
             </div>
           </div>
           <h2
-            onClick={this.hanldeTitleClick}
+            onClick={this._handleTitleClick}
             className="place-card__name">
             <a href="#">{title}</a>
           </h2>
