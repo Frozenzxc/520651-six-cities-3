@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {offerShape} from "../../prop-types.jsx";
+import {getCardRating} from "../../common";
 
 class PlaceCard extends PureComponent {
   constructor(props) {
@@ -31,7 +32,7 @@ class PlaceCard extends PureComponent {
       type,
     } = offer;
 
-    const cardRating = rating * 20;
+    const cardRating = getCardRating(rating);
 
     return (
       <article
@@ -62,7 +63,7 @@ class PlaceCard extends PureComponent {
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{width: cardRating + `%`}} />
+              <span style={{width: cardRating}} />
               <span className="visually-hidden">Rating</span>
             </div>
           </div>

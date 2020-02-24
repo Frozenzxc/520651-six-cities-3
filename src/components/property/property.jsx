@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import {offerShape} from "../../prop-types.jsx";
+import {getCardRating} from "../../common";
 
 class Property extends PureComponent {
   constructor(props) {
@@ -21,7 +22,7 @@ class Property extends PureComponent {
       type,
     } = this.props.offer;
 
-    const cardRating = rating * 20;
+    const cardRating = getCardRating(rating);
 
     return (
       <main className="page__main page__main--property">
@@ -54,7 +55,7 @@ class Property extends PureComponent {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: cardRating + `%`}}/>
+                  <span style={{width: cardRating}}/>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{rating}</span>
@@ -79,7 +80,7 @@ class Property extends PureComponent {
                 <ul className="property__inside-list">
                   {options.map((option) => {
                     return (
-                      <li className="property__inside-item" key={`option-${option}`}>
+                      <li className="property__inside-item" key={`${option}`}>
                         {option}
                       </li>
                     );

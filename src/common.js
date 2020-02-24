@@ -8,4 +8,8 @@ const getRandomIntegerNumber = (min, max) => {
   return min + Math.floor(max * Math.random());
 };
 
-export {getRandomArrayItem, getRandomIntegerNumber};
+const getCardRating = (rating) => {
+  return (`${rating * 20}%`);
+};
+
+export {getRandomArrayItem, getRandomIntegerNumber, getCardRating};
