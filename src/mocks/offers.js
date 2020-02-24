@@ -1,35 +1,3 @@
-import {getRandomArrayItem, getRandomIntegerNumber} from "../common";
-
-const MAX_BEDROOMS = 6;
-const MIN_BEDROOMS = 1;
-const MAX_GUESTS = 10;
-const MAX_PHOTOS = 6;
-const MAX_RATING = 5;
-const MIN_RATING = 1;
-
-const CardTypes = [`apartment`, `room`, `house`, `hotel`];
-const Options = [`Wifi`, `Washing machine`, `Towels`, `Heating`, `Coffee machine`, `Baby seat`, `Kitchen`, `Dishwasher`, `Cabel TV`, `Fridge`];
-const Photos = [
-  `img/apartment-01.jpg`,
-  `img/apartment-02.jpg`,
-  `img/apartment-03.jpg`,
-  `img/apartment-01.jpg`,
-  `img/apartment-02.jpg`,
-  `img/apartment-03.jpg`,
-];
-
-const generatePhotos = (photos) => {
-  return photos
-        .filter(() => Math.random() > 0.5)
-        .slice(0, getRandomIntegerNumber(1, MAX_PHOTOS));
-};
-
-const generateOptions = (options) => {
-  return options
-        .filter(() => Math.random() > 0.5)
-        .slice(0, getRandomIntegerNumber(0, Options.length));
-};
-
 export default [
   {
     bedroomsCount: 4,
