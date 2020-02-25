@@ -16,28 +16,28 @@ export default [
     rating: 3,
     reviews: [
       {
-        date: `2020-02-22T08:01:20.421Z`,
+        date: `2020-02-22T00:00:00.000Z`,
         name: `Max`,
         rating: 1,
         src: `img/avatar-max.jpg`,
         text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
       },
       {
-        date: `2020-02-24T22:03:36.747Z`,
+        date: `2020-02-24T00:00:00.000Z`,
         name: `John`,
         rating: 4,
         src: `img/avatar-max.jpg`,
         text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
       },
       {
-        date: `2020-02-26T23:37:55.307Z`,
+        date: `2020-02-26T00:00:00.000Z`,
         name: `Victoria`,
         rating: 3,
         src: `img/avatar-max.jpg`,
         text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
       },
       {
-        date: `2020-03-02T06:24:48.792Z`,
+        date: `2020-03-02T00:00:00.000Z`,
         name: `Bob`,
         rating: 5,
         src: `img/avatar-max.jpg`,
@@ -65,14 +65,14 @@ export default [
     rating: 1,
     reviews: [
       {
-        date: `2020-02-26T23:37:55.307Z`,
+        date: `2020-02-26T00:00:00.000Z`,
         name: `Alex`,
         rating: 4,
         src: `img/avatar-angelina.jpg`,
         text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
       },
       {
-        date: `2020-02-24T22:03:36.747Z`,
+        date: `2020-02-24T00:00:00.000Z`,
         name: `Dana`,
         rating: 1,
         src: `img/avatar-angelina.jpg`,
@@ -100,7 +100,7 @@ export default [
     rating: 3,
     reviews: [
       {
-        date: `2020-02-26T23:37:55.307Z`,
+        date: `2020-02-26T00:00:00.000Z`,
         name: `Max`,
         rating: 2,
         src: `img/avatar-angelina.jpg`,
@@ -128,21 +128,21 @@ export default [
     rating: 5,
     reviews: [
       {
-        date: `2020-02-26T23:37:55.307Z`,
+        date: `2020-02-26T00:00:00.000Z`,
         name: `John`,
         rating: 4,
         src: `img/avatar-max.jpg`,
         text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
       },
       {
-        date: `2020-02-24T22:03:36.747Z`,
+        date: `2020-02-24T00:00:00.000Z`,
         name: `Victoria`,
         rating: 1,
         src: `img/avatar-max.jpg`,
         text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
       },
       {
-        date: `2020-03-02T06:24:48.792Z`,
+        date: `2020-03-02T00:00:00.000Z`,
         name: `Victoria`,
         rating: 3,
         src: `img/avatar-max.jpg`,

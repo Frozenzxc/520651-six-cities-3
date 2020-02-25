@@ -129,7 +129,7 @@ exports[`ReviewsList is rendered correctly 1`] = `
         </p>
         <time
           className="reviews__time"
-          dateTime="2020-02-25"
+          dateTime="2020-02-24"
         >
           February 2020
         </time>
@@ -188,7 +188,7 @@ exports[`ReviewsList is rendered correctly 1`] = `
         </p>
         <time
           className="reviews__time"
-          dateTime="2020-02-27"
+          dateTime="2020-02-26"
         >
           February 2020
         </time>
