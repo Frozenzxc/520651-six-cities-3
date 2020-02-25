@@ -1,7 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {offerShape} from "../../prop-types.jsx";
-import {getCardRating} from "../../common";
+import {getRating} from "../../common";
+import {OffersView} from "../../const";
 
 class PlaceCard extends PureComponent {
   constructor(props) {
@@ -22,7 +23,7 @@ class PlaceCard extends PureComponent {
   }
 
   render() {
-    const {offer} = this.props;
+    const {offer, offersView} = this.props;
     const {
       premium,
       price,
@@ -32,17 +33,17 @@ class PlaceCard extends PureComponent {
       type,
     } = offer;
 
-    const cardRating = getCardRating(rating);
+    const cardRating = getRating(rating);
 
     return (
       <article
-        className="cities__place-card place-card"
+        className={`${offersView === OffersView.ALL ? `${offersView}place-card` : `${offersView}places__card`} place-card`}
         onMouseEnter={this._handleHover}
       >
         {premium && <div className="place-card__mark">
           <span>Premium</span>
         </div>}
-        <div className="cities__image-wrapper place-card__image-wrapper">
+        <div className={`${offersView}image-wrapper place-card__image-wrapper`}>
           <a href="#">
             <img className="place-card__image" src={src[0]} width="260"
               height="200" alt="Place image"/>
@@ -84,6 +85,7 @@ PlaceCard.propTypes = {
   onCardHover: PropTypes.func,
   onMouseEnter: PropTypes.func,
   offer: offerShape,
+  offersView: PropTypes.string,
 };
 
 export default PlaceCard;

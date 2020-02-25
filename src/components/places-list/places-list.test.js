@@ -1,16 +1,15 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Property from "./property";
+import PlacesList from "./places-list";
+import {OffersView} from "../../test-mocks/test-offersView";
 import offers from "../../test-mocks/test-offers";
 
-const offer = offers[0];
-
-it(`Property is rendered correctly`, () => {
+it(`PlacesList is rendered correctly`, () => {
   const tree = renderer.create(
-      <Property
-        offer={offer}
+      <PlacesList
         offers={offers}
         onCardTitleClick={() => {}}
+        offersView={OffersView.ALL}
       />
   ).toJSON();
 

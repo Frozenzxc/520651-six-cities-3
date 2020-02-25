@@ -1,16 +1,14 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Property from "./property";
 import offers from "../../test-mocks/test-offers";
+import ReviewsList from "./reviews-list";
 
-const offer = offers[0];
+const reviews = offers[0].reviews;
 
-it(`Property is rendered correctly`, () => {
+it(`ReviewsList is rendered correctly`, () => {
   const tree = renderer.create(
-      <Property
-        offer={offer}
-        offers={offers}
-        onCardTitleClick={() => {}}
+      <ReviewsList
+        reviews={reviews}
       />
   ).toJSON();
 

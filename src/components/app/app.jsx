@@ -38,7 +38,11 @@ class App extends PureComponent {
       );
     }
     return (
-      <Property offer={activeCard}/>
+      <Property
+        offer={activeCard}
+        offers={offers}
+        onCardTitleClick={this._handleCardTitleClick}
+      />
     );
   }
 
