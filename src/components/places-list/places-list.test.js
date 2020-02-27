@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import PlacesList from "./places-list";
-import {OffersView} from "../../test-mocks/test-offersView";
+import {OfferType} from "../../const";
 import offers from "../../test-mocks/test-offers";
 
 it(`PlacesList is rendered correctly`, () => {
@@ -9,7 +9,7 @@ it(`PlacesList is rendered correctly`, () => {
       <PlacesList
         offers={offers}
         onCardTitleClick={() => {}}
-        offersView={OffersView.ALL}
+        offersView={OfferType.ALL}
       />
   ).toJSON();
 

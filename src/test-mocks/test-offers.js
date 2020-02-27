@@ -17,6 +17,7 @@ export default [
     reviews: [
       {
         date: `2020-02-22T00:00:00.000Z`,
+        reviewID: 140,
         name: `Max`,
         rating: 1,
         src: `img/avatar-max.jpg`,
@@ -24,6 +25,7 @@ export default [
       },
       {
         date: `2020-02-24T00:00:00.000Z`,
+        reviewID: 151,
         name: `John`,
         rating: 4,
         src: `img/avatar-max.jpg`,
@@ -31,6 +33,7 @@ export default [
       },
       {
         date: `2020-02-26T00:00:00.000Z`,
+        reviewID: 160,
         name: `Victoria`,
         rating: 3,
         src: `img/avatar-max.jpg`,
@@ -38,6 +41,7 @@ export default [
       },
       {
         date: `2020-03-02T00:00:00.000Z`,
+        reviewID: 145,
         name: `Bob`,
         rating: 5,
         src: `img/avatar-max.jpg`,
@@ -66,6 +70,7 @@ export default [
     reviews: [
       {
         date: `2020-02-26T00:00:00.000Z`,
+        reviewID: 156,
         name: `Alex`,
         rating: 4,
         src: `img/avatar-angelina.jpg`,
@@ -73,6 +78,7 @@ export default [
       },
       {
         date: `2020-02-24T00:00:00.000Z`,
+        reviewID: 198,
         name: `Dana`,
         rating: 1,
         src: `img/avatar-angelina.jpg`,
@@ -101,6 +107,7 @@ export default [
     reviews: [
       {
         date: `2020-02-26T00:00:00.000Z`,
+        reviewID: 176,
         name: `Max`,
         rating: 2,
         src: `img/avatar-angelina.jpg`,
@@ -129,6 +136,7 @@ export default [
     reviews: [
       {
         date: `2020-02-26T00:00:00.000Z`,
+        reviewID: 169,
         name: `John`,
         rating: 4,
         src: `img/avatar-max.jpg`,
@@ -136,6 +144,7 @@ export default [
       },
       {
         date: `2020-02-24T00:00:00.000Z`,
+        reviewID: 183,
         name: `Victoria`,
         rating: 1,
         src: `img/avatar-max.jpg`,
@@ -143,6 +152,7 @@ export default [
       },
       {
         date: `2020-03-02T00:00:00.000Z`,
+        reviewID: 147,
         name: `Victoria`,
         rating: 3,
         src: `img/avatar-max.jpg`,

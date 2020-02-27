@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import PlaceCard from "../place-card/place-card.jsx";
 import {offerShape} from "../../prop-types.jsx";
-import {OffersView} from "../../const";
+import {OfferType} from "../../const";
 
 class PlacesList extends PureComponent {
   constructor(props) {
@@ -25,7 +25,7 @@ class PlacesList extends PureComponent {
     const {onCardTitleClick, offers, offersView} = this.props;
 
     return (
-      <div className={`${offersView === OffersView.ALL ? `${offersView}places-list` : `${offersView}places__list`} places__list tabs__content`}>
+      <div className={`${offersView}-places__list places__list tabs__content`}>
         {offers.map((offer) =>
           <PlaceCard
             onMouseEnter={this.handleCardHover}

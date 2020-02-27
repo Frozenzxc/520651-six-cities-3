@@ -1,6 +1,6 @@
-const OffersView = {
-  ALL: `cities__`,
-  NEARBY: `near-`,
+const OfferType = {
+  ALL: `cities`,
+  NEARBY: `near`,
 };
 
-export {OffersView};
+export {OfferType};

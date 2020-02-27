@@ -3,7 +3,7 @@ import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import PlacesList from "../places-list/places-list.jsx";
-import {OffersView} from "../../const";
+import {OfferType} from "../../const";
 import PropTypes from "prop-types";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
@@ -33,10 +33,7 @@ class Property extends PureComponent {
       type,
     } = this.props.offer;
 
-    this._offers = offers;
-
-    const index = this._offers.findIndex((it) => it.id === id);
-    this._offers = [].concat(this._offers.slice(0, index), this._offers.slice(index + 1));
+    this._offers = offers.filter((it) => it.id !== id);
 
     const cardRating = getRating(rating);
 
@@ -132,6 +129,7 @@ class Property extends PureComponent {
           </div>
           <section className="property__map map">
             <Map
+              activeOffer={this.props.offer}
               offers={this._offers}
               leaflet={leaflet}
             />
@@ -143,7 +141,7 @@ class Property extends PureComponent {
             <PlacesList
               offers={this._offers}
               onCardTitleClick={onCardTitleClick}
-              offersView={OffersView.NEARBY}
+              offersView={OfferType.NEARBY}
             />
           </section>
         </div>
@@ -153,7 +151,7 @@ class Property extends PureComponent {
 }
 
 Property.propTypes = {
-  offer: offerShape,
+  offer: offerShape.isRequired,
   onCardTitleClick: PropTypes.func,
   offers: PropTypes.arrayOf(offerShape),
 };

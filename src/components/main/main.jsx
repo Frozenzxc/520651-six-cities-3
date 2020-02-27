@@ -4,7 +4,7 @@ import PlacesList from "../places-list/places-list.jsx";
 import {offerShape} from "../../prop-types.jsx";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
-import {OffersView} from "../../const";
+import {OfferType} from "../../const";
 const Main = ({offersCount, offers, onCardTitleClick}) => {
 
   return (
@@ -93,7 +93,7 @@ const Main = ({offersCount, offers, onCardTitleClick}) => {
               <PlacesList
                 onCardTitleClick={onCardTitleClick}
                 offers={offers}
-                offersView={OffersView.ALL}
+                offersView={OfferType.ALL}
               />
             </section>
             <div className="cities__right-section">

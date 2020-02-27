@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 const reviewShape = PropTypes.shape({
   date: PropTypes.string.isRequired,
+  reviewID: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
@@ -26,6 +27,6 @@ const offerShape = PropTypes.shape({
   src: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-}).isRequired;
+});
 
 export {offerShape, reviewShape};

@@ -244,7 +244,7 @@ exports[`Property is rendered correctly 1`] = `
             <span
               className="reviews__amount"
             >
-              1
+              4
             </span>
           </h2>
           <ul
@@ -270,7 +270,7 @@ exports[`Property is rendered correctly 1`] = `
                 <span
                   className="reviews__user-name"
                 >
-                  Max
+                  Bob
                 </span>
               </div>
               <div
@@ -285,7 +285,7 @@ exports[`Property is rendered correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "20%",
+                          "width": "100%",
                         }
                       }
                     />
@@ -303,68 +303,9 @@ exports[`Property is rendered correctly 1`] = `
                 </p>
                 <time
                   className="reviews__time"
-                  dateTime="2020-02-22"
+                  dateTime="2020-03-02"
                 >
-                  February 2020
-                </time>
-              </div>
-            </li>
-            <li
-              className="reviews__item"
-            >
-              <div
-                className="reviews__user user"
-              >
-                <div
-                  className="reviews__avatar-wrapper user__avatar-wrapper"
-                >
-                  <img
-                    alt="Reviews avatar"
-                    className="reviews__avatar user__avatar"
-                    height="54"
-                    src="img/avatar-max.jpg"
-                    width="54"
-                  />
-                </div>
-                <span
-                  className="reviews__user-name"
-                >
-                  John
-                </span>
-              </div>
-              <div
-                className="reviews__info"
-              >
-                <div
-                  className="reviews__rating rating"
-                >
-                  <div
-                    className="reviews__stars rating__stars"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "width": "80%",
-                        }
-                      }
-                    />
-                    <span
-                      className="visually-hidden"
-                    >
-                      Rating
-                    </span>
-                  </div>
-                </div>
-                <p
-                  className="reviews__text"
-                >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.
-                </p>
-                <time
-                  className="reviews__time"
-                  dateTime="2020-02-24"
-                >
-                  February 2020
+                  March 02, 2020
                 </time>
               </div>
             </li>
@@ -423,7 +364,7 @@ exports[`Property is rendered correctly 1`] = `
                   className="reviews__time"
                   dateTime="2020-02-26"
                 >
-                  February 2020
+                  February 26, 2020
                 </time>
               </div>
             </li>
@@ -447,7 +388,7 @@ exports[`Property is rendered correctly 1`] = `
                 <span
                   className="reviews__user-name"
                 >
-                  Bob
+                  John
                 </span>
               </div>
               <div
@@ -462,7 +403,7 @@ exports[`Property is rendered correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "100%",
+                          "width": "80%",
                         }
                       }
                     />
@@ -480,9 +421,68 @@ exports[`Property is rendered correctly 1`] = `
                 </p>
                 <time
                   className="reviews__time"
-                  dateTime="2020-03-02"
+                  dateTime="2020-02-24"
                 >
-                  March 2020
+                  February 24, 2020
+                </time>
+              </div>
+            </li>
+            <li
+              className="reviews__item"
+            >
+              <div
+                className="reviews__user user"
+              >
+                <div
+                  className="reviews__avatar-wrapper user__avatar-wrapper"
+                >
+                  <img
+                    alt="Reviews avatar"
+                    className="reviews__avatar user__avatar"
+                    height="54"
+                    src="img/avatar-max.jpg"
+                    width="54"
+                  />
+                </div>
+                <span
+                  className="reviews__user-name"
+                >
+                  Max
+                </span>
+              </div>
+              <div
+                className="reviews__info"
+              >
+                <div
+                  className="reviews__rating rating"
+                >
+                  <div
+                    className="reviews__stars rating__stars"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "width": "20%",
+                        }
+                      }
+                    />
+                    <span
+                      className="visually-hidden"
+                    >
+                      Rating
+                    </span>
+                  </div>
+                </div>
+                <p
+                  className="reviews__text"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.
+                </p>
+                <time
+                  className="reviews__time"
+                  dateTime="2020-02-22"
+                >
+                  February 22, 2020
                 </time>
               </div>
             </li>

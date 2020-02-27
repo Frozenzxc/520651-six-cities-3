@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
-import {OffersView} from "../../const";
+import {OfferType} from "../../const";
 
 class PlaceCard extends PureComponent {
   constructor(props) {
@@ -37,13 +37,13 @@ class PlaceCard extends PureComponent {
 
     return (
       <article
-        className={`${offersView === OffersView.ALL ? `${offersView}place-card` : `${offersView}places__card`} place-card`}
+        className={`${offersView}-places__card place-card`}
         onMouseEnter={this._handleHover}
       >
         {premium && <div className="place-card__mark">
           <span>Premium</span>
         </div>}
-        <div className={`${offersView}image-wrapper place-card__image-wrapper`}>
+        <div className={`${offersView}-image-wrapper place-card__image-wrapper`}>
           <a href="#">
             <img className="place-card__image" src={src[0]} width="260"
               height="200" alt="Place image"/>
@@ -84,7 +84,7 @@ PlaceCard.propTypes = {
   onClick: PropTypes.func,
   onCardHover: PropTypes.func,
   onMouseEnter: PropTypes.func,
-  offer: offerShape,
+  offer: offerShape.isRequired,
   offersView: PropTypes.string,
 };
 

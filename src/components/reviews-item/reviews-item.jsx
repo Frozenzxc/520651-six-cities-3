@@ -18,7 +18,7 @@ class ReviewsItem extends PureComponent {
 
     const reviewRating = getRating(rating);
     const dateTime = moment(date).format(`YYYY-MM-DD`);
-    const reviewDate = moment(date).format(`MMMM YYYY`);
+    const reviewDate = moment(date).format(`MMMM DD, YYYY`);
 
     return (
       <li className="reviews__item">
