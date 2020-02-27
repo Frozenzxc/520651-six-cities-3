@@ -2,7 +2,6 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import PlaceCard from "../place-card/place-card.jsx";
 import {offerShape} from "../../prop-types.jsx";
-import {OfferType} from "../../const";
 
 class PlacesList extends PureComponent {
   constructor(props) {
