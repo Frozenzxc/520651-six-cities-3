@@ -36,7 +36,7 @@ class Map extends PureComponent {
 
     if (activeOffer) {
       leaflet
-            .marker(activeOffer.coordinates, {activeIcon})
+            .marker(activeOffer.coordinates, {icon: activeIcon})
             .addTo(map);
     }
 

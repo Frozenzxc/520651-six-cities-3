@@ -18,12 +18,15 @@ class ReviewsList extends PureComponent {
       <section className="property__reviews reviews">
         <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
         <ul className="reviews__list">
-          {reviews.slice(0, MAX_REVIEWS).sort((a, b) => moment(b.date).valueOf() - moment(a.date).valueOf()).map((review) =>
-            <ReviewsItem
-              review={review}
-              key={review.reviewID}
-            />
-          )}
+          {reviews
+              .sort((a, b) => moment(b.date).valueOf() - moment(a.date).valueOf())
+              .slice(0, MAX_REVIEWS)
+              .map((review) =>
+                <ReviewsItem
+                  review={review}
+                  key={review.reviewID}
+                />
+              )}
         </ul>
         <form className="reviews__form form" action="#" method="post">
           <label className="reviews__label form__label" htmlFor="review">Your review</label>
