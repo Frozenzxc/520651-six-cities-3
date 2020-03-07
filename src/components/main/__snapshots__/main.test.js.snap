@@ -222,14 +222,14 @@ exports[`Should Main component render correctly 1`] = `
             </ul>
           </form>
           <div
-            className="cities__places-list places__list tabs__content"
+            className="cities-places__list places__list tabs__content"
           >
             <article
-              className="cities__place-card place-card"
+              className="cities-places__card place-card"
               onMouseEnter={[Function]}
             >
               <div
-                className="cities__image-wrapper place-card__image-wrapper"
+                className="cities-image-wrapper place-card__image-wrapper"
               >
                 <a
                   href="#"
@@ -322,7 +322,7 @@ exports[`Should Main component render correctly 1`] = `
               </div>
             </article>
             <article
-              className="cities__place-card place-card"
+              className="cities-places__card place-card"
               onMouseEnter={[Function]}
             >
               <div
@@ -333,7 +333,7 @@ exports[`Should Main component render correctly 1`] = `
                 </span>
               </div>
               <div
-                className="cities__image-wrapper place-card__image-wrapper"
+                className="cities-image-wrapper place-card__image-wrapper"
               >
                 <a
                   href="#"
@@ -426,11 +426,11 @@ exports[`Should Main component render correctly 1`] = `
               </div>
             </article>
             <article
-              className="cities__place-card place-card"
+              className="cities-places__card place-card"
               onMouseEnter={[Function]}
             >
               <div
-                className="cities__image-wrapper place-card__image-wrapper"
+                className="cities-image-wrapper place-card__image-wrapper"
               >
                 <a
                   href="#"
@@ -523,11 +523,11 @@ exports[`Should Main component render correctly 1`] = `
               </div>
             </article>
             <article
-              className="cities__place-card place-card"
+              className="cities-places__card place-card"
               onMouseEnter={[Function]}
             >
               <div
-                className="cities__image-wrapper place-card__image-wrapper"
+                className="cities-image-wrapper place-card__image-wrapper"
               >
                 <a
                   href="#"

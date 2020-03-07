@@ -1,5 +1,13 @@
 import PropTypes from "prop-types";
 
+const reviewShape = PropTypes.shape({
+  date: PropTypes.string.isRequired,
+  reviewID: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired,
+});
+
 const offerShape = PropTypes.shape({
   bedroomsCount: PropTypes.number.isRequired,
   coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
@@ -15,9 +23,10 @@ const offerShape = PropTypes.shape({
   premium: PropTypes.bool.isRequired,
   price: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
+  reviews: PropTypes.arrayOf(reviewShape).isRequired,
   src: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-}).isRequired;
+});
 
-export {offerShape};
+export {offerShape, reviewShape};

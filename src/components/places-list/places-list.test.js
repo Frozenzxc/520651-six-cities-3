@@ -1,15 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PlaceCard from "./place-card";
-import offers from "../../test-mocks/test-offers";
+import PlacesList from "./places-list";
 import {OfferType} from "../../const";
+import offers from "../../test-mocks/test-offers";
 
-const offer = offers[0];
-
-it(`PlaceCard is rendered correctly`, () => {
+it(`PlacesList is rendered correctly`, () => {
   const tree = renderer.create(
-      <PlaceCard
-        offer={offer}
+      <PlacesList
+        offers={offers}
         onCardTitleClick={() => {}}
         offersView={OfferType.ALL}
       />

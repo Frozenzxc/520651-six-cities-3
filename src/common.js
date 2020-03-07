@@ -1,5 +1,5 @@
-const getCardRating = (rating) => {
+const getRating = (rating) => {
   return (`${rating * 20}%`);
 };
 
-export {getCardRating};
+export {getRating};
