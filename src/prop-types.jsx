@@ -10,6 +10,7 @@ const reviewShape = PropTypes.shape({
 
 const offerShape = PropTypes.shape({
   bedroomsCount: PropTypes.number.isRequired,
+  city: PropTypes.string.isRequired,
   coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
   description: PropTypes.string.isRequired,
   host: PropTypes.shape({

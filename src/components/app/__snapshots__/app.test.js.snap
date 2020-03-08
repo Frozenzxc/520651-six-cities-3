@@ -75,72 +75,65 @@ exports[`Render App 1`] = `
         >
           <li
             className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-            >
-              <span>
-                Paris
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-            >
-              <span>
-                Cologne
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
-          >
-            <a
-              className="locations__item-link tabs__item"
-              href="#"
-            >
-              <span>
-                Brussels
-              </span>
-            </a>
-          </li>
-          <li
-            className="locations__item"
+            onClick={[Function]}
           >
             <a
               className="locations__item-link tabs__item tabs__item--active"
+              data-city="Amsterdam"
+              href="#"
             >
-              <span>
+              <span
+                data-city="Amsterdam"
+              >
                 Amsterdam
               </span>
             </a>
           </li>
           <li
             className="locations__item"
+            onClick={[Function]}
           >
             <a
-              className="locations__item-link tabs__item"
+              className="locations__item-link tabs__item "
+              data-city="Brussels"
               href="#"
             >
-              <span>
+              <span
+                data-city="Brussels"
+              >
+                Brussels
+              </span>
+            </a>
+          </li>
+          <li
+            className="locations__item"
+            onClick={[Function]}
+          >
+            <a
+              className="locations__item-link tabs__item "
+              data-city="Hamburg"
+              href="#"
+            >
+              <span
+                data-city="Hamburg"
+              >
                 Hamburg
               </span>
             </a>
           </li>
           <li
             className="locations__item"
+            onClick={[Function]}
           >
             <a
-              className="locations__item-link tabs__item"
+              className="locations__item-link tabs__item "
+              data-city="Paris"
               href="#"
             >
-              <span>
-                Dusseldorf
+              <span
+                data-city="Paris"
+              >
+                Paris
               </span>
             </a>
           </li>
@@ -164,8 +157,9 @@ exports[`Render App 1`] = `
           <b
             className="places__found"
           >
-            55
-             places to stay in Amsterdam
+            4
+             places to stay in 
+            Amsterdam
           </b>
           <form
             action="#"

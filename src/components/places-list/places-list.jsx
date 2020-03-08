@@ -25,15 +25,16 @@ class PlacesList extends PureComponent {
 
     return (
       <div className={`${offersView}-places__list places__list tabs__content`}>
-        {offers.map((offer) =>
-          <PlaceCard
-            onMouseEnter={this.handleCardHover}
-            onClick={onCardTitleClick}
-            offer={offer}
-            key={offer.id}
-            offersView={offersView}
-          />
-        )
+        {!offers ? `No places to stay available` :
+          offers.map((offer) =>
+            <PlaceCard
+              onMouseEnter={this.handleCardHover}
+              onClick={onCardTitleClick}
+              offer={offer}
+              key={offer.id}
+              offersView={offersView}
+            />
+          )
         }
       </div>
     );

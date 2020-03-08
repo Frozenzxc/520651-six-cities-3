@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import PlacesList from "./places-list";
+import PlacesList from "./places-list.jsx";
 import {OfferType} from "../../const";
 import offers from "../../test-mocks/test-offers";
 
