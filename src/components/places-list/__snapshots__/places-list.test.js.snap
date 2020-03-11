@@ -692,3 +692,11 @@ exports[`PlacesList is rendered correctly 1`] = `
   </article>
 </div>
 `;
+
+exports[`PlacesList is rendered correctly without offers 1`] = `
+<div
+  className="cities-places__list places__list tabs__content"
+>
+  No places to stay available
+</div>
+`;

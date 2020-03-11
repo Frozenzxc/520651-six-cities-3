@@ -2,10 +2,10 @@ import {ActionType, ActionCreator} from "./actions";
 import offers from "./test-mocks/test-offers";
 
 describe(`Action creators work correctly`, () => {
-  it(`Action creator for incrementing step returns correct action`, () => {
-    expect(ActionCreator.incrementStep()).toEqual({
-      type: ActionType.INCREMENT_STEP,
-      payload: 1,
+  it(`Action creator for selecting card returns correct action`, () => {
+    expect(ActionCreator.selectCard(offers[0])).toEqual({
+      type: ActionType.SELECT_CARD,
+      payload: offers[0].id,
     });
   });
 

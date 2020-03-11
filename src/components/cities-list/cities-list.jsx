@@ -49,13 +49,11 @@ CitiesList.propTypes = {
   currentCity: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(offerShape).isRequired,
   onCityClick: PropTypes.func.isRequired,
-  step: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   currentCity: state.currentCity,
   offers: state.offers,
-  step: state.step,
 });
 
 const mapDispatchToProps = (dispatch) => ({

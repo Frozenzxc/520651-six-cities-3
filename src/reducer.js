@@ -2,18 +2,25 @@ import {extend} from "./utils.js";
 import offers from "./mocks/offers";
 import {ActionType} from "./actions";
 
+const isOffersExist = (offersData) => {
+  if (!(offersData instanceof Array)) {
+    return [];
+  }
+  return offersData;
+};
+
 const initialState = {
+  activeID: null,
   activeOffer: {},
   currentCity: offers[0].city,
-  offers,
-  step: -1,
+  offers: isOffersExist(offers),
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.INCREMENT_STEP:
+    case ActionType.SELECT_CARD:
       return extend(state, {
-        step: state.step + action.payload,
+        activeID: action.payload,
       });
 
     case ActionType.SELECT_CITY:

@@ -7,8 +7,6 @@ import configureStore from "redux-mock-store";
 
 const mockStore = configureStore([]);
 
-const OFFERS_COUNT = 55;
-
 const cardTitleClickHandler = () => {};
 
 it(`Should Main component render correctly`, () => {
@@ -16,7 +14,6 @@ it(`Should Main component render correctly`, () => {
   const store = mockStore({
     currentCity: offers[0].city,
     offers,
-    step: -1,
   });
 
   const tree = renderer
@@ -25,7 +22,6 @@ it(`Should Main component render correctly`, () => {
               <Main
                 currentCity={offers[0].city}
                 offers={offers}
-                offersCount={OFFERS_COUNT}
                 onCardTitleClick={cardTitleClickHandler}
               />
             </Provider>

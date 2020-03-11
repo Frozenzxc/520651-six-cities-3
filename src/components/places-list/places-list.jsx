@@ -25,7 +25,7 @@ class PlacesList extends PureComponent {
 
     return (
       <div className={`${offersView}-places__list places__list tabs__content`}>
-        {!offers ? `No places to stay available` :
+        {offers.length ?
           offers.map((offer) =>
             <PlaceCard
               onMouseEnter={this.handleCardHover}
@@ -34,7 +34,7 @@ class PlacesList extends PureComponent {
               key={offer.id}
               offersView={offersView}
             />
-          )
+          ) : `No places to stay available`
         }
       </div>
     );

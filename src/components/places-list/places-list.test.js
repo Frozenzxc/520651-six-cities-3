@@ -15,3 +15,15 @@ it(`PlacesList is rendered correctly`, () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+it(`PlacesList is rendered correctly without offers`, () => {
+  const tree = renderer.create(
+      <PlacesList
+        offers={[]}
+        onCardTitleClick={() => {}}
+        offersView={OfferType.ALL}
+      />
+  ).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

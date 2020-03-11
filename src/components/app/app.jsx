@@ -9,12 +9,11 @@ import Property from "../property/property.jsx";
 
 class App extends PureComponent {
   _renderApp() {
-    const {activeOffer, currentCity, offers, onCardTitleClick, step} = this.props;
+    const {activeID, activeOffer, currentCity, offers, onCardTitleClick} = this.props;
 
     const availableOffers = offers.filter((offer) => offer.city === currentCity);
 
-
-    if (step === -1) {
+    if (activeID === null) {
       return (
         <Main
           currentCity={currentCity}
@@ -23,6 +22,7 @@ class App extends PureComponent {
         />
       );
     }
+
     return (
       <Property
         offer={activeOffer}
@@ -54,23 +54,25 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
+  activeID: PropTypes.oneOfType([
+    PropTypes.oneOf([null]),
+    PropTypes.number.isRequired]),
   activeOffer: PropTypes.object,
   currentCity: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(offerShape).isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
-  step: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
+  activeID: state.activeID,
   currentCity: state.currentCity,
   offers: state.offers,
-  step: state.step,
   activeOffer: state.activeOffer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCardTitleClick(offer) {
-    dispatch(ActionCreator.incrementStep());
+    dispatch(ActionCreator.selectCard(offer));
     dispatch(ActionCreator.selectOffer(offer));
   },
   onCityClick(city) {

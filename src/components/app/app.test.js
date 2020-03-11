@@ -10,6 +10,7 @@ const mockStore = configureStore([]);
 it(`Render App`, () => {
 
   const store = mockStore({
+    activeID: null,
     activeOffer: offers[1],
     currentCity: offers[0].city,
     offers,
@@ -19,10 +20,10 @@ it(`Render App`, () => {
         .create(
             <Provider store={store}>
               <App
+                activeID={null}
                 currentCity={offers[0].city}
                 offers={offers}
                 onCardTitleClick={() => {}}
-                step={-1}
               />
             </Provider>)
         .toJSON();
