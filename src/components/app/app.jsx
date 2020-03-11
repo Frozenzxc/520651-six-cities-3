@@ -9,15 +9,15 @@ import Property from "../property/property.jsx";
 
 class App extends PureComponent {
   _renderApp() {
-    const {activeID, activeOffer, currentCity, offers, onCardTitleClick} = this.props;
-
-    const availableOffers = offers.filter((offer) => offer.city === currentCity);
+    const {activeID, activeOffer, availableOffers, currentCity, onCardHover, onCardTitleClick} = this.props;
 
     if (activeID === null) {
       return (
         <Main
+          activeOffer={activeOffer}
+          availableOffers={availableOffers}
           currentCity={currentCity}
-          offers={availableOffers}
+          onCardHover={onCardHover}
           onCardTitleClick={onCardTitleClick}
         />
       );
@@ -27,13 +27,14 @@ class App extends PureComponent {
       <Property
         offer={activeOffer}
         offers={availableOffers}
+        onCardHover={onCardHover}
         onCardTitleClick={onCardTitleClick}
       />
     );
   }
 
   render() {
-    const {offers, onCardTitleClick} = this.props;
+    const {availableOffers, onCardHover, onCardTitleClick} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -42,8 +43,9 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/dev-offer">
             <Property
-              offer={offers[0]}
-              offers={offers}
+              offer={availableOffers[0]}
+              offers={availableOffers}
+              onCardHover={onCardHover}
               onCardTitleClick={onCardTitleClick}
             />
           </Route>
@@ -58,19 +60,25 @@ App.propTypes = {
     PropTypes.oneOf([null]),
     PropTypes.number.isRequired]),
   activeOffer: PropTypes.object,
+  availableOffers: PropTypes.arrayOf(offerShape).isRequired,
   currentCity: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(offerShape).isRequired,
+  onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   activeID: state.activeID,
+  availableOffers: state.availableOffers,
   currentCity: state.currentCity,
   offers: state.offers,
   activeOffer: state.activeOffer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onCardHover(offer) {
+    dispatch(ActionCreator.selectOffer(offer));
+  },
   onCardTitleClick(offer) {
     dispatch(ActionCreator.selectCard(offer));
     dispatch(ActionCreator.selectOffer(offer));

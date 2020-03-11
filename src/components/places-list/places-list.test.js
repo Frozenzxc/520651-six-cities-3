@@ -8,6 +8,7 @@ it(`PlacesList is rendered correctly`, () => {
   const tree = renderer.create(
       <PlacesList
         offers={offers}
+        onCardHover={() => {}}
         onCardTitleClick={() => {}}
         offersView={OfferType.ALL}
       />
@@ -20,6 +21,7 @@ it(`PlacesList is rendered correctly without offers`, () => {
   const tree = renderer.create(
       <PlacesList
         offers={[]}
+        onCardHover={() => {}}
         onCardTitleClick={() => {}}
         offersView={OfferType.ALL}
       />

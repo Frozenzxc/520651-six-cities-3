@@ -10,6 +10,7 @@ it(`Property is rendered correctly`, () => {
       <Property
         offer={offer}
         offers={offers}
+        onCardHover={() => {}}
         onCardTitleClick={() => {}}
       />
   ).toJSON();

@@ -5,7 +5,8 @@ import offers from "./test-mocks/test-offers";
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   });
@@ -14,7 +15,8 @@ it(`Reducer without additional parameters should return initial state`, () => {
 it(`Reducer should increment current step by a given value`, () => {
   expect(reducer({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   }, {
@@ -22,14 +24,16 @@ it(`Reducer should increment current step by a given value`, () => {
     payload: 23,
   })).toEqual({
     activeID: 23,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   });
 
   expect(reducer({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   }, {
@@ -37,7 +41,8 @@ it(`Reducer should increment current step by a given value`, () => {
     payload: null,
   })).toEqual({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   });
@@ -47,7 +52,8 @@ it(`Reducer should increment current step by a given value`, () => {
 it(`Reducer should change current city by a given new value`, () => {
   expect(reducer({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   }, {
@@ -55,14 +61,16 @@ it(`Reducer should change current city by a given new value`, () => {
     payload: offers[1].city,
   })).toEqual({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[1].city,
     offers,
   });
 
   expect(reducer({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   }, {
@@ -70,7 +78,8 @@ it(`Reducer should change current city by a given new value`, () => {
     payload: offers[0].city,
   })).toEqual({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   });
@@ -79,7 +88,8 @@ it(`Reducer should change current city by a given new value`, () => {
 it(`Reducer should change active offer by a given new value`, () => {
   expect(reducer({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   }, {
@@ -88,21 +98,24 @@ it(`Reducer should change active offer by a given new value`, () => {
   })).toEqual({
     activeID: null,
     activeOffer: offers[1],
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   });
 
   expect(reducer({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   }, {
     type: ActionType.SELECT_OFFER,
-    payload: {},
+    payload: null,
   })).toEqual({
     activeID: null,
-    activeOffer: {},
+    activeOffer: null,
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   });

@@ -55,10 +55,22 @@ class Map extends PureComponent {
     this.addMarkers(activeOffer, offers);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const {activeOffer, offers} = this.props;
     this.markers.map((marker) => marker.remove());
     this.addMarkers(activeOffer, offers);
+
+    if (prevProps.activeOffer !== this.props.activeOffer) {
+      if (prevProps.activeOffer !== null) {
+        this.leaflet
+                .marker(prevProps.activeOffer.coordinates, {icon: this.standartIcon})
+                .addTo(this.map);
+      }
+      this.leaflet
+            .marker(this.props.activeOffer.coordinates, {icon: this.activeIcon})
+            .addTo(this.map);
+    }
+
   }
 
   render() {
@@ -69,7 +81,10 @@ class Map extends PureComponent {
 }
 
 Map.propTypes = {
-  activeOffer: offerShape,
+  activeOffer: PropTypes.oneOfType([
+    PropTypes.oneOf([null]),
+    offerShape,
+  ]),
   offers: PropTypes.arrayOf(offerShape),
   leaflet: PropTypes.object,
 };
