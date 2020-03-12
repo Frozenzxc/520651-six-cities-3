@@ -40,7 +40,7 @@ exports[`Sort component is rendered correctly 1`] = `
     </li>
     <li
       className="places__option false"
-      data-sort-type="Price: high to low"
+      data-sort-type="Price: low to high"
       onClick={[Function]}
       tabIndex="0"
     >
@@ -48,7 +48,7 @@ exports[`Sort component is rendered correctly 1`] = `
     </li>
     <li
       className="places__option false"
-      data-sort-type="Price: low to high"
+      data-sort-type="Price: high to low"
       onClick={[Function]}
       tabIndex="0"
     >
