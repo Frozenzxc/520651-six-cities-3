@@ -81,13 +81,13 @@ class Sort extends PureComponent {
             tabIndex="0">Popular</li>
           <li
             onClick={this.handleSortTypeChange}
-            className={`places__option ${this.state.activeSortType === SortType.PRICE_TO_LOW && `places__option--active`}`}
-            data-sort-type={SortType.PRICE_TO_LOW}
+            className={`places__option ${this.state.activeSortType === SortType.PRICE_TO_HIGH && `places__option--active`}`}
+            data-sort-type={SortType.PRICE_TO_HIGH}
             tabIndex="0">Price: low to high</li>
           <li
             onClick={this.handleSortTypeChange}
-            className={`places__option ${this.state.activeSortType === SortType.PRICE_TO_HIGH && `places__option--active`}`}
-            data-sort-type={SortType.PRICE_TO_HIGH}
+            className={`places__option ${this.state.activeSortType === SortType.PRICE_TO_LOW && `places__option--active`}`}
+            data-sort-type={SortType.PRICE_TO_LOW}
             tabIndex="0">Price: high to low</li>
           <li
             onClick={this.handleSortTypeChange}
