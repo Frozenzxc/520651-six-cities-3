@@ -3,4 +3,11 @@ const OfferType = {
   NEARBY: `near`,
 };
 
-export {OfferType};
+const SortType = {
+  POPULAR: `Popular`,
+  PRICE_TO_HIGH: `Price: low to high`,
+  PRICE_TO_LOW: `Price: high to low`,
+  RATING: `Top rated first`,
+};
+
+export {OfferType, SortType};
