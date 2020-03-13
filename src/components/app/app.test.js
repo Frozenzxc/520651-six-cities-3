@@ -12,6 +12,7 @@ it(`Render App`, () => {
   const store = mockStore({
     activeID: null,
     activeOffer: offers[1],
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
     step: -1,
@@ -21,8 +22,11 @@ it(`Render App`, () => {
             <Provider store={store}>
               <App
                 activeID={null}
+                activeOffer={offers[0]}
+                availableOffers={offers.filter((offer) => offer.city === offers[0].city)}
                 currentCity={offers[0].city}
                 offers={offers}
+                onCardHover={() => {}}
                 onCardTitleClick={() => {}}
               />
             </Provider>)

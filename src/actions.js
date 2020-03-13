@@ -2,6 +2,7 @@ const ActionType = {
   SELECT_CARD: `SELECT_CARD`,
   SELECT_CITY: `SELECT_CITY`,
   SELECT_OFFER: `SELECT_OFFER`,
+  SORT_TYPE_CHANGE: `SORT_TYPE_CHANGE`,
 };
 
 const ActionCreator = {
@@ -19,6 +20,11 @@ const ActionCreator = {
   selectOffer: (offer) => ({
     type: ActionType.SELECT_OFFER,
     payload: offer,
+  }),
+
+  sortTypeChange: (offers) => ({
+    type: ActionType.SORT_TYPE_CHANGE,
+    payload: offers,
   })
 };
 

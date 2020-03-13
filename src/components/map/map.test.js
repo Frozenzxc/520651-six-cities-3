@@ -7,6 +7,7 @@ import leaflet from "../../__mocks__/leaflet";
 it(`Map is rendered correctly`, () => {
   const tree = renderer.create(
       <Map
+        activeOffer={offers[0]}
         offers={offers}
         leaflet={leaflet}
       />

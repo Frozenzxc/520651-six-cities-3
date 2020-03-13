@@ -15,7 +15,8 @@ class Property extends PureComponent {
   }
 
   render() {
-    const {offers, onCardTitleClick} = this.props;
+    const {offers, onCardTitleClick, onCardHover} = this.props;
+
 
     const {
       bedroomsCount,
@@ -140,6 +141,7 @@ class Property extends PureComponent {
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <PlacesList
               offers={this._offers}
+              onCardHover={onCardHover}
               onCardTitleClick={onCardTitleClick}
               offersView={OfferType.NEARBY}
             />
@@ -152,7 +154,8 @@ class Property extends PureComponent {
 
 Property.propTypes = {
   offer: offerShape.isRequired,
-  onCardTitleClick: PropTypes.func,
+  onCardHover: PropTypes.func.isRequired,
+  onCardTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerShape),
 };
 

@@ -7,11 +7,10 @@ import configureStore from "redux-mock-store";
 
 const mockStore = configureStore([]);
 
-const cardTitleClickHandler = () => {};
-
 it(`Should Main component render correctly`, () => {
 
   const store = mockStore({
+    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
     currentCity: offers[0].city,
     offers,
   });
@@ -20,9 +19,12 @@ it(`Should Main component render correctly`, () => {
         .create(
             <Provider store={store}>
               <Main
+                activeOffer={offers[0]}
+                availableOffers={offers.filter((offer) => offer.city === offers[0].city)}
+                onCardHover={() => {}}
+                onCardTitleClick={() => {}}
                 currentCity={offers[0].city}
-                offers={offers}
-                onCardTitleClick={cardTitleClickHandler}
+
               />
             </Provider>
         )
