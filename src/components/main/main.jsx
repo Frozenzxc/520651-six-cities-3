@@ -7,6 +7,9 @@ import leaflet from "leaflet";
 import {OfferType} from "../../const";
 import CitiesList from "../cities-list/cities-list.jsx";
 import Sort from "../sort/sort.jsx";
+import withSortingComponent from "../../hocs/with-sorting-component/with-sorting-component";
+
+const SortWrapped = withSortingComponent(Sort);
 
 const Main = ({activeOffer, availableOffers, currentCity, onCardHover, onCardTitleClick}) => {
 
@@ -43,7 +46,7 @@ const Main = ({activeOffer, availableOffers, currentCity, onCardHover, onCardTit
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{availableOffers.length} places to stay in {currentCity}</b>
-              <Sort
+              <SortWrapped
                 offers={availableOffers}
               />
               <PlacesList
