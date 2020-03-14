@@ -6,12 +6,17 @@ import {ActionCreator} from "../../actions.js";
 import Main from "../main/main.jsx";
 import {offerShape} from "../../prop-types.jsx";
 import Property from "../property/property.jsx";
+import MainEmpty from "../main-empty/main-empty.jsx";
 
 class App extends PureComponent {
   _renderApp() {
-    const {activeID, activeOffer, availableOffers, currentCity, onCardHover, onCardTitleClick} = this.props;
+    const {activeID, activeOffer, availableOffers, currentCity, offers, onCardHover, onCardTitleClick} = this.props;
 
-    if (activeID === null) {
+    if (!offers.length) {
+      return (
+        <MainEmpty/>
+      );
+    } else if (activeID === null) {
       return (
         <Main
           activeOffer={activeOffer}
