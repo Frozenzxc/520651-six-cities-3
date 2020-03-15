@@ -2,8 +2,9 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {SortType} from "../../const";
 import {offerShape} from "../../prop-types.jsx";
-import {ActionCreator} from "../../actions";
+import {ActionCreator} from "../../reducer/data/data";
 import {connect} from "react-redux";
+import {getAvailableOffers} from "../../reducer/data/selectors";
 
 const withSortingComponent = (Component) => {
   class WithSortingComponent extends PureComponent {
@@ -74,7 +75,7 @@ const withSortingComponent = (Component) => {
   };
 
   const mapStateToProps = (state) => ({
-    availableOffers: state.availableOffers,
+    availableOffers: getAvailableOffers(state),
   });
 
   const mapDispatchToProps = (dispatch) => ({

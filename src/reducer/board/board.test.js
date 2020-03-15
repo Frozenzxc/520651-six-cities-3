@@ -1,9 +1,9 @@
-import {reducer} from "./reducer";
+import {board} from "./board";
 import {ActionType} from "./actions";
-import offers from "./test-mocks/test-offers";
+import offers from "../../test-mocks/test-offers";
 
 it(`Reducer without additional parameters should return initial state`, () => {
-  expect(reducer(void 0, {})).toEqual({
+  expect(board(void 0, {})).toEqual({
     activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city === offers[0].city),
@@ -13,7 +13,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
 });
 
 it(`Reducer should increment current step by a given value`, () => {
-  expect(reducer({
+  expect(board({
     activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city === offers[0].city),
@@ -30,7 +30,7 @@ it(`Reducer should increment current step by a given value`, () => {
     offers,
   });
 
-  expect(reducer({
+  expect(board({
     activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city === offers[0].city),
@@ -50,7 +50,7 @@ it(`Reducer should increment current step by a given value`, () => {
 
 
 it(`Reducer should change current city by a given new value`, () => {
-  expect(reducer({
+  expect(board({
     activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city === offers[0].city),
@@ -67,7 +67,7 @@ it(`Reducer should change current city by a given new value`, () => {
     offers,
   });
 
-  expect(reducer({
+  expect(board({
     activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city === offers[0].city),
@@ -86,7 +86,7 @@ it(`Reducer should change current city by a given new value`, () => {
 });
 
 it(`Reducer should change active offer by a given new value`, () => {
-  expect(reducer({
+  expect(board({
     activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city === offers[0].city),
@@ -103,7 +103,7 @@ it(`Reducer should change active offer by a given new value`, () => {
     offers,
   });
 
-  expect(reducer({
+  expect(board({
     activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city === offers[0].city),

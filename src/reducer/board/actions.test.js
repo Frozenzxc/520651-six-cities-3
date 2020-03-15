@@ -1,5 +1,5 @@
 import {ActionType, ActionCreator} from "./actions";
-import offers from "./test-mocks/test-offers";
+import offers from "../../test-mocks/test-offers";
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for selecting card returns correct action`, () => {

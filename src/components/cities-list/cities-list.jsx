@@ -1,8 +1,10 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../actions.js";
+import {ActionCreator} from "../../reducer/board/actions.js";
 import {offerShape} from "../../prop-types.jsx";
+import {getOffers} from "../../reducer/data/selectors";
+import {getCurrentCity} from "../../reducer/board/selectors";
 
 class CitiesList extends PureComponent {
   constructor(props) {
@@ -20,7 +22,7 @@ class CitiesList extends PureComponent {
   render() {
 
     const {currentCity, offers} = this.props;
-    const citiesList = [...new Set(offers.map((offer) => offer.city))];
+    const citiesList = [...new Set(offers.map((offer) => offer.city.name))];
     return (
       <div className="tabs">
         <section className="locations container">
@@ -52,15 +54,14 @@ CitiesList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentCity: state.currentCity,
-  offers: state.offers,
+  currentCity: getCurrentCity(state),
+  offers: getOffers(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCityClick(city) {
     dispatch(ActionCreator.selectCity(city));
   }
-
 });
 
 export {CitiesList};

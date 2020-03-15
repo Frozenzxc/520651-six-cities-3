@@ -6,6 +6,8 @@ class Map extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.city = [this.props.offers[0].city.location.latitude, this.props.offers[0].city.location.longitude];
+    this.zoom = this.props.offers[0].city.location.zoom;
     this.map = {};
     this.leaflet = this.props.leaflet;
     this.activeIcon = this.leaflet.icon({
@@ -22,30 +24,29 @@ class Map extends PureComponent {
   addMarkers(activeOffer, offers) {
     if (activeOffer) {
       this.markers.push(this.leaflet
-              .marker(activeOffer.coordinates, {icon: this.activeIcon})
+              .marker([activeOffer.location.latitude, activeOffer.location.longitude], {icon: this.activeIcon})
               .addTo(this.map));
     }
 
     offers.forEach((offer) => {
       this.markers.push(this.leaflet
-              .marker(offer.coordinates, {icon: this.standartIcon})
+              .marker([offer.location.latitude, offer.location.longitude], {icon: this.standartIcon})
               .addTo(this.map));
     });
   }
 
   componentDidMount() {
     const {activeOffer, offers} = this.props;
-    const city = [52.38333, 4.9];
-    const zoom = 12;
+
     this.map = this.leaflet.map(`map`, {
-      center: city,
-      zoom,
+      center: this.city,
+      zoom: this.zoom,
       zoomControl: false,
       marker: true,
-      maxZoom: zoom,
-      minZoom: zoom,
+      maxZoom: this.zoom,
+      minZoom: this.zoom,
     });
-    this.map.setView(city, zoom);
+    this.map.setView(this.city, this.zoom);
     this.leaflet
             .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
               attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
@@ -59,15 +60,18 @@ class Map extends PureComponent {
     const {activeOffer, offers} = this.props;
     this.markers.map((marker) => marker.remove());
     this.addMarkers(activeOffer, offers);
+    this.city = [this.props.offers[0].city.location.latitude, this.props.offers[0].city.location.longitude];
+    this.zoom = this.props.offers[0].city.location.zoom;
+    this.map.setView(this.city, this.zoom);
 
     if (prevProps.activeOffer !== this.props.activeOffer) {
       if (prevProps.activeOffer !== null) {
         this.leaflet
-                .marker(prevProps.activeOffer.coordinates, {icon: this.standartIcon})
+                .marker([prevProps.activeOffer.location.latitude, prevProps.activeOffer.location.longitude], {icon: this.standartIcon})
                 .addTo(this.map);
       }
       this.leaflet
-            .marker(this.props.activeOffer.coordinates, {icon: this.activeIcon})
+            .marker([this.props.activeOffer.location.latitude, this.props.activeOffer.location.longitude], {icon: this.activeIcon})
             .addTo(this.map);
     }
 
