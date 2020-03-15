@@ -79,13 +79,13 @@ exports[`Should Main component render correctly 1`] = `
           >
             <a
               className="locations__item-link tabs__item tabs__item--active"
-              data-city="Amsterdam"
+              data-city="Cologne"
               href="#"
             >
               <span
-                data-city="Amsterdam"
+                data-city="Cologne"
               >
-                Amsterdam
+                Cologne
               </span>
             </a>
           </li>
@@ -95,13 +95,13 @@ exports[`Should Main component render correctly 1`] = `
           >
             <a
               className="locations__item-link tabs__item "
-              data-city="Brussels"
+              data-city="Paris"
               href="#"
             >
               <span
-                data-city="Brussels"
+                data-city="Paris"
               >
-                Brussels
+                Paris
               </span>
             </a>
           </li>
@@ -127,13 +127,13 @@ exports[`Should Main component render correctly 1`] = `
           >
             <a
               className="locations__item-link tabs__item "
-              data-city="Paris"
+              data-city="Brussels"
               href="#"
             >
               <span
-                data-city="Paris"
+                data-city="Brussels"
               >
-                Paris
+                Brussels
               </span>
             </a>
           </li>
@@ -157,9 +157,9 @@ exports[`Should Main component render correctly 1`] = `
           <b
             className="places__found"
           >
-            4
+            3
              places to stay in 
-            Amsterdam
+            Cologne
           </b>
           <form
             action="#"
@@ -241,7 +241,7 @@ exports[`Should Main component render correctly 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg"
                     width="260"
                   />
                 </a>
@@ -259,7 +259,7 @@ exports[`Should Main component render correctly 1`] = `
                       className="place-card__price-value"
                     >
                       €
-                      200
+                      160
                     </b>
                     <span
                       className="place-card__price-text"
@@ -296,7 +296,7 @@ exports[`Should Main component render correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "60%",
+                          "width": "96%",
                         }
                       }
                     />
@@ -314,117 +314,13 @@ exports[`Should Main component render correctly 1`] = `
                   <a
                     href="#"
                   >
-                    Beautiful & luxurious apartment at great location
+                    The house among olive 
                   </a>
                 </h2>
                 <p
                   className="place-card__type"
                 >
-                  house
-                </p>
-              </div>
-            </article>
-            <article
-              className="cities-places__card place-card"
-              onMouseEnter={[Function]}
-            >
-              <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
-              <div
-                className="cities-image-wrapper place-card__image-wrapper"
-              >
-                <a
-                  href="#"
-                >
-                  <img
-                    alt="Place image"
-                    className="place-card__image"
-                    height="200"
-                    src="img/apartment-02.jpg"
-                    width="260"
-                  />
-                </a>
-              </div>
-              <div
-                className="place-card__info"
-              >
-                <div
-                  className="place-card__price-wrapper"
-                >
-                  <div
-                    className="place-card__price"
-                  >
-                    <b
-                      className="place-card__price-value"
-                    >
-                      €
-                      300
-                    </b>
-                    <span
-                      className="place-card__price-text"
-                    >
-                      / night
-                    </span>
-                  </div>
-                  <button
-                    className="place-card__bookmark-button button"
-                    type="button"
-                  >
-                    <svg
-                      className="place-card__bookmark-icon"
-                      height="19"
-                      width="18"
-                    >
-                      <use
-                        xlinkHref="#icon-bookmark"
-                      />
-                    </svg>
-                    <span
-                      className="visually-hidden"
-                    >
-                      To bookmarks
-                    </span>
-                  </button>
-                </div>
-                <div
-                  className="place-card__rating rating"
-                >
-                  <div
-                    className="place-card__stars rating__stars"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "width": "20%",
-                        }
-                      }
-                    />
-                    <span
-                      className="visually-hidden"
-                    >
-                      Rating
-                    </span>
-                  </div>
-                </div>
-                <h2
-                  className="place-card__name"
-                  onClick={[Function]}
-                >
-                  <a
-                    href="#"
-                  >
-                    Wood and stone place
-                  </a>
-                </h2>
-                <p
-                  className="place-card__type"
-                >
-                  hotel
+                  apartment
                 </p>
               </div>
             </article>
@@ -442,7 +338,7 @@ exports[`Should Main component render correctly 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-03.jpg"
+                    src="https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/11.jpg"
                     width="260"
                   />
                 </a>
@@ -460,7 +356,7 @@ exports[`Should Main component render correctly 1`] = `
                       className="place-card__price-value"
                     >
                       €
-                      450
+                      192
                     </b>
                     <span
                       className="place-card__price-text"
@@ -497,7 +393,7 @@ exports[`Should Main component render correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "60%",
+                          "width": "84%",
                         }
                       }
                     />
@@ -515,7 +411,7 @@ exports[`Should Main component render correctly 1`] = `
                   <a
                     href="#"
                   >
-                    Canal View Prinsengracht
+                    Waterfront with extraordinary view
                   </a>
                 </h2>
                 <p
@@ -539,7 +435,7 @@ exports[`Should Main component render correctly 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-03.jpg"
+                    src="https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/7.jpg"
                     width="260"
                   />
                 </a>
@@ -557,7 +453,7 @@ exports[`Should Main component render correctly 1`] = `
                       className="place-card__price-value"
                     >
                       €
-                      150
+                      196
                     </b>
                     <span
                       className="place-card__price-text"
@@ -594,7 +490,7 @@ exports[`Should Main component render correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "100%",
+                          "width": "66%",
                         }
                       }
                     />
@@ -612,13 +508,13 @@ exports[`Should Main component render correctly 1`] = `
                   <a
                     href="#"
                   >
-                    Nice, cozy, warm big bed apartment
+                    Loft Studio in the Central Area
                   </a>
                 </h2>
                 <p
                   className="place-card__type"
                 >
-                  apartment
+                  house
                 </p>
               </div>
             </article>

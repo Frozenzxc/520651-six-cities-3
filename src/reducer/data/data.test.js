@@ -7,17 +7,20 @@ const api = createAPI(() => {});
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
-    questions: [],
+    availableOffers: [],
+    offers: [],
   });
 });
 
-it(`Reducer should update questions by load offers`, () => {
+it(`Reducer should update offers by load offers`, () => {
   expect(reducer({
-    questions: [],
+      availableOffers: [],
+    offers: [],
   }, {
     type: ActionType.LOAD_OFFERS,
     payload: offers,
   })).toEqual({
+      availableOffers: offers,
     offers,
   });
 });

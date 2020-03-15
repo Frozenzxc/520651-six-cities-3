@@ -20,58 +20,63 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.selectOffer(offers[0])).toEqual({
       type: ActionType.SELECT_OFFER,
       payload: {
-        bedroomsCount: 4,
-        city: `Amsterdam`,
-        coordinates: [52.3909553943508, 4.85309666406198],
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
+        bedrooms: 3,
+        city: {
+          name: `Cologne`,
+          location: {
+            latitude: 50.938361,
+            longitude: 6.959974,
+            zoom: 13
+          }
+        },
+        description: `Design interior in most sympathetic area! Complitely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house. Calm street, fast connection to center and airport.`,
+        goods: [
+          `Coffee machine`,
+          `Laptop friendly workspace`,
+          `Fridge`,
+          `Breakfast`,
+          `Air conditioning`,
+          `Towels`,
+          `Washer`,
+          `Dishwasher`,
+          `Baby seat`
+        ],
         host: {
-          avatar: `img/avatar-max.jpg`,
-          name: `John`,
-          super: false,
+          id: 25,
+          name: `Angelina`,
+          avatar: `img/avatar-angelina.jpg`,
+          isPro: true
         },
         id: 1,
-        maxGuests: 6,
-        options: [`Wifi`, `Washing machine`, `Towels`, `Heating`, `Kitchen`, `Dishwasher`, `Cabel TV`, `Fridge`],
-        premium: false,
-        price: 200,
-        rating: 3,
-        reviews: [
-          {
-            date: `2020-02-22T00:00:00.000Z`,
-            reviewID: 140,
-            name: `Max`,
-            rating: 1,
-            src: `img/avatar-max.jpg`,
-            text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
-          },
-          {
-            date: `2020-02-24T00:00:00.000Z`,
-            reviewID: 151,
-            name: `John`,
-            rating: 4,
-            src: `img/avatar-max.jpg`,
-            text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
-          },
-          {
-            date: `2020-02-26T00:00:00.000Z`,
-            reviewID: 160,
-            name: `Victoria`,
-            rating: 3,
-            src: `img/avatar-max.jpg`,
-            text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
-          },
-          {
-            date: `2020-03-02T00:00:00.000Z`,
-            reviewID: 145,
-            name: `Bob`,
-            rating: 5,
-            src: `img/avatar-max.jpg`,
-            text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.`,
-          },
+        images: [
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/14.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/20.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/9.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/12.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/18.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/10.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/16.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/8.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/3.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/6.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/17.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/1.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`,
+          `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/5.jpg`
         ],
-        src: [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
-        title: `Beautiful & luxurious apartment at great location`,
-        type: `house`,
+        isFavorite: false,
+        isPremium: false,
+        location: {
+          latitude: 50.932361,
+          longitude: 6.937974,
+          zoom: 16
+        },
+        maxAdults: 7,
+        previewImage: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`,
+        price: 160,
+        rating: 4.8,
+        title: `The house among olive `,
+        type: `apartment`
       },
     });
   });

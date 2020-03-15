@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import offers from "../../test-mocks/test-offers";
+import offers from "../../test-mocks/reviews";
 import ReviewsList from "./reviews-list";
 
 const reviews = offers[0].reviews;

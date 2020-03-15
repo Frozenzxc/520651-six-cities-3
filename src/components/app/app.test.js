@@ -4,18 +4,22 @@ import {App} from "./app";
 import {Provider} from "react-redux";
 import offers from "../../test-mocks/test-offers";
 import configureStore from "redux-mock-store";
+import NameSpace from "../../reducer/name-space";
 
 const mockStore = configureStore([]);
 
 it(`Render App`, () => {
 
   const store = mockStore({
-    activeID: null,
-    activeOffer: offers[1],
-    availableOffers: offers.filter((offer) => offer.city === offers[0].city),
-    currentCity: offers[0].city,
-    offers,
-    step: -1,
+    [NameSpace.BOARD]: {
+      activeID: null,
+      activeOffer: offers[1],
+      currentCity: offers[0].city.name,
+    },
+    [NameSpace.DATA]: {
+      availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
+      offers,
+    },
   });
   const tree = renderer
         .create(
@@ -23,8 +27,8 @@ it(`Render App`, () => {
               <App
                 activeID={null}
                 activeOffer={offers[0]}
-                availableOffers={offers.filter((offer) => offer.city === offers[0].city)}
-                currentCity={offers[0].city}
+                availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
+                currentCity={offers[0].city.name}
                 offers={offers}
                 onCardHover={() => {}}
                 onCardTitleClick={() => {}}
