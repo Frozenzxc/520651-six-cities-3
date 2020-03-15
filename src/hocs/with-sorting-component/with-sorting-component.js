@@ -2,23 +2,32 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {SortType} from "../../const";
 import {offerShape} from "../../prop-types.jsx";
-import {ActionCreator} from "../../reducer/data/data";
 import {connect} from "react-redux";
-import {getAvailableOffers} from "../../reducer/data/selectors";
+import {getAvailableOffers} from "../../reducer/offers/selectors";
+import {compose} from "redux";
+import PlacesList from "../../components/places-list/places-list.jsx";
 
 const withSortingComponent = (Component) => {
   class WithSortingComponent extends PureComponent {
     constructor(props) {
       super(props);
 
-      this._defaultOffers = this.props.availableOffers;
       this.handleSortTypeClick = this.handleSortTypeClick.bind(this);
       this.handleSortTypeChange = this.handleSortTypeChange.bind(this);
       this.state = {
         activeSortType: SortType.POPULAR,
         isOpened: false,
-        sortedOffers: [],
+        sortedOffers: this.props.availableOffers,
       };
+    }
+
+    componentDidUpdate(prevProps) {
+      if (prevProps.availableOffers !== this.props.availableOffers) {
+        this.setState({
+          activeSortType: SortType.POPULAR,
+          sortedOffers: this.props.availableOffers,
+        });
+      }
     }
 
     handleSortTypeClick() {
@@ -28,12 +37,12 @@ const withSortingComponent = (Component) => {
     }
 
     handleSortTypeChange(evt) {
-      const {onSortTypeChange, availableOffers} = this.props;
+      const {availableOffers} = this.props;
       const sortType = evt.target.dataset.sortType;
       let sortedOffers = [];
       switch (sortType) {
         case SortType.POPULAR:
-          sortedOffers = this._defaultOffers;
+          sortedOffers = availableOffers;
           break;
         case SortType.PRICE_TO_HIGH:
           sortedOffers = availableOffers.slice().sort((a, b) => a.price - b.price);
@@ -50,43 +59,44 @@ const withSortingComponent = (Component) => {
         isOpened: !prevState.isOpened,
         sortedOffers,
       }));
-
-      onSortTypeChange(sortedOffers);
     }
 
     render() {
-      const {activeSortType, isOpened} = this.state;
+      const {activeSortType, isOpened, sortedOffers} = this.state;
       return (
-        <Component
-          {...this.props}
-          activeSortType={activeSortType}
-          isOpened={isOpened}
-          onSortTypeClick={this.handleSortTypeClick}
-          onSortTypeChange={this.handleSortTypeChange}
-        />
+        <React.Fragment>
+          <Component
+            {...this.props}
+            activeSortType={activeSortType}
+            isOpened={isOpened}
+            onSortTypeClick={this.handleSortTypeClick}
+            onSortTypeChange={this.handleSortTypeChange}
+          />
+          <PlacesList
+            {...this.props}
+            offers={sortedOffers}
+          />
+        </React.Fragment>
       );
     }
   }
 
 
   WithSortingComponent.propTypes = {
-    onSortTypeChange: PropTypes.func.isRequired,
     availableOffers: PropTypes.arrayOf(offerShape),
   };
 
-  const mapStateToProps = (state) => ({
-    availableOffers: getAvailableOffers(state),
-  });
-
-  const mapDispatchToProps = (dispatch) => ({
-    onSortTypeChange(offers) {
-      dispatch(ActionCreator.sortTypeChange(offers));
-    }
-
-  });
-
-  return connect(mapStateToProps, mapDispatchToProps)(WithSortingComponent);
+  return WithSortingComponent;
 };
 
+const mapStateToProps = (state) => ({
+  availableOffers: getAvailableOffers(state),
+});
 
-export default withSortingComponent;
+const composedWithSortingComponent = compose(
+    connect(mapStateToProps, null),
+    withSortingComponent
+);
+
+
+export default composedWithSortingComponent;

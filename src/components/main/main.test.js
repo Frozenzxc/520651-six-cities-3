@@ -11,11 +11,9 @@ const mockStore = configureStore([]);
 it(`Should Main component render correctly`, () => {
 
   const store = mockStore({
-    [NameSpace.DATA]: {
+    [NameSpace.OFFERS]: {
       availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
       offers,
-    },
-    [NameSpace.BOARD]: {
       currentCity: offers[0].city.name,
     },
   });

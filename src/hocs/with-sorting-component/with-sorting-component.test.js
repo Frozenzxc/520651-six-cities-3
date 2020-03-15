@@ -6,6 +6,7 @@ import configureStore from "redux-mock-store";
 import withSortingComponent from "./with-sorting-component";
 import offers from "../../mocks/offers";
 import NameSpace from "../../reducer/name-space";
+import {OfferType} from "../../const";
 
 const mockStore = configureStore([]);
 
@@ -31,17 +32,19 @@ const MockComponentWrapped = withSortingComponent(MockComponent);
 it(`withSortingComponent is rendered correctly`, () => {
 
   const store = mockStore({
-    [NameSpace.DATA]: {
+    [NameSpace.OFFERS]: {
       availableOffers: offers,
       offers,
-    },
-    [NameSpace.BOARD]: {
       currentCity: offers[0].city.name,
     }
   });
   const tree = renderer.create((
     <Provider store={store}>
       <MockComponentWrapped
+        availableOffers={offers}
+        onCardHover={() => {}}
+        onCardTitleClick={() => {}}
+        offersView={OfferType.ALL}
         offers={offers}
       />
     </Provider>

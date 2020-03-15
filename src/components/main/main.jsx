@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PlacesList from "../places-list/places-list.jsx";
 import {offerShape} from "../../prop-types.jsx";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
@@ -47,14 +46,11 @@ const Main = ({activeOffer, availableOffers, currentCity, onCardHover, onCardTit
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{availableOffers.length} places to stay in {currentCity}</b>
               <SortWrapped
-                offers={availableOffers}
-              />
-              <PlacesList
                 onCardHover={onCardHover}
                 onCardTitleClick={onCardTitleClick}
-                offers={availableOffers}
                 offersView={OfferType.ALL}
               />
+
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">

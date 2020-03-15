@@ -11,12 +11,10 @@ const mockStore = configureStore([]);
 it(`Render App`, () => {
 
   const store = mockStore({
-    [NameSpace.BOARD]: {
+    [NameSpace.OFFERS]: {
       activeID: null,
       activeOffer: offers[1],
       currentCity: offers[0].city.name,
-    },
-    [NameSpace.DATA]: {
       availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
       offers,
     },

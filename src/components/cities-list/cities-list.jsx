@@ -1,10 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/board/actions.js";
+import {ActionCreator} from "../../reducer/offers/actions";
 import {offerShape} from "../../prop-types.jsx";
-import {getOffers} from "../../reducer/data/selectors";
-import {getCurrentCity} from "../../reducer/board/selectors";
+import {getOffers, getCurrentCity} from "../../reducer/offers/selectors";
 
 class CitiesList extends PureComponent {
   constructor(props) {

@@ -10,7 +10,7 @@ const mockStore = configureStore([]);
 
 it(`CitiesList is rendered correctly`, () => {
   const store = mockStore({
-    [NameSpace.BOARD]: {
+    [NameSpace.OFFERS]: {
       currentCity: offers[1].city.name,
     },
   });

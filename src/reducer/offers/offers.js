@@ -1,30 +1,15 @@
 import {extend} from "../../utils.js";
 import {parseOffer} from "../../utils";
+import {ActionCreator, ActionType} from "../offers/actions";
 
 const getAvailableOffers = ((allOffers, currentCity) => allOffers.filter((offer) => offer.city.name === currentCity));
 
 const initialState = {
   offers: [],
   availableOffers: [],
-};
-
-const ActionType = {
-  LOAD_OFFERS: `LOAD_OFFERS`,
-  SORT_TYPE_CHANGE: `SORT_TYPE_CHANGE`,
-};
-
-const ActionCreator = {
-  loadOffers: (offers) => {
-    return {
-      type: ActionType.LOAD_OFFERS,
-      payload: offers,
-    };
-  },
-
-  sortTypeChange: (offers) => ({
-    type: ActionType.SORT_TYPE_CHANGE,
-    payload: offers,
-  })
+  activeID: null,
+  activeOffer: null,
+  currentCity: `Amsterdam`,
 };
 
 const Operation = {
@@ -36,18 +21,30 @@ const Operation = {
   },
 };
 
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_OFFERS:
       let parsedOffers = action.payload.map((offer) => parseOffer(offer));
       return extend(state, {
         offers: parsedOffers,
-        availableOffers: getAvailableOffers(parsedOffers, parsedOffers[0].city.name),
+        currentCity: parsedOffers[0].city.name,
       });
 
-    case ActionType.SORT_TYPE_CHANGE:
+    case ActionType.SELECT_CARD:
       return extend(state, {
-        availableOffers: action.payload,
+        activeID: action.payload,
+      });
+
+    case ActionType.SELECT_CITY:
+      return extend(state, {
+        currentCity: action.payload,
+        availableOffers: getAvailableOffers(state.offers, action.payload),
+      });
+
+    case ActionType.SELECT_OFFER:
+      return extend(state, {
+        activeOffer: action.payload,
       });
   }
 

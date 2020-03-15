@@ -2,13 +2,12 @@ import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/board/actions.js";
+import {ActionCreator} from "../../reducer/offers/actions.js";
 import Main from "../main/main.jsx";
 import {offerShape} from "../../prop-types.jsx";
 import Property from "../property/property.jsx";
 import MainEmpty from "../main-empty/main-empty.jsx";
-import {getOffers, getAvailableOffers} from "../../reducer/data/selectors";
-import {getActiveID, getActiveOffer, getCurrentCity} from "../../reducer/board/selectors";
+import {getActiveID, getActiveOffer, getCurrentCity, getOffers, getAvailableOffers} from "../../reducer/offers/selectors";
 
 class App extends PureComponent {
   _renderApp() {

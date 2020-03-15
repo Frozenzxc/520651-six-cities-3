@@ -8,9 +8,11 @@ export const parseOffer = (data) => {
   offer.city = data[`city`];
   offer.description = data[`description`];
   offer.goods = data[`goods`];
-  offer.host = data[`host`];
+  offer.host = {};
   offer.host.avatar = data[`host`][`avatar_url`];
+  offer.host.id = data[`host`][`id`];
   offer.host.isPro = data[`host`][`is_pro`];
+  offer.host.name = data[`host`][`name`];
   offer.id = data[`id`];
   offer.images = data[`images`];
   offer.isFavorite = data[`is_favorite`];
