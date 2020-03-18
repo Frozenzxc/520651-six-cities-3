@@ -15,7 +15,7 @@ exports[`PlaceCard is rendered correctly 1`] = `
         alt="Place image"
         className="place-card__image"
         height="200"
-        src="img/apartment-01.jpg"
+        src="https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg"
         width="260"
       />
     </a>
@@ -33,7 +33,7 @@ exports[`PlaceCard is rendered correctly 1`] = `
           className="place-card__price-value"
         >
           €
-          200
+          160
         </b>
         <span
           className="place-card__price-text"
@@ -70,7 +70,7 @@ exports[`PlaceCard is rendered correctly 1`] = `
         <span
           style={
             Object {
-              "width": "60%",
+              "width": "96%",
             }
           }
         />
@@ -88,13 +88,13 @@ exports[`PlaceCard is rendered correctly 1`] = `
       <a
         href="#"
       >
-        Beautiful & luxurious apartment at great location
+        The house among olive 
       </a>
     </h2>
     <p
       className="place-card__type"
     >
-      house
+      apartment
     </p>
   </div>
 </article>

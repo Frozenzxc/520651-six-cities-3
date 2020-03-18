@@ -1,9 +1,10 @@
 import React, {PureComponent} from "react";
 import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
+// eslint-disable-next-line
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import PlacesList from "../places-list/places-list.jsx";
-import {OfferType} from "../../const";
+import {OfferType, MAX_NEARBY_OFFERS} from "../../const";
 import PropTypes from "prop-types";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
@@ -19,22 +20,21 @@ class Property extends PureComponent {
 
 
     const {
-      bedroomsCount,
+      bedrooms,
       description,
       host,
       id,
-      maxGuests,
-      options,
-      premium,
+      maxAdults,
+      goods,
+      isPremium,
       price,
       rating,
-      reviews,
-      src,
+      images,
       title,
       type,
     } = this.props.offer;
 
-    this._offers = offers.filter((it) => it.id !== id);
+    this._offers = offers.filter((it) => it.id !== id).slice(0, MAX_NEARBY_OFFERS);
 
     const cardRating = getRating(rating);
 
@@ -43,7 +43,7 @@ class Property extends PureComponent {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {src.map((photo, i) => {
+              {images.map((photo, i) => {
                 return (
                   <div className="property__image-wrapper" key={`photo-${i}`}>
                     <img className="property__image" src={photo} alt="Photo studio"/>
@@ -55,7 +55,7 @@ class Property extends PureComponent {
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {premium && <div className="property__mark">
+              {isPremium && <div className="property__mark">
                 <span>Premium</span>
               </div>}
               <div className="property__name-wrapper">
@@ -79,10 +79,10 @@ class Property extends PureComponent {
                   {type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  {bedroomsCount} Bedrooms
+                  {bedrooms} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                                  Max {maxGuests} adults
+                                  Max {maxAdults} adults
                 </li>
               </ul>
               <div className="property__price">
@@ -92,7 +92,7 @@ class Property extends PureComponent {
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {options.map((option) => {
+                  {goods.map((option) => {
                     return (
                       <li className="property__inside-item" key={`${option}`}>
                         {option}
@@ -106,7 +106,7 @@ class Property extends PureComponent {
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div
-                    className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
+                    className={`property__avatar-wrapper user__avatar-wrapper ${host.isPro && `property__avatar-wrapper--pro`}`}>
                     <img className="property__avatar user__avatar" src={host.avatar}
                       width="74" height="74" alt="Host avatar"/>
                   </div>
@@ -123,9 +123,6 @@ class Property extends PureComponent {
                   </p>
                 </div>
               </div>
-              <ReviewsList
-                reviews={reviews}
-              />
             </div>
           </div>
           <section className="property__map map">

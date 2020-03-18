@@ -24,10 +24,10 @@ class PlaceCard extends PureComponent {
   render() {
     const {offer, offersView} = this.props;
     const {
-      premium,
+      isPremium,
       price,
       rating,
-      src,
+      previewImage,
       title,
       type,
     } = offer;
@@ -39,12 +39,12 @@ class PlaceCard extends PureComponent {
         className={`${offersView}-places__card place-card`}
         onMouseEnter={this._handleHover}
       >
-        {premium && <div className="place-card__mark">
+        {isPremium && <div className="place-card__mark">
           <span>Premium</span>
         </div>}
         <div className={`${offersView}-image-wrapper place-card__image-wrapper`}>
           <a href="#">
-            <img className="place-card__image" src={src[0]} width="260"
+            <img className="place-card__image" src={previewImage} width="260"
               height="200" alt="Place image"/>
           </a>
         </div>

@@ -1,11 +1,18 @@
 const ActionType = {
+  LOAD_OFFERS: `LOAD_OFFERS`,
   SELECT_CARD: `SELECT_CARD`,
   SELECT_CITY: `SELECT_CITY`,
   SELECT_OFFER: `SELECT_OFFER`,
-  SORT_TYPE_CHANGE: `SORT_TYPE_CHANGE`,
 };
 
 const ActionCreator = {
+
+  loadOffers: (offers) => {
+    return {
+      type: ActionType.LOAD_OFFERS,
+      payload: offers,
+    };
+  },
 
   selectCard: (offer) => ({
     type: ActionType.SELECT_CARD,
@@ -21,11 +28,6 @@ const ActionCreator = {
     type: ActionType.SELECT_OFFER,
     payload: offer,
   }),
-
-  sortTypeChange: (offers) => ({
-    type: ActionType.SORT_TYPE_CHANGE,
-    payload: offers,
-  })
 };
 
 export {ActionType, ActionCreator};

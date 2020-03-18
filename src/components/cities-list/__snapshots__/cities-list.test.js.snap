@@ -16,13 +16,13 @@ exports[`CitiesList is rendered correctly 1`] = `
       >
         <a
           className="locations__item-link tabs__item tabs__item--active"
-          data-city="Amsterdam"
+          data-city="Cologne"
           href="#"
         >
           <span
-            data-city="Amsterdam"
+            data-city="Cologne"
           >
-            Amsterdam
+            Cologne
           </span>
         </a>
       </li>
@@ -32,13 +32,13 @@ exports[`CitiesList is rendered correctly 1`] = `
       >
         <a
           className="locations__item-link tabs__item "
-          data-city="Brussels"
+          data-city="Paris"
           href="#"
         >
           <span
-            data-city="Brussels"
+            data-city="Paris"
           >
-            Brussels
+            Paris
           </span>
         </a>
       </li>
@@ -64,13 +64,13 @@ exports[`CitiesList is rendered correctly 1`] = `
       >
         <a
           className="locations__item-link tabs__item "
-          data-city="Paris"
+          data-city="Brussels"
           href="#"
         >
           <span
-            data-city="Paris"
+            data-city="Brussels"
           >
-            Paris
+            Brussels
           </span>
         </a>
       </li>

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PlacesList from "../places-list/places-list.jsx";
 import {offerShape} from "../../prop-types.jsx";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
@@ -8,6 +7,8 @@ import {OfferType} from "../../const";
 import CitiesList from "../cities-list/cities-list.jsx";
 import Sort from "../sort/sort.jsx";
 import withSortingComponent from "../../hocs/with-sorting-component/with-sorting-component";
+import PlacesList from "../places-list/places-list.jsx";
+import MainEmpty from "../main-empty/main-empty.jsx";
 
 const SortWrapped = withSortingComponent(Sort);
 
@@ -37,37 +38,36 @@ const Main = ({activeOffer, availableOffers, currentCity, onCardHover, onCardTit
           </div>
         </div>
       </header>
-
-      <main className="page__main page__main--index">
-        <h1 className="visually-hidden">Cities</h1>
-        <CitiesList />
-        <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{availableOffers.length} places to stay in {currentCity}</b>
-              <SortWrapped
-                offers={availableOffers}
-              />
-              <PlacesList
-                onCardHover={onCardHover}
-                onCardTitleClick={onCardTitleClick}
-                offers={availableOffers}
-                offersView={OfferType.ALL}
-              />
-            </section>
-            <div className="cities__right-section">
-              <section className="cities__map map">
-                <Map
-                  activeOffer={activeOffer}
-                  offers={availableOffers}
-                  leaflet={leaflet}
+      {availableOffers.length ?
+        <main className="page__main page__main--index">
+          <h1 className="visually-hidden">Cities</h1>
+          <CitiesList />
+          <div className="cities">
+            <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{availableOffers.length} places to stay in {currentCity}</b>
+                <SortWrapped render={(offers) => (
+                  <PlacesList
+                    offers={offers}
+                    onCardHover={onCardHover}
+                    onCardTitleClick={onCardTitleClick}
+                    offersView={OfferType.ALL}
+                  />)}
                 />
               </section>
+              <div className="cities__right-section">
+                <section className="cities__map map">
+                  <Map
+                    activeOffer={activeOffer}
+                    offers={availableOffers}
+                    leaflet={leaflet}
+                  />
+                </section>
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main> : <MainEmpty/>}
     </div>
   );
 };
