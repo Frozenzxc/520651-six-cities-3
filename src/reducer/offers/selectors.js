@@ -17,10 +17,6 @@ const getOffers = (state) => {
   return state[NameSpace.OFFERS].offers;
 };
 
-const getLoadingStatus = (state) => {
-  return state[NameSpace.OFFERS].isLoading;
-};
-
 const getAvailableOffers = createSelector(
     getOffers,
     getCurrentCity,
@@ -29,4 +25,4 @@ const getAvailableOffers = createSelector(
     }
 );
 
-export {getActiveID, getCurrentCity, getActiveOffer, getOffers, getAvailableOffers, getLoadingStatus};
+export {getActiveID, getCurrentCity, getActiveOffer, getOffers, getAvailableOffers};

@@ -1,4 +1,4 @@
-import React, {PureComponent, Children, cloneElement} from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {SortType} from "../../const";
 import {offerShape} from "../../prop-types.jsx";
@@ -62,9 +62,6 @@ const withSortingComponent = (Component) => {
 
     render() {
       const {activeSortType, isOpened, sortedOffers} = this.state;
-      const {children} = this.props;
-      const childrenWithProps = Children.map(children, (child) =>
-        cloneElement(child, {offers: sortedOffers}));
       return (
         <React.Fragment>
           <Component
@@ -75,7 +72,7 @@ const withSortingComponent = (Component) => {
             onSortTypeChange={this.handleSortTypeChange}
           >
           </Component>
-          {childrenWithProps}
+          {this.props.render(sortedOffers)}
         </React.Fragment>
       );
     }
@@ -83,10 +80,7 @@ const withSortingComponent = (Component) => {
 
   WithSortingComponent.propTypes = {
     availableOffers: PropTypes.arrayOf(offerShape),
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-    ]).isRequired,
+    render: PropTypes.func.isRequired,
   };
 
   return WithSortingComponent;

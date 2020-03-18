@@ -8,7 +8,37 @@ import NameSpace from "../../reducer/name-space";
 
 const mockStore = configureStore([]);
 
-it(`Render App`, () => {
+it(`Render App without loading screen`, () => {
+
+  const store = mockStore({
+    [NameSpace.OFFERS]: {
+      activeID: null,
+      activeOffer: offers[1],
+      currentCity: offers[0].city.name,
+      availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
+      offers,
+    },
+  });
+  const tree = renderer
+        .create(
+            <Provider store={store}>
+              <App
+                activeID={null}
+                activeOffer={offers[0]}
+                availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
+                currentCity={offers[0].city.name}
+                isLoading={false}
+                offers={offers}
+                onCardHover={() => {}}
+                onCardTitleClick={() => {}}
+              />
+            </Provider>)
+        .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+it(`Render App with loading screen`, () => {
 
   const store = mockStore({
     [NameSpace.OFFERS]: {

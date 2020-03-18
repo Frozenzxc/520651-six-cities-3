@@ -1,33 +1,15 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import PropTypes from "prop-types";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import withSortingComponent from "./with-sorting-component";
-import offers from "../../mocks/offers";
+import offers from "../../test-mocks/test-offers";
 import NameSpace from "../../reducer/name-space";
-import {OfferType} from "../../const";
 
 const mockStore = configureStore([]);
 
-const MockComponent = (props) => {
-  const {children} = props;
+const MockComponent = () => {
 
-  return (
-    <div>
-      {children}
-    </div>
-  );
-};
-
-MockComponent.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-};
-
-const innerMockComponent = () => {
   return (
     <div>
     </div>
@@ -48,10 +30,10 @@ it(`withSortingComponent is rendered correctly`, () => {
   const tree = renderer.create((
     <Provider store={store}>
       <MockComponentWrapped
+        render={() => {}}
         availableOffers={offers}
         offers={offers}
       >
-        <innerMockComponent/>
       </MockComponentWrapped>
     </Provider>
   ), {

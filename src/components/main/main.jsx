@@ -47,13 +47,14 @@ const Main = ({activeOffer, availableOffers, currentCity, onCardHover, onCardTit
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{availableOffers.length} places to stay in {currentCity}</b>
-                <SortWrapped>
+                <SortWrapped render={(offers) => (
                   <PlacesList
+                    offers={offers}
                     onCardHover={onCardHover}
                     onCardTitleClick={onCardTitleClick}
                     offersView={OfferType.ALL}
-                  />
-                </SortWrapped>
+                  />)}
+                />
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">

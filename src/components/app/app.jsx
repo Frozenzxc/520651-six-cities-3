@@ -6,13 +6,14 @@ import {ActionCreator} from "../../reducer/offers/actions.js";
 import Main from "../main/main.jsx";
 import {offerShape} from "../../prop-types.jsx";
 import Property from "../property/property.jsx";
-import {getActiveID, getActiveOffer, getCurrentCity, getAvailableOffers, getLoadingStatus} from "../../reducer/offers/selectors";
+import {getActiveID, getActiveOffer, getCurrentCity, getAvailableOffers} from "../../reducer/offers/selectors";
+import NameSpace from "../../reducer/name-space";
 
 class App extends PureComponent {
   _renderApp() {
     const {activeID, activeOffer, availableOffers, currentCity, isLoading, onCardHover, onCardTitleClick} = this.props;
     if (isLoading) {
-      return true;
+      return false;
     } else if (activeID === null) {
       return (
         <Main
@@ -67,7 +68,7 @@ const mapStateToProps = (state) => ({
   activeOffer: getActiveOffer(state),
   availableOffers: getAvailableOffers(state),
   currentCity: getCurrentCity(state),
-  isLoading: getLoadingStatus(state),
+  isLoading: state[NameSpace.OFFERS].isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
