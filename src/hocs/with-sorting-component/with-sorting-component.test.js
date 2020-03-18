@@ -27,6 +27,13 @@ MockComponent.propTypes = {
   ]).isRequired,
 };
 
+const innerMockComponent = () => {
+  return (
+    <div>
+    </div>
+  );
+};
+
 const MockComponentWrapped = withSortingComponent(MockComponent);
 
 it(`withSortingComponent is rendered correctly`, () => {
@@ -42,11 +49,10 @@ it(`withSortingComponent is rendered correctly`, () => {
     <Provider store={store}>
       <MockComponentWrapped
         availableOffers={offers}
-        onCardHover={() => {}}
-        onCardTitleClick={() => {}}
-        offersView={OfferType.ALL}
         offers={offers}
-      />
+      >
+        <innerMockComponent/>
+      </MockComponentWrapped>
     </Provider>
   ), {
     createNodeMock() {

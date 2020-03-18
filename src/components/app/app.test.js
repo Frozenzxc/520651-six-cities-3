@@ -27,6 +27,7 @@ it(`Render App`, () => {
                 activeOffer={offers[0]}
                 availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
                 currentCity={offers[0].city.name}
+                isLoading={false}
                 offers={offers}
                 onCardHover={() => {}}
                 onCardTitleClick={() => {}}

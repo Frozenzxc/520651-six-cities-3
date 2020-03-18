@@ -8,23 +8,26 @@ const api = createAPI(() => {});
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
-    offers: [],
     availableOffers: [],
     activeID: null,
     activeOffer: null,
     currentCity: `Amsterdam`,
+    isLoading: true,
+    offers: [],
   });
 });
 
 it(`Reducer should update offers by load offers`, () => {
   expect(reducer({
     offers: [],
+    isLoading: true,
   }, {
     type: ActionType.LOAD_OFFERS,
     payload: notParsedOffers,
   })).toEqual({
     offers,
     currentCity: offers[0].city.name,
+    isLoading: false,
   });
 });
 

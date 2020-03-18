@@ -4,7 +4,7 @@ import {getRating} from "../../common";
 // eslint-disable-next-line
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import PlacesList from "../places-list/places-list.jsx";
-import {OfferType} from "../../const";
+import {OfferType, MAX_NEARBY_OFFERS} from "../../const";
 import PropTypes from "prop-types";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
@@ -34,7 +34,7 @@ class Property extends PureComponent {
       type,
     } = this.props.offer;
 
-    this._offers = offers.filter((it) => it.id !== id);
+    this._offers = offers.filter((it) => it.id !== id).slice(0, MAX_NEARBY_OFFERS);
 
     const cardRating = getRating(rating);
 

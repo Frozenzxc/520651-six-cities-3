@@ -10,4 +10,6 @@ const SortType = {
   RATING: `Top rated first`,
 };
 
-export {OfferType, SortType};
+const MAX_NEARBY_OFFERS = 3;
+
+export {OfferType, SortType, MAX_NEARBY_OFFERS};

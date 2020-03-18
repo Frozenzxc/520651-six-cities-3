@@ -6,17 +6,13 @@ import {ActionCreator} from "../../reducer/offers/actions.js";
 import Main from "../main/main.jsx";
 import {offerShape} from "../../prop-types.jsx";
 import Property from "../property/property.jsx";
-import MainEmpty from "../main-empty/main-empty.jsx";
-import {getActiveID, getActiveOffer, getCurrentCity, getOffers, getAvailableOffers} from "../../reducer/offers/selectors";
+import {getActiveID, getActiveOffer, getCurrentCity, getAvailableOffers, getLoadingStatus} from "../../reducer/offers/selectors";
 
 class App extends PureComponent {
   _renderApp() {
-    const {activeID, activeOffer, availableOffers, currentCity, offers, onCardHover, onCardTitleClick} = this.props;
-
-    if (!offers.length) {
-      return (
-        <MainEmpty/>
-      );
+    const {activeID, activeOffer, availableOffers, currentCity, isLoading, onCardHover, onCardTitleClick} = this.props;
+    if (isLoading) {
+      return true;
     } else if (activeID === null) {
       return (
         <Main
@@ -61,17 +57,17 @@ App.propTypes = {
   activeOffer: PropTypes.object,
   availableOffers: PropTypes.arrayOf(offerShape).isRequired,
   currentCity: PropTypes.string,
-  offers: PropTypes.arrayOf(offerShape),
+  isLoading: PropTypes.bool.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   activeID: getActiveID(state),
+  activeOffer: getActiveOffer(state),
   availableOffers: getAvailableOffers(state),
   currentCity: getCurrentCity(state),
-  offers: getOffers(state),
-  activeOffer: getActiveOffer(state),
+  isLoading: getLoadingStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,11 +1,10 @@
-import React, {PureComponent} from "react";
+import React, {PureComponent, Children, cloneElement} from "react";
 import PropTypes from "prop-types";
 import {SortType} from "../../const";
 import {offerShape} from "../../prop-types.jsx";
 import {connect} from "react-redux";
 import {getAvailableOffers} from "../../reducer/offers/selectors";
 import {compose} from "redux";
-import PlacesList from "../../components/places-list/places-list.jsx";
 
 const withSortingComponent = (Component) => {
   class WithSortingComponent extends PureComponent {
@@ -63,6 +62,9 @@ const withSortingComponent = (Component) => {
 
     render() {
       const {activeSortType, isOpened, sortedOffers} = this.state;
+      const {children} = this.props;
+      const childrenWithProps = Children.map(children, (child) =>
+        cloneElement(child, {offers: sortedOffers}));
       return (
         <React.Fragment>
           <Component
@@ -71,19 +73,20 @@ const withSortingComponent = (Component) => {
             isOpened={isOpened}
             onSortTypeClick={this.handleSortTypeClick}
             onSortTypeChange={this.handleSortTypeChange}
-          />
-          <PlacesList
-            {...this.props}
-            offers={sortedOffers}
-          />
+          >
+          </Component>
+          {childrenWithProps}
         </React.Fragment>
       );
     }
   }
 
-
   WithSortingComponent.propTypes = {
     availableOffers: PropTypes.arrayOf(offerShape),
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+    ]).isRequired,
   };
 
   return WithSortingComponent;

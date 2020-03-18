@@ -10,6 +10,7 @@ const initialState = {
   activeID: null,
   activeOffer: null,
   currentCity: `Amsterdam`,
+  isLoading: true,
 };
 
 const Operation = {
@@ -27,8 +28,9 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_OFFERS:
       let parsedOffers = action.payload.map((offer) => parseOffer(offer));
       return extend(state, {
-        offers: parsedOffers,
         currentCity: parsedOffers[0].city.name,
+        isLoading: false,
+        offers: parsedOffers,
       });
 
     case ActionType.SELECT_CARD:
