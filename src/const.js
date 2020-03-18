@@ -12,4 +12,9 @@ const SortType = {
 
 const MAX_NEARBY_OFFERS = 3;
 
-export {OfferType, SortType, MAX_NEARBY_OFFERS};
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+export {OfferType, SortType, MAX_NEARBY_OFFERS, AuthorizationStatus};

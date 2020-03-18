@@ -5,6 +5,7 @@ import {Provider} from "react-redux";
 import offers from "../../test-mocks/test-offers";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
+import {AuthorizationStatus} from "../../const";
 
 const mockStore = configureStore([]);
 
@@ -18,6 +19,10 @@ it(`Render App without loading screen`, () => {
       availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
       offers,
     },
+    [NameSpace.USER]: {
+      AuthorizationStatus: AuthorizationStatus.NO_AUTH,
+      authEmail: null,
+    }
   });
   const tree = renderer
         .create(
@@ -26,8 +31,11 @@ it(`Render App without loading screen`, () => {
                 activeID={null}
                 activeOffer={offers[0]}
                 availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
+                authorizationStatus={AuthorizationStatus.NO_AUTH}
+                authEmail={null}
                 currentCity={offers[0].city.name}
                 isLoading={false}
+                login={() => {}}
                 offers={offers}
                 onCardHover={() => {}}
                 onCardTitleClick={() => {}}
@@ -48,6 +56,10 @@ it(`Render App with loading screen`, () => {
       availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
       offers,
     },
+    [NameSpace.USER]: {
+      AuthorizationStatus: AuthorizationStatus.AUTH,
+      authEmail: `AAA@adfg.ru`,
+    },
   });
   const tree = renderer
         .create(
@@ -57,7 +69,10 @@ it(`Render App with loading screen`, () => {
                 activeOffer={offers[0]}
                 availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
                 currentCity={offers[0].city.name}
+                authorizationStatus={AuthorizationStatus.AUTH}
+                authEmail={`AAA@adfg.ru`}
                 isLoading={false}
+                login={() => {}}
                 offers={offers}
                 onCardHover={() => {}}
                 onCardTitleClick={() => {}}

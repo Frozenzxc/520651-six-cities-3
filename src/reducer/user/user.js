@@ -1,14 +1,13 @@
-const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
-};
+import {AuthorizationStatus} from "../../const";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
+  authEmail: null,
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  SUCCESSFUL_AUTHORIZATION: `SUCCESSFUL_AUTHORIZATION`,
 };
 
 const ActionCreator = {
@@ -18,6 +17,12 @@ const ActionCreator = {
       payload: status,
     };
   },
+  successfulAuthorization: (response) => {
+    return {
+      type: ActionType.SUCCESSFUL_AUTHORIZATION,
+      payload: response,
+    };
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -26,14 +31,44 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         authorizationStatus: action.payload,
       });
+    case ActionType.SUCCESSFUL_AUTHORIZATION:
+      return Object.assign({}, state, {
+        authEmail: action.payload.data.email,
+      });
   }
 
   return state;
+};
+
+const Operation = {
+  checkAuth: () => (dispatch, getState, api) => {
+    return api.get(`/login`)
+            .then((response) => {
+              dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+              dispatch(ActionCreator.successfulAuthorization(response));
+            })
+            .catch((err) => {
+              throw err;
+            });
+  },
+
+  login: (authData) => (dispatch, getState, api) => {
+    return api.post(`/login`, {
+      email: authData.login,
+      password: authData.password,
+    })
+            .then((response) => {
+              dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+              dispatch(ActionCreator.successfulAuthorization(response));
+            });
+  },
 };
 
 
 export {
   ActionCreator,
   ActionType,
+  AuthorizationStatus,
+  Operation,
   reducer,
 };
