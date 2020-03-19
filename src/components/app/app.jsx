@@ -8,24 +8,17 @@ import {offerShape} from "../../prop-types.jsx";
 import Property from "../property/property.jsx";
 import {getActiveID, getActiveOffer, getCurrentCity, getAvailableOffers} from "../../reducer/offers/selectors";
 import NameSpace from "../../reducer/name-space";
-import {Operation as UserOperation} from "../../reducer/user/user";
 import LoginScreen from "../login-screen/login-screen.jsx";
-import {AuthorizationStatus} from "../../const";
+import {ActionCreator as UserActionCreator} from "../../reducer/user/user";
 
 class App extends PureComponent {
   _renderApp() {
-    const {activeID, activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, isLoading, login, onCardHover, onCardTitleClick} = this.props;
+    const {activeID, activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, isLoading, isSignIn, onCardHover, onCardTitleClick, onSignInClick} = this.props;
 
-    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      return (
-        <LoginScreen
-          onSubmit={login}
-        />);
-    }
 
     if (isLoading) {
       return false;
-    } else if (activeID === null) {
+    } else if (activeID === null && !isSignIn) {
       return (
         <Main
           activeOffer={activeOffer}
@@ -35,8 +28,11 @@ class App extends PureComponent {
           currentCity={currentCity}
           onCardHover={onCardHover}
           onCardTitleClick={onCardTitleClick}
+          onSignInClick={onSignInClick}
         />
       );
+    } else if (isSignIn) {
+      return (<LoginScreen />);
     }
 
     return (
@@ -59,7 +55,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-login">
-            <LoginScreen onSubmit={this.props.login}/>
+            <LoginScreen />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -77,9 +73,10 @@ App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   currentCity: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
-  login: PropTypes.func.isRequired,
+  isSignIn: PropTypes.bool.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -90,11 +87,12 @@ const mapStateToProps = (state) => ({
   authorizationStatus: state[NameSpace.USER].authorizationStatus,
   currentCity: getCurrentCity(state),
   isLoading: state[NameSpace.OFFERS].isLoading,
+  isSignIn: state[NameSpace.USER].isSignIn,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  login(authData) {
-    dispatch(UserOperation.login(authData));
+  onSignInClick() {
+    dispatch(UserActionCreator.signingIn());
   },
   onCardHover(offer) {
     dispatch(ActionCreator.selectOffer(offer));

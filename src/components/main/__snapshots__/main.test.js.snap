@@ -585,6 +585,7 @@ exports[`Should Main component render correctly with not authorized user 1`] = `
               >
                 <span
                   className="header__login"
+                  onClick={[Function]}
                 >
                   Sign in
                 </span>

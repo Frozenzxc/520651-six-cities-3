@@ -13,7 +13,7 @@ import {AuthorizationStatus} from "../../const";
 
 const SortWrapped = withSortingComponent(Sort);
 
-const Main = ({activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, onCardHover, onCardTitleClick}) => {
+const Main = ({activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, onCardHover, onCardTitleClick, onSignInClick}) => {
 
   return (
     <div className="page page--gray page--main">
@@ -30,7 +30,9 @@ const Main = ({activeOffer, availableOffers, authEmail, authorizationStatus, cur
                 <li className="header__nav-item user">
                   <a className="header__nav-link header__nav-link--profile" href="#">
                     {authorizationStatus === AuthorizationStatus.NO_AUTH ?
-                      <span className="header__login">Sign in</span> :
+                      <span className="header__login"
+                        onClick={onSignInClick}
+                      >Sign in</span> :
                       <Fragment>
                         <div className="header__avatar-wrapper user__avatar-wrapper">
                         </div>
@@ -86,6 +88,7 @@ Main.propTypes = {
   currentCity: PropTypes.string.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerShape),
 };
 

@@ -34,7 +34,7 @@ it(`Should Main component render correctly with not authorized user`, () => {
                 onCardHover={() => {}}
                 onCardTitleClick={() => {}}
                 currentCity={offers[0].city.name}
-
+                onSignInClick={() => {}}
               />
             </Provider>
         )
@@ -68,7 +68,7 @@ it(`Should Main component render correctly with authorized user`, () => {
                 onCardHover={() => {}}
                 onCardTitleClick={() => {}}
                 currentCity={offers[0].city.name}
-
+                onSignInClick={() => {}}
               />
             </Provider>
         )

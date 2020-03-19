@@ -1,13 +1,16 @@
 import {AuthorizationStatus} from "../../const";
+import {extend} from "../../utils";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   authEmail: null,
+  isSignIn: false,
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   SUCCESSFUL_AUTHORIZATION: `SUCCESSFUL_AUTHORIZATION`,
+  SIGNING_IN: `SIGNING_IN`,
 };
 
 const ActionCreator = {
@@ -22,7 +25,13 @@ const ActionCreator = {
       type: ActionType.SUCCESSFUL_AUTHORIZATION,
       payload: response,
     };
-  }
+  },
+  signingIn: () => {
+    return {
+      type: ActionType.SIGNING_IN,
+      payload: null,
+    };
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -34,6 +43,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SUCCESSFUL_AUTHORIZATION:
       return Object.assign({}, state, {
         authEmail: action.payload.data.email,
+      });
+    case ActionType.SIGNING_IN:
+      return extend(state, {
+        isSignIn: !state.isSignIn,
       });
   }
 
