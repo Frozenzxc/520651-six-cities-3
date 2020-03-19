@@ -4,16 +4,12 @@ import {getRating} from "../../common";
 import moment from "moment";
 
 class ReviewsItem extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const {
+      comment,
       date,
-      name,
       rating,
-      src,
-      text,
+      user,
     } = this.props.review;
 
     const reviewRating = getRating(rating);
@@ -24,11 +20,11 @@ class ReviewsItem extends PureComponent {
       <li className="reviews__item">
         <div className="reviews__user user">
           <div className="reviews__avatar-wrapper user__avatar-wrapper">
-            <img className="reviews__avatar user__avatar" src={src} width="54"
+            <img className="reviews__avatar user__avatar" src={user.avatar} width="54"
               height="54" alt="Reviews avatar"/>
           </div>
           <span className="reviews__user-name">
-            {name}
+            {user.name}
           </span>
         </div>
         <div className="reviews__info">
@@ -39,7 +35,7 @@ class ReviewsItem extends PureComponent {
             </div>
           </div>
           <p className="reviews__text">
-            {text}
+            {comment}
           </p>
           <time className="reviews__time" dateTime={dateTime}>{reviewDate}</time>
         </div>

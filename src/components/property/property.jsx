@@ -1,7 +1,6 @@
 import React, {PureComponent} from "react";
 import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
-// eslint-disable-next-line
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import PlacesList from "../places-list/places-list.jsx";
 import {OfferType, MAX_NEARBY_OFFERS} from "../../const";
@@ -9,6 +8,11 @@ import PropTypes from "prop-types";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
 import {ReviewsForm} from "../reviews-form/reviews-form.jsx";
+import {Operation as DataOperation} from "../../reducer/offers/offers";
+import {getNearbyOffers, getReviews} from "../../reducer/offers/selectors";
+import NameSpace from "../../reducer/name-space";
+import {connect} from "react-redux";
+import {reviewShape} from "../../prop-types.jsx";
 
 class Property extends PureComponent {
   constructor(props) {
@@ -16,15 +20,22 @@ class Property extends PureComponent {
     this._offers = null;
   }
 
-  render() {
-    const {offers, onCardTitleClick, onCardHover} = this.props;
+  componentDidMount() {
+    const {loadPropertyData} = this.props;
+    loadPropertyData(this.props.offer.id);
+  }
 
+  render() {
+    const {isPropertyLoading, nearbyOffers, onCardTitleClick, onCardHover, reviews} = this.props;
+
+    if (isPropertyLoading) {
+      return false;
+    }
 
     const {
       bedrooms,
       description,
       host,
-      id,
       maxAdults,
       goods,
       isPremium,
@@ -35,10 +46,9 @@ class Property extends PureComponent {
       type,
     } = this.props.offer;
 
-    this._offers = offers.filter((it) => it.id !== id).slice(0, MAX_NEARBY_OFFERS);
+    this._offers = nearbyOffers.slice(0, MAX_NEARBY_OFFERS);
 
     const cardRating = getRating(rating);
-
     return (
       <main className="page__main page__main--property">
         <section className="property">
@@ -124,6 +134,7 @@ class Property extends PureComponent {
                   </p>
                 </div>
               </div>
+              <ReviewsList reviews={reviews}/>
               <ReviewsForm />
             </div>
           </div>
@@ -153,10 +164,28 @@ class Property extends PureComponent {
 }
 
 Property.propTypes = {
+  isPropertyLoading: PropTypes.bool.isRequired,
+  loadPropertyData: PropTypes.func.isRequired,
   offer: offerShape.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(offerShape),
+  nearbyOffers: PropTypes.arrayOf(offerShape),
+  reviews: PropTypes.arrayOf(reviewShape).isRequired,
 };
 
-export default Property;
+const mapStateToProps = (state) => ({
+  isPropertyLoading: state[NameSpace.OFFERS].isPropertyLoading,
+  nearbyOffers: getNearbyOffers(state),
+  reviews: getReviews(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadPropertyData(id) {
+    dispatch(DataOperation.loadNearbyOffers(id));
+    dispatch(DataOperation.loadReviews(id));
+  },
+
+});
+
+export {Property};
+export default connect(mapStateToProps, mapDispatchToProps)(Property);

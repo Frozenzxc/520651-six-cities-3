@@ -11,10 +11,19 @@ const initialState = {
   activeOffer: null,
   currentCity: `Amsterdam`,
   isLoading: true,
+  isPropertyLoading: true,
+  nearbyOffers: [],
   reviews: [],
 };
 
 const Operation = {
+  loadNearbyOffers: (id) => (dispatch, getState, api) => {
+    return api.get(`/hotels/${id}/nearby`)
+            .then((response) => {
+              dispatch(ActionCreator.loadNearbyOffers(response.data));
+            });
+  },
+
   loadOffers: () => (dispatch, getState, api) => {
     return api.get(`/hotels`)
             .then((response) => {
@@ -33,6 +42,12 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.LOAD_NEARBY_OFFERS:
+      let parsedNearbyOffers = action.payload.map((offer) => parseOffer(offer));
+      return extend(state, {
+        nearbyOffers: parsedNearbyOffers,
+      });
+
     case ActionType.LOAD_OFFERS:
       let parsedOffers = action.payload.map((offer) => parseOffer(offer));
       return extend(state, {
@@ -44,7 +59,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_REVIEWS:
       let parsedReviews = action.payload.map((review) => parseReview(review));
       return extend(state, {
-        isLoading: false,
+        isPropertyLoading: false,
         reviews: parsedReviews,
       });
 

@@ -13,8 +13,16 @@ const getActiveOffer = (state) => {
   return state[NameSpace.OFFERS].activeOffer;
 };
 
+const getNearbyOffers = (state) => {
+  return state[NameSpace.OFFERS].nearbyOffers;
+};
+
 const getOffers = (state) => {
   return state[NameSpace.OFFERS].offers;
+};
+
+const getReviews = (state) => {
+  return state[NameSpace.OFFERS].reviews;
 };
 
 const getAvailableOffers = createSelector(
@@ -25,4 +33,4 @@ const getAvailableOffers = createSelector(
     }
 );
 
-export {getActiveID, getCurrentCity, getActiveOffer, getOffers, getAvailableOffers};
+export {getActiveID, getCurrentCity, getActiveOffer, getNearbyOffers, getOffers, getReviews, getAvailableOffers};

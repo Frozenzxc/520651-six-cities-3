@@ -1,11 +1,16 @@
 import PropTypes from "prop-types";
 
 const reviewShape = PropTypes.shape({
+  comment: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  reviewID: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    isPro: PropTypes.bool.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
 });
 
 const offerShape = PropTypes.shape({

@@ -1,4 +1,5 @@
 const ActionType = {
+  LOAD_NEARBY_OFFERS: `LOAD_NEARBY_OFFERS`,
   LOAD_OFFERS: `LOAD_OFFERS`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   SELECT_CARD: `SELECT_CARD`,
@@ -7,6 +8,13 @@ const ActionType = {
 };
 
 const ActionCreator = {
+
+  loadNearbyOffers: (offers) => {
+    return {
+      type: ActionType.LOAD_NEARBY_OFFERS,
+      payload: offers,
+    };
+  },
 
   loadOffers: (offers) => {
     return {

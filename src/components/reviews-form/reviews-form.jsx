@@ -89,7 +89,7 @@ class ReviewsForm extends PureComponent {
 }
 
 ReviewsForm.propTypes = {
-  login: PropTypes.func.isRequired,
+  //login: PropTypes.func.isRequired,
 };
 
 

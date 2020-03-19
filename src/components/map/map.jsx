@@ -6,8 +6,9 @@ class Map extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.city = [this.props.offers[0].city.location.latitude, this.props.offers[0].city.location.longitude];
-    this.zoom = this.props.offers[0].city.location.zoom;
+    this.activePoint = this.props.activeOffer !== null ? this.props.activeOffer : this.props.offers[0];
+    this.city = [this.activePoint.city.location.latitude, this.activePoint.city.location.longitude];
+    this.zoom = this.activePoint.city.location.zoom;
     this.map = {};
     this.leaflet = this.props.leaflet;
     this.activeIcon = this.leaflet.icon({

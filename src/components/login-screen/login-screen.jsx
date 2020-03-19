@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator, Operation as UserOperation} from "../../reducer/user/user";
+import {Operation as UserOperation} from "../../reducer/user/user";
 
 class LoginScreen extends PureComponent {
   constructor(props) {
