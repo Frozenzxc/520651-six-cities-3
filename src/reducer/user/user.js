@@ -73,6 +73,7 @@ const Operation = {
             .then((response) => {
               dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
               dispatch(ActionCreator.successfulAuthorization(response));
+              dispatch(ActionCreator.signingIn());
             });
   },
 };

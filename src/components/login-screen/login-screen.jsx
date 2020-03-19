@@ -100,7 +100,6 @@ LoginScreen.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
-    dispatch(ActionCreator.signingIn());
   },
 });
 
