@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import LoginScreen from "./login-screen";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {AuthorizationStatus} from "../../const";
 import NameSpace from "../../reducer/name-space";
 
 const mockStore = configureStore([]);
