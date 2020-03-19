@@ -40,7 +40,7 @@ class ReviewsForm extends PureComponent {
           </label>
 
           <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars"
-            type="radio"/>
+            type="radio" required={true}/>
           <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
             <svg className="form__star-image" width="37" height="33">
               <use xlinkHref="#icon-star"/>
@@ -74,7 +74,7 @@ class ReviewsForm extends PureComponent {
             </svg>
           </label>
         </div>
-        <textarea className="reviews__textarea form__textarea" id="review" name="review"
+        <textarea className="reviews__textarea form__textarea" id="review" name="review" maxLength={300} minLength={50}
           placeholder="Tell how was your stay, what you like and what can be improved"/>
         <div className="reviews__button-wrapper">
           <p className="reviews__help">
