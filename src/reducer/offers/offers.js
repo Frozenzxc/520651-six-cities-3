@@ -1,5 +1,5 @@
 import {extend} from "../../utils.js";
-import {parseOffer} from "../../utils";
+import {parseOffer, parseReview} from "../../utils";
 import {ActionCreator, ActionType} from "../offers/actions";
 
 const getAvailableOffers = ((allOffers, currentCity) => allOffers.filter((offer) => offer.city.name === currentCity));
@@ -11,6 +11,7 @@ const initialState = {
   activeOffer: null,
   currentCity: `Amsterdam`,
   isLoading: true,
+  reviews: [],
 };
 
 const Operation = {
@@ -18,6 +19,13 @@ const Operation = {
     return api.get(`/hotels`)
             .then((response) => {
               dispatch(ActionCreator.loadOffers(response.data));
+            });
+  },
+
+  loadReviews: (id) => (dispatch, getState, api) => {
+    return api.get(`/comments/${id}`)
+            .then((response) => {
+              dispatch(ActionCreator.loadReviews(response.data));
             });
   },
 };
@@ -31,6 +39,13 @@ const reducer = (state = initialState, action) => {
         currentCity: parsedOffers[0].city.name,
         isLoading: false,
         offers: parsedOffers,
+      });
+
+    case ActionType.LOAD_REVIEWS:
+      let parsedReviews = action.payload.map((review) => parseReview(review));
+      return extend(state, {
+        isLoading: false,
+        reviews: parsedReviews,
       });
 
     case ActionType.SELECT_CARD:

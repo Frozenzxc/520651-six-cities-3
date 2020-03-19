@@ -8,6 +8,7 @@ import {OfferType, MAX_NEARBY_OFFERS} from "../../const";
 import PropTypes from "prop-types";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
+import {ReviewsForm} from "../reviews-form/reviews-form.jsx";
 
 class Property extends PureComponent {
   constructor(props) {
@@ -123,8 +124,10 @@ class Property extends PureComponent {
                   </p>
                 </div>
               </div>
+              <ReviewsForm />
             </div>
           </div>
+
           <section className="property__map map">
             <Map
               activeOffer={this.props.offer}

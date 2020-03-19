@@ -1,5 +1,6 @@
 const ActionType = {
   LOAD_OFFERS: `LOAD_OFFERS`,
+  LOAD_REVIEWS: `LOAD_REVIEWS`,
   SELECT_CARD: `SELECT_CARD`,
   SELECT_CITY: `SELECT_CITY`,
   SELECT_OFFER: `SELECT_OFFER`,
@@ -11,6 +12,13 @@ const ActionCreator = {
     return {
       type: ActionType.LOAD_OFFERS,
       payload: offers,
+    };
+  },
+
+  loadReviews: (reviews) => {
+    return {
+      type: ActionType.LOAD_REVIEWS,
+      payload: reviews,
     };
   },
 

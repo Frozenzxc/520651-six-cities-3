@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {ActionCreator, Operation as UserOperation} from "../../reducer/user/user";
 
 class ReviewsForm extends PureComponent {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +23,7 @@ class ReviewsForm extends PureComponent {
       login: email,
       password: pass,
     });
-  }
+  }*/
 
   render() {
 
