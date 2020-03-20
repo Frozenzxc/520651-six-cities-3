@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, BrowserRouter, Redirect} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/offers/actions.js";
@@ -13,12 +13,12 @@ import {ActionCreator as UserActionCreator} from "../../reducer/user/user";
 
 class App extends PureComponent {
   _renderApp() {
-    const {activeID, activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, isLoading, isSignIn, onCardHover, onCardTitleClick, onSignInClick} = this.props;
+    const {activeID, activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, isLoading, onCardHover, onCardTitleClick, onSignInClick} = this.props;
 
 
     if (isLoading) {
       return false;
-    } else if (activeID === null && !isSignIn) {
+    } else if (activeID === null) {
       return (
         <Main
           activeOffer={activeOffer}
@@ -31,8 +31,6 @@ class App extends PureComponent {
           onSignInClick={onSignInClick}
         />
       );
-    } else if (isSignIn) {
-      return (<LoginScreen />);
     }
 
     return (
@@ -54,7 +52,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-login">
-            <LoginScreen />
+            {this.props.isSignIn ? <Redirect to="/"/> : <LoginScreen />}
           </Route>
         </Switch>
       </BrowserRouter>
