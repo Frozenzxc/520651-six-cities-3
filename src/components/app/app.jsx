@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, BrowserRouter, Redirect} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/offers/actions.js";
@@ -8,10 +8,14 @@ import {offerShape} from "../../prop-types.jsx";
 import Property from "../property/property.jsx";
 import {getActiveID, getActiveOffer, getCurrentCity, getAvailableOffers} from "../../reducer/offers/selectors";
 import NameSpace from "../../reducer/name-space";
+import LoginScreen from "../login-screen/login-screen.jsx";
+import {ActionCreator as UserActionCreator} from "../../reducer/user/user";
 
 class App extends PureComponent {
   _renderApp() {
-    const {activeID, activeOffer, availableOffers, currentCity, isLoading, onCardHover, onCardTitleClick} = this.props;
+    const {activeID, activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, isLoading, onCardHover, onCardTitleClick, onSignInClick} = this.props;
+
+
     if (isLoading) {
       return false;
     } else if (activeID === null) {
@@ -19,9 +23,12 @@ class App extends PureComponent {
         <Main
           activeOffer={activeOffer}
           availableOffers={availableOffers}
+          authEmail={authEmail}
+          authorizationStatus={authorizationStatus}
           currentCity={currentCity}
           onCardHover={onCardHover}
           onCardTitleClick={onCardTitleClick}
+          onSignInClick={onSignInClick}
         />
       );
     }
@@ -45,6 +52,9 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
+          <Route exact path="/dev-login">
+            {this.props.isSignIn ? <Redirect to="/"/> : <LoginScreen />}
+          </Route>
         </Switch>
       </BrowserRouter>
     );
@@ -57,21 +67,31 @@ App.propTypes = {
     PropTypes.number.isRequired]),
   activeOffer: PropTypes.object,
   availableOffers: PropTypes.arrayOf(offerShape).isRequired,
+  authEmail: PropTypes.string,
+  authorizationStatus: PropTypes.string.isRequired,
   currentCity: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
+  isSignIn: PropTypes.bool.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   activeID: getActiveID(state),
   activeOffer: getActiveOffer(state),
   availableOffers: getAvailableOffers(state),
+  authEmail: state[NameSpace.USER].authEmail,
+  authorizationStatus: state[NameSpace.USER].authorizationStatus,
   currentCity: getCurrentCity(state),
   isLoading: state[NameSpace.OFFERS].isLoading,
+  isSignIn: state[NameSpace.USER].isSignIn,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onSignInClick() {
+    dispatch(UserActionCreator.signingIn());
+  },
   onCardHover(offer) {
     dispatch(ActionCreator.selectOffer(offer));
   },
@@ -82,7 +102,6 @@ const mapDispatchToProps = (dispatch) => ({
   onCityClick(city) {
     dispatch(ActionCreator.selectCity(city));
   }
-
 });
 
 export {App};

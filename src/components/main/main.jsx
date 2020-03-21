@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import {offerShape} from "../../prop-types.jsx";
 import Map from "../map/map.jsx";
@@ -9,10 +9,11 @@ import Sort from "../sort/sort.jsx";
 import withSortingComponent from "../../hocs/with-sorting-component/with-sorting-component";
 import PlacesList from "../places-list/places-list.jsx";
 import MainEmpty from "../main-empty/main-empty.jsx";
+import {AuthorizationStatus} from "../../const";
 
 const SortWrapped = withSortingComponent(Sort);
 
-const Main = ({activeOffer, availableOffers, currentCity, onCardHover, onCardTitleClick}) => {
+const Main = ({activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, onCardHover, onCardTitleClick, onSignInClick}) => {
 
   return (
     <div className="page page--gray page--main">
@@ -28,9 +29,16 @@ const Main = ({activeOffer, availableOffers, currentCity, onCardHover, onCardTit
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
                   <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                    {authorizationStatus === AuthorizationStatus.NO_AUTH ?
+                      <span className="header__login"
+                        onClick={onSignInClick}
+                      >Sign in</span> :
+                      <Fragment>
+                        <div className="header__avatar-wrapper user__avatar-wrapper">
+                        </div>
+                        <span className="header__user-name user__name">{authEmail}</span>
+                      </Fragment>
+                    }
                   </a>
                 </li>
               </ul>
@@ -75,9 +83,12 @@ const Main = ({activeOffer, availableOffers, currentCity, onCardHover, onCardTit
 Main.propTypes = {
   activeOffer: PropTypes.object,
   availableOffers: PropTypes.arrayOf(offerShape),
+  authEmail: PropTypes.string,
+  authorizationStatus: PropTypes.string.isRequired,
   currentCity: PropTypes.string.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerShape),
 };
 
