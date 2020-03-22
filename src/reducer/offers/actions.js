@@ -1,4 +1,5 @@
 const ActionType = {
+  BLOCK_FORM: `BLOCK_FORM`,
   LOAD_NEARBY_OFFERS: `LOAD_NEARBY_OFFERS`,
   LOAD_OFFERS: `LOAD_OFFERS`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
@@ -8,6 +9,13 @@ const ActionType = {
 };
 
 const ActionCreator = {
+
+  blockForm: (isBlocked) => {
+    return {
+      type: ActionType.BLOCK_FORM,
+      payload: isBlocked,
+    };
+  },
 
   loadNearbyOffers: (offers) => {
     return {
@@ -44,6 +52,7 @@ const ActionCreator = {
     type: ActionType.SELECT_OFFER,
     payload: offer,
   }),
+
 };
 
 export {ActionType, ActionCreator};

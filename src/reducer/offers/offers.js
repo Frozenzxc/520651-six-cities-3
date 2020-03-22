@@ -10,6 +10,7 @@ const initialState = {
   activeID: null,
   activeOffer: null,
   currentCity: `Amsterdam`,
+  isFormBlocked: false,
   isLoading: true,
   isPropertyLoading: true,
   nearbyOffers: [],
@@ -37,11 +38,29 @@ const Operation = {
               dispatch(ActionCreator.loadReviews(response.data));
             });
   },
-};
 
+  postReview: (id, formData) => (dispatch, getState, api) => {
+    return api.post(`/comments/${id}`, {
+      comment: formData.comment,
+      rating: formData.rating,
+    })
+          .then((response) => {
+            dispatch(ActionCreator.loadReviews(response.data));
+            dispatch(ActionCreator.blockForm(false));
+          })
+        .catch((err) => {
+          throw err;
+        });
+  },
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.BLOCK_FORM:
+      return extend(state, {
+        isFormBlocked: action.payload,
+      });
+
     case ActionType.LOAD_NEARBY_OFFERS:
       let parsedNearbyOffers = action.payload.map((offer) => parseOffer(offer));
       return extend(state, {

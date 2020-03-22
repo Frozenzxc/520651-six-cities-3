@@ -14,14 +14,14 @@ exports[`ReviewsItem is rendered correctly 1`] = `
         alt="Reviews avatar"
         className="reviews__avatar user__avatar"
         height="54"
-        src="img/avatar-max.jpg"
+        src="https://htmlacademy-react-3.appspot.com/six-cities/static/avatar/8.jpg"
         width="54"
       />
     </div>
     <span
       className="reviews__user-name"
     >
-      Max
+      Emely
     </span>
   </div>
   <div
@@ -36,7 +36,7 @@ exports[`ReviewsItem is rendered correctly 1`] = `
         <span
           style={
             Object {
-              "width": "20%",
+              "width": "80%",
             }
           }
         />
@@ -50,13 +50,13 @@ exports[`ReviewsItem is rendered correctly 1`] = `
     <p
       className="reviews__text"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.
+      What an amazing view! The house is stunning and in an amazing location. The large glass wall had an amazing view of the river!
     </p>
     <time
       className="reviews__time"
-      dateTime="2020-02-22"
+      dateTime="2020-02-23"
     >
-      February 22, 2020
+      February 23, 2020
     </time>
   </div>
 </li>

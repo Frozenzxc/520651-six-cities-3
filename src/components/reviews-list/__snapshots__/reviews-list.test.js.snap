@@ -11,7 +11,7 @@ exports[`ReviewsList is rendered correctly 1`] = `
     <span
       className="reviews__amount"
     >
-      4
+      2
     </span>
   </h2>
   <ul
@@ -30,132 +30,14 @@ exports[`ReviewsList is rendered correctly 1`] = `
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
-            src="img/avatar-max.jpg"
+            src="https://htmlacademy-react-3.appspot.com/six-cities/static/avatar/8.jpg"
             width="54"
           />
         </div>
         <span
           className="reviews__user-name"
         >
-          Bob
-        </span>
-      </div>
-      <div
-        className="reviews__info"
-      >
-        <div
-          className="reviews__rating rating"
-        >
-          <div
-            className="reviews__stars rating__stars"
-          >
-            <span
-              style={
-                Object {
-                  "width": "100%",
-                }
-              }
-            />
-            <span
-              className="visually-hidden"
-            >
-              Rating
-            </span>
-          </div>
-        </div>
-        <p
-          className="reviews__text"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.
-        </p>
-        <time
-          className="reviews__time"
-          dateTime="2020-03-02"
-        >
-          March 02, 2020
-        </time>
-      </div>
-    </li>
-    <li
-      className="reviews__item"
-    >
-      <div
-        className="reviews__user user"
-      >
-        <div
-          className="reviews__avatar-wrapper user__avatar-wrapper"
-        >
-          <img
-            alt="Reviews avatar"
-            className="reviews__avatar user__avatar"
-            height="54"
-            src="img/avatar-max.jpg"
-            width="54"
-          />
-        </div>
-        <span
-          className="reviews__user-name"
-        >
-          Victoria
-        </span>
-      </div>
-      <div
-        className="reviews__info"
-      >
-        <div
-          className="reviews__rating rating"
-        >
-          <div
-            className="reviews__stars rating__stars"
-          >
-            <span
-              style={
-                Object {
-                  "width": "60%",
-                }
-              }
-            />
-            <span
-              className="visually-hidden"
-            >
-              Rating
-            </span>
-          </div>
-        </div>
-        <p
-          className="reviews__text"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.
-        </p>
-        <time
-          className="reviews__time"
-          dateTime="2020-02-26"
-        >
-          February 26, 2020
-        </time>
-      </div>
-    </li>
-    <li
-      className="reviews__item"
-    >
-      <div
-        className="reviews__user user"
-      >
-        <div
-          className="reviews__avatar-wrapper user__avatar-wrapper"
-        >
-          <img
-            alt="Reviews avatar"
-            className="reviews__avatar user__avatar"
-            height="54"
-            src="img/avatar-max.jpg"
-            width="54"
-          />
-        </div>
-        <span
-          className="reviews__user-name"
-        >
-          John
+          Emely
         </span>
       </div>
       <div
@@ -184,13 +66,13 @@ exports[`ReviewsList is rendered correctly 1`] = `
         <p
           className="reviews__text"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.
+          What an amazing view! The house is stunning and in an amazing location. The large glass wall had an amazing view of the river!
         </p>
         <time
           className="reviews__time"
-          dateTime="2020-02-24"
+          dateTime="2020-02-23"
         >
-          February 24, 2020
+          February 23, 2020
         </time>
       </div>
     </li>
@@ -207,14 +89,14 @@ exports[`ReviewsList is rendered correctly 1`] = `
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
-            src="img/avatar-max.jpg"
+            src="https://htmlacademy-react-3.appspot.com/six-cities/static/avatar/5.jpg"
             width="54"
           />
         </div>
         <span
           className="reviews__user-name"
         >
-          Max
+          Corey
         </span>
       </div>
       <div
@@ -229,7 +111,7 @@ exports[`ReviewsList is rendered correctly 1`] = `
             <span
               style={
                 Object {
-                  "width": "20%",
+                  "width": "60%",
                 }
               }
             />
@@ -243,176 +125,16 @@ exports[`ReviewsList is rendered correctly 1`] = `
         <p
           className="reviews__text"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna, non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.
+          The house is very good, very happy, hygienic and simple living conditions around it are also very good. I hope to have the opportunity to come back. Thank you.
         </p>
         <time
           className="reviews__time"
-          dateTime="2020-02-22"
+          dateTime="2020-02-23"
         >
-          February 22, 2020
+          February 23, 2020
         </time>
       </div>
     </li>
   </ul>
-  <form
-    action="#"
-    className="reviews__form form"
-    method="post"
-  >
-    <label
-      className="reviews__label form__label"
-      htmlFor="review"
-    >
-      Your review
-    </label>
-    <div
-      className="reviews__rating-form form__rating"
-    >
-      <input
-        className="form__rating-input visually-hidden"
-        id="5-stars"
-        name="rating"
-        type="radio"
-        value="5"
-      />
-      <label
-        className="reviews__rating-label form__rating-label"
-        htmlFor="5-stars"
-        title="perfect"
-      >
-        <svg
-          className="form__star-image"
-          height="33"
-          width="37"
-        >
-          <use
-            xlinkHref="#icon-star"
-          />
-        </svg>
-      </label>
-      <input
-        className="form__rating-input visually-hidden"
-        id="4-stars"
-        name="rating"
-        type="radio"
-        value="4"
-      />
-      <label
-        className="reviews__rating-label form__rating-label"
-        htmlFor="4-stars"
-        title="good"
-      >
-        <svg
-          className="form__star-image"
-          height="33"
-          width="37"
-        >
-          <use
-            xlinkHref="#icon-star"
-          />
-        </svg>
-      </label>
-      <input
-        className="form__rating-input visually-hidden"
-        id="3-stars"
-        name="rating"
-        type="radio"
-        value="3"
-      />
-      <label
-        className="reviews__rating-label form__rating-label"
-        htmlFor="3-stars"
-        title="not bad"
-      >
-        <svg
-          className="form__star-image"
-          height="33"
-          width="37"
-        >
-          <use
-            xlinkHref="#icon-star"
-          />
-        </svg>
-      </label>
-      <input
-        className="form__rating-input visually-hidden"
-        id="2-stars"
-        name="rating"
-        type="radio"
-        value="2"
-      />
-      <label
-        className="reviews__rating-label form__rating-label"
-        htmlFor="2-stars"
-        title="badly"
-      >
-        <svg
-          className="form__star-image"
-          height="33"
-          width="37"
-        >
-          <use
-            xlinkHref="#icon-star"
-          />
-        </svg>
-      </label>
-      <input
-        className="form__rating-input visually-hidden"
-        id="1-star"
-        name="rating"
-        type="radio"
-        value="1"
-      />
-      <label
-        className="reviews__rating-label form__rating-label"
-        htmlFor="1-star"
-        title="terribly"
-      >
-        <svg
-          className="form__star-image"
-          height="33"
-          width="37"
-        >
-          <use
-            xlinkHref="#icon-star"
-          />
-        </svg>
-      </label>
-    </div>
-    <textarea
-      className="reviews__textarea form__textarea"
-      id="review"
-      name="review"
-      placeholder="Tell how was your stay, what you like and what can be improved"
-    />
-    <div
-      className="reviews__button-wrapper"
-    >
-      <p
-        className="reviews__help"
-      >
-        To submit review please make sure to set 
-        <span
-          className="reviews__star"
-        >
-          rating
-        </span>
-         and describe your stay with at least 
-        <b
-          className="reviews__text-amount"
-        >
-          50 characters
-        </b>
-        .
-      </p>
-      <button
-        className="reviews__submit form__submit button"
-        disabled=""
-        type="submit"
-      >
-        Submit
-      </button>
-    </div>
-  </form>
 </section>
 `;

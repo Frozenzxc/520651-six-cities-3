@@ -3,11 +3,11 @@ import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import PlacesList from "../places-list/places-list.jsx";
-import {OfferType, MAX_NEARBY_OFFERS} from "../../const";
+import {OfferType, MAX_NEARBY_OFFERS, AuthorizationStatus} from "../../const";
 import PropTypes from "prop-types";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
-import {ReviewsForm} from "../reviews-form/reviews-form.jsx";
+import ReviewsForm from "../reviews-form/reviews-form.jsx";
 import {Operation as DataOperation} from "../../reducer/offers/offers";
 import {getNearbyOffers, getReviews} from "../../reducer/offers/selectors";
 import NameSpace from "../../reducer/name-space";
@@ -26,7 +26,7 @@ class Property extends PureComponent {
   }
 
   render() {
-    const {isPropertyLoading, nearbyOffers, onCardTitleClick, onCardHover, reviews} = this.props;
+    const {authorizationStatus, isPropertyLoading, nearbyOffers, onCardTitleClick, onCardHover, reviews} = this.props;
 
     if (isPropertyLoading) {
       return false;
@@ -35,6 +35,7 @@ class Property extends PureComponent {
     const {
       bedrooms,
       description,
+      id,
       host,
       maxAdults,
       goods,
@@ -135,7 +136,7 @@ class Property extends PureComponent {
                 </div>
               </div>
               <ReviewsList reviews={reviews}/>
-              <ReviewsForm />
+              {authorizationStatus === AuthorizationStatus.AUTH && <ReviewsForm id={id}/>}
             </div>
           </div>
 
@@ -164,6 +165,7 @@ class Property extends PureComponent {
 }
 
 Property.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
   isPropertyLoading: PropTypes.bool.isRequired,
   loadPropertyData: PropTypes.func.isRequired,
   offer: offerShape.isRequired,
@@ -174,6 +176,7 @@ Property.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  authorizationStatus: state[NameSpace.USER].authorizationStatus,
   isPropertyLoading: state[NameSpace.OFFERS].isPropertyLoading,
   nearbyOffers: getNearbyOffers(state),
   reviews: getReviews(state),
