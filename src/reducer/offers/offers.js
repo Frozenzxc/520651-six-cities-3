@@ -42,7 +42,7 @@ const Operation = {
   },
 
   postReview: (id, formData) => (dispatch, getState, api) => {
-    return api.post(`/coments/${id}`, {
+    return api.post(`/comments/${id}`, {
       comment: formData.comment,
       rating: formData.rating,
     })
