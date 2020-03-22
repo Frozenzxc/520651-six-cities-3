@@ -491,6 +491,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
           >
             <input
               className="form__rating-input visually-hidden"
+              disabled={false}
               id="5-stars"
               name="rating"
               onChange={[Function]}
@@ -515,6 +516,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             </label>
             <input
               className="form__rating-input visually-hidden"
+              disabled={false}
               id="4-stars"
               name="rating"
               onChange={[Function]}
@@ -539,6 +541,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             </label>
             <input
               className="form__rating-input visually-hidden"
+              disabled={false}
               id="3-stars"
               name="rating"
               onChange={[Function]}
@@ -563,6 +566,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             </label>
             <input
               className="form__rating-input visually-hidden"
+              disabled={false}
               id="2-stars"
               name="rating"
               onChange={[Function]}
@@ -587,6 +591,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             </label>
             <input
               className="form__rating-input visually-hidden"
+              disabled={false}
               id="1-star"
               name="rating"
               onChange={[Function]}
@@ -618,6 +623,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             name="review"
             onChange={[Function]}
             placeholder="Tell how was your stay, what you like and what can be improved"
+            readOnly={false}
             required={true}
           />
           <div

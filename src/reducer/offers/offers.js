@@ -1,6 +1,7 @@
 import {extend} from "../../utils.js";
 import {parseOffer, parseReview} from "../../utils";
 import {ActionCreator, ActionType} from "../offers/actions";
+import {ReviewPostingStatus} from "../../const";
 
 const getAvailableOffers = ((allOffers, currentCity) => allOffers.filter((offer) => offer.city.name === currentCity));
 
@@ -15,6 +16,7 @@ const initialState = {
   isPropertyLoading: true,
   nearbyOffers: [],
   reviews: [],
+  reviewPostingStatus: null,
 };
 
 const Operation = {
@@ -40,15 +42,18 @@ const Operation = {
   },
 
   postReview: (id, formData) => (dispatch, getState, api) => {
-    return api.post(`/comments/${id}`, {
+    return api.post(`/coments/${id}`, {
       comment: formData.comment,
       rating: formData.rating,
     })
           .then((response) => {
             dispatch(ActionCreator.loadReviews(response.data));
             dispatch(ActionCreator.blockForm(false));
+            dispatch(ActionCreator.successfulPostReview(ReviewPostingStatus.POSTED));
           })
         .catch((err) => {
+          dispatch(ActionCreator.blockForm(false));
+          dispatch(ActionCreator.successfulPostReview(ReviewPostingStatus.ERROR));
           throw err;
         });
   },
@@ -96,6 +101,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.SELECT_OFFER:
       return extend(state, {
         activeOffer: action.payload,
+      });
+
+    case ActionType.SUCCESSFUL_POST_REVIEW:
+      return extend(state, {
+        reviewPostingStatus: action.payload,
       });
   }
 

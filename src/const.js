@@ -17,4 +17,9 @@ const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
-export {OfferType, SortType, MAX_NEARBY_OFFERS, AuthorizationStatus};
+const ReviewPostingStatus = {
+  POSTED: `POSTED`,
+  ERROR: `ERROR`,
+};
+
+export {OfferType, SortType, MAX_NEARBY_OFFERS, AuthorizationStatus, ReviewPostingStatus};

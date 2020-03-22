@@ -6,6 +6,7 @@ const ActionType = {
   SELECT_CARD: `SELECT_CARD`,
   SELECT_CITY: `SELECT_CITY`,
   SELECT_OFFER: `SELECT_OFFER`,
+  SUCCESSFUL_POST_REVIEW: `SUCCESSFUL_POST_REVIEW`,
 };
 
 const ActionCreator = {
@@ -52,6 +53,11 @@ const ActionCreator = {
     type: ActionType.SELECT_OFFER,
     payload: offer,
   }),
+
+  successfulPostReview: (isSuccess) => ({
+    type: ActionType.SUCCESSFUL_POST_REVIEW,
+    payload: isSuccess,
+  })
 
 };
 

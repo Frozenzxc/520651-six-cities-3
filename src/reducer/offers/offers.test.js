@@ -5,6 +5,7 @@ import {createAPI} from "../../api.js";
 import {reducer, ActionType, Operation} from "./offers.js";
 import notParsedOffers from "../../test-mocks/not-parsed-offers";
 import notParsedReviews from "../../test-mocks/not-parsed-reviews";
+import {ReviewPostingStatus} from "../../const";
 
 const api = createAPI(() => {});
 
@@ -20,6 +21,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
     isPropertyLoading: true,
     nearbyOffers: [],
     reviews: [],
+    reviewPostingStatus: null,
   });
 });
 
@@ -270,3 +272,24 @@ it(`Reducer should change active offer by a given new value`, () => {
     offers,
   });
 });
+
+it(`Reducer should change value by successful post review`, () => {
+  expect(reducer({
+    reviewPostingStatus: null,
+  }, {
+    type: ActionType.SUCCESSFUL_POST_REVIEW,
+    payload: ReviewPostingStatus.POSTED,
+  })).toEqual({
+    reviewPostingStatus: ReviewPostingStatus.POSTED,
+  });
+
+  expect(reducer({
+    reviewPostingStatus: null,
+  }, {
+    type: ActionType.SUCCESSFUL_POST_REVIEW,
+    payload: ReviewPostingStatus.ERROR,
+  })).toEqual({
+    reviewPostingStatus: ReviewPostingStatus.ERROR,
+  });
+});
+

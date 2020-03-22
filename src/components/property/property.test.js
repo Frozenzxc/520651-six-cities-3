@@ -15,6 +15,7 @@ const offer = offers[0];
 it(`Property is rendered correctly without authorized user`, () => {
   const store = mockStore({
     [NameSpace.OFFERS]: {
+      isFormBlocked: false,
       isPropertyLoading: false,
       nearbyOffers: offers,
       reviews,
@@ -46,6 +47,7 @@ it(`Property is rendered correctly without authorized user`, () => {
 it(`Property is rendered correctly with authorized user`, () => {
   const store = mockStore({
     [NameSpace.OFFERS]: {
+      isFormBlocked: false,
       isPropertyLoading: false,
       nearbyOffers: offers,
       reviews,

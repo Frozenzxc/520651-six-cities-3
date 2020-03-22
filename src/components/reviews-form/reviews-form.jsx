@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator, Operation as UserOperation} from "../../reducer/offers/offers";
 import NameSpace from "../../reducer/name-space";
+import {ReviewPostingStatus as PostingStatus} from "../../const";
 
 const MIN_LENGTH = 50;
 const MAX_LENGTH = 300;
@@ -30,7 +31,7 @@ class ReviewsForm extends PureComponent {
   }
 
   handleTextAreaChange(evt) {
-    if (evt.target.value.length > MIN_LENGTH && evt.target.value.length < MAX_LENGTH) {
+    if (evt.target.value.trim().length > MIN_LENGTH && evt.target.value.trim().length < MAX_LENGTH) {
       this.setState(() => ({
         isReviewAdded: true,
       }));
@@ -39,7 +40,7 @@ class ReviewsForm extends PureComponent {
   }
 
   handleSubmit(evt) {
-    const {id, blockForm, postReview} = this.props;
+    const {id, blockForm, postReview, reviewPostingStatus} = this.props;
     const data = new FormData(evt.target);
 
     evt.preventDefault();
@@ -53,7 +54,19 @@ class ReviewsForm extends PureComponent {
       rating,
     });
 
-    evt.target.reset();
+    if (reviewPostingStatus === PostingStatus.POSTED) {
+      evt.target.reset();
+    } else {
+      const node = document.createElement(`div`);
+      node.style = `z-index: 100; margin: 0 auto; text-align: center; background-color: red;`;
+      node.style.position = `fixed`;
+      node.style.left = `0`;
+      node.style.right = `0`;
+      node.style.fontSize = `30px`;
+
+      node.textContent = `Попробуйте еще раз`;
+      document.body.prepend(node);
+    }
     this.setState(() => ({
       isRatingChecked: false,
       isReviewAdded: false,
@@ -136,10 +149,14 @@ ReviewsForm.propTypes = {
   id: PropTypes.number.isRequired,
   isFormBlocked: PropTypes.bool.isRequired,
   postReview: PropTypes.func.isRequired,
+  reviewPostingStatus: PropTypes.oneOfType([
+    PropTypes.oneOf([null]),
+    PropTypes.string]),
 };
 
 const mapStateToProps = (state) => ({
   isFormBlocked: state[NameSpace.OFFERS].isFormBlocked,
+  reviewPostingStatus: state[NameSpace.OFFERS].reviewPostingStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({

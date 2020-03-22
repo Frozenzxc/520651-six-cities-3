@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
 import {ReviewsForm} from "./reviews-form";
+import {ReviewPostingStatus} from "../../const";
 
 const mockStore = configureStore([]);
 
@@ -11,6 +12,7 @@ it(`ReviewForm is rendered correctly`, () => {
   const store = mockStore({
     [NameSpace.OFFERS]: {
       isFormBlocked: false,
+      reviewPostingStatus: null,
     },
   });
 
@@ -21,6 +23,7 @@ it(`ReviewForm is rendered correctly`, () => {
           id={4}
           isFormBlocked={false}
           postReview={() => {}}
+          reviewPostingStatus={ReviewPostingStatus.POSTED}
         />
       </Provider>
   ).toJSON();
