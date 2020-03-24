@@ -31,6 +31,7 @@ it(`ReviewForm is rendered correctly`, () => {
           id={4}
           isFormBlocked={false}
           postReview={() => {}}
+          resetFormStatus={() => {}}
           reviewPostingStatus={ReviewPostingStatus.POSTED}
         >
           <MockComponent/>

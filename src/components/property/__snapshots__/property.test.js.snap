@@ -486,6 +486,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             className="reviews__rating-form form__rating"
           >
             <input
+              checked={false}
               className="form__rating-input visually-hidden"
               disabled={false}
               id="5-stars"
@@ -511,6 +512,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
               </svg>
             </label>
             <input
+              checked={false}
               className="form__rating-input visually-hidden"
               disabled={false}
               id="4-stars"
@@ -536,6 +538,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
               </svg>
             </label>
             <input
+              checked={false}
               className="form__rating-input visually-hidden"
               disabled={false}
               id="3-stars"
@@ -561,6 +564,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
               </svg>
             </label>
             <input
+              checked={false}
               className="form__rating-input visually-hidden"
               disabled={false}
               id="2-stars"
@@ -586,6 +590,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
               </svg>
             </label>
             <input
+              checked={false}
               className="form__rating-input visually-hidden"
               disabled={false}
               id="1-star"
@@ -621,6 +626,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             placeholder="Tell how was your stay, what you like and what can be improved"
             readOnly={false}
             required={true}
+            value=""
           />
           <div
             className="reviews__button-wrapper"
