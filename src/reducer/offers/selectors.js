@@ -1,5 +1,6 @@
 import {createSelector} from "reselect";
 import NameSpace from "../name-space.js";
+import {MAX_NEARBY_OFFERS} from "../../const";
 
 const getActiveID = (state) => {
   return state[NameSpace.OFFERS].activeID;
@@ -14,7 +15,7 @@ const getActiveOffer = (state) => {
 };
 
 const getNearbyOffers = (state) => {
-  return state[NameSpace.OFFERS].nearbyOffers;
+  return state[NameSpace.OFFERS].nearbyOffers.slice(0, MAX_NEARBY_OFFERS);
 };
 
 const getOffers = (state) => {

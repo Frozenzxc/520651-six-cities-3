@@ -47,13 +47,13 @@ const Operation = {
       rating: formData.rating,
     })
           .then((response) => {
+            dispatch(ActionCreator.successfulPostReview(ReviewPostingStatus.POSTED));
             dispatch(ActionCreator.loadReviews(response.data));
             dispatch(ActionCreator.blockForm(false));
-            dispatch(ActionCreator.successfulPostReview(ReviewPostingStatus.POSTED));
           })
         .catch((err) => {
-          dispatch(ActionCreator.blockForm(false));
           dispatch(ActionCreator.successfulPostReview(ReviewPostingStatus.ERROR));
+          dispatch(ActionCreator.blockForm(false));
           throw err;
         });
   },

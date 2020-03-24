@@ -8,6 +8,14 @@ import {ReviewPostingStatus} from "../../const";
 
 const mockStore = configureStore([]);
 
+const MockComponent = () => {
+
+  return (
+    <div>
+    </div>
+  );
+};
+
 it(`ReviewForm is rendered correctly`, () => {
   const store = mockStore({
     [NameSpace.OFFERS]: {
@@ -24,7 +32,9 @@ it(`ReviewForm is rendered correctly`, () => {
           isFormBlocked={false}
           postReview={() => {}}
           reviewPostingStatus={ReviewPostingStatus.POSTED}
-        />
+        >
+          <MockComponent/>
+        </ReviewsForm>
       </Provider>
   ).toJSON();
 

@@ -3,7 +3,7 @@ import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import PlacesList from "../places-list/places-list.jsx";
-import {OfferType, MAX_NEARBY_OFFERS, AuthorizationStatus} from "../../const";
+import {OfferType, AuthorizationStatus} from "../../const";
 import PropTypes from "prop-types";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
@@ -13,13 +13,9 @@ import {getNearbyOffers, getReviews} from "../../reducer/offers/selectors";
 import NameSpace from "../../reducer/name-space";
 import {connect} from "react-redux";
 import {reviewShape} from "../../prop-types.jsx";
+import ReviewPostError from "../review-post-error/review-post-error.jsx";
 
 class Property extends PureComponent {
-  constructor(props) {
-    super(props);
-    this._offers = null;
-  }
-
   componentDidMount() {
     const {loadPropertyData} = this.props;
     loadPropertyData(this.props.offer.id);
@@ -47,7 +43,6 @@ class Property extends PureComponent {
       type,
     } = this.props.offer;
 
-    this._offers = nearbyOffers.slice(0, MAX_NEARBY_OFFERS);
 
     const cardRating = getRating(rating);
     return (
@@ -130,20 +125,17 @@ class Property extends PureComponent {
                   <p className="property__text">
                     {description}
                   </p>
-                  <p className="property__text">
-                    {description}
-                  </p>
                 </div>
               </div>
               <ReviewsList reviews={reviews}/>
-              {authorizationStatus === AuthorizationStatus.AUTH && <ReviewsForm id={id}/>}
+              {authorizationStatus === AuthorizationStatus.AUTH && <ReviewsForm id={id}><ReviewPostError/></ReviewsForm>}
             </div>
           </div>
 
           <section className="property__map map">
             <Map
               activeOffer={this.props.offer}
-              offers={this._offers}
+              offers={nearbyOffers}
               leaflet={leaflet}
             />
           </section>
@@ -152,7 +144,7 @@ class Property extends PureComponent {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <PlacesList
-              offers={this._offers}
+              offers={nearbyOffers}
               onCardHover={onCardHover}
               onCardTitleClick={onCardTitleClick}
               offersView={OfferType.NEARBY}

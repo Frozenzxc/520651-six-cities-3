@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React, {Component, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator, Operation as UserOperation} from "../../reducer/offers/offers";
@@ -8,9 +8,11 @@ import {ReviewPostingStatus as PostingStatus} from "../../const";
 const MIN_LENGTH = 50;
 const MAX_LENGTH = 300;
 
-class ReviewsForm extends PureComponent {
+class ReviewsForm extends Component {
   constructor(props) {
     super(props);
+
+    this.form = createRef();
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -19,6 +21,15 @@ class ReviewsForm extends PureComponent {
       isRatingChecked: false,
       isReviewAdded: false,
     };
+  }
+
+  componentDidUpdate() {
+    if (this.props.reviewPostingStatus === PostingStatus.POSTED) {
+      this.form.current.reset();
+      return false;
+    }
+
+    return false;
   }
 
   handleInputChange(evt) {
@@ -40,7 +51,7 @@ class ReviewsForm extends PureComponent {
   }
 
   handleSubmit(evt) {
-    const {id, blockForm, postReview, reviewPostingStatus} = this.props;
+    const {id, blockForm, postReview} = this.props;
     const data = new FormData(evt.target);
 
     evt.preventDefault();
@@ -54,19 +65,6 @@ class ReviewsForm extends PureComponent {
       rating,
     });
 
-    if (reviewPostingStatus === PostingStatus.POSTED) {
-      evt.target.reset();
-    } else {
-      const node = document.createElement(`div`);
-      node.style = `z-index: 100; margin: 0 auto; text-align: center; background-color: red;`;
-      node.style.position = `fixed`;
-      node.style.left = `0`;
-      node.style.right = `0`;
-      node.style.fontSize = `30px`;
-
-      node.textContent = `Попробуйте еще раз`;
-      document.body.prepend(node);
-    }
     this.setState(() => ({
       isRatingChecked: false,
       isReviewAdded: false,
@@ -75,15 +73,17 @@ class ReviewsForm extends PureComponent {
   }
 
   render() {
-    const {isFormBlocked} = this.props;
+    const {isFormBlocked, children, reviewPostingStatus} = this.props;
     const {isRatingChecked, isReviewAdded} = this.state;
 
     return (
       <form
         className="reviews__form form"
+        name="reviews__form"
         action="#"
         method="post"
         onSubmit={this.handleSubmit}
+        ref={this.form}
       >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
@@ -139,6 +139,7 @@ class ReviewsForm extends PureComponent {
           </p>
           <button className="reviews__submit form__submit button" type="submit" disabled={!(isRatingChecked && isReviewAdded)}>Submit</button>
         </div>
+        {reviewPostingStatus === PostingStatus.ERROR && children}
       </form>
     );
   }
@@ -146,6 +147,10 @@ class ReviewsForm extends PureComponent {
 
 ReviewsForm.propTypes = {
   blockForm: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
   id: PropTypes.number.isRequired,
   isFormBlocked: PropTypes.bool.isRequired,
   postReview: PropTypes.func.isRequired,
@@ -169,4 +174,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {ReviewsForm};
+
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewsForm);

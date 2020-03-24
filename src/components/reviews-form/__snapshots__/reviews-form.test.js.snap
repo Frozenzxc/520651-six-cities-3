@@ -5,6 +5,7 @@ exports[`ReviewForm is rendered correctly 1`] = `
   action="#"
   className="reviews__form form"
   method="post"
+  name="reviews__form"
   onSubmit={[Function]}
 >
   <label
