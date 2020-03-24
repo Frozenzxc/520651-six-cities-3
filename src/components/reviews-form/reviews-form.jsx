@@ -1,4 +1,4 @@
-import React, {Component, createRef} from "react";
+import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator, Operation as UserOperation} from "../../reducer/offers/offers";
@@ -8,7 +8,7 @@ import {ReviewPostingStatus as PostingStatus} from "../../const";
 const MIN_LENGTH = 50;
 const MAX_LENGTH = 300;
 
-class ReviewsForm extends Component {
+class ReviewsForm extends PureComponent {
   constructor(props) {
     super(props);
 
