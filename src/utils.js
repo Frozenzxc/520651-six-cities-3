@@ -27,3 +27,18 @@ export const parseOffer = (data) => {
 
   return offer;
 };
+
+export const parseReview = (data) => {
+  let review = {};
+  review.comment = data[`comment`];
+  review.date = data[`date`];
+  review.id = data[`id`];
+  review.rating = data[`rating`];
+  review.user = {};
+  review.user.avatar = data[`user`][`avatar_url`];
+  review.user.id = data[`user`][`id`];
+  review.user.isPro = data[`user`][`is_pro`];
+  review.user.name = data[`user`][`name`];
+
+  return review;
+};

@@ -1,29 +1,38 @@
 import React, {PureComponent} from "react";
 import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
-// eslint-disable-next-line
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import PlacesList from "../places-list/places-list.jsx";
-import {OfferType, MAX_NEARBY_OFFERS} from "../../const";
+import {OfferType, AuthorizationStatus} from "../../const";
 import PropTypes from "prop-types";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
+import ReviewsForm from "../reviews-form/reviews-form.jsx";
+import {Operation as DataOperation} from "../../reducer/offers/offers";
+import {getNearbyOffers, getReviews} from "../../reducer/offers/selectors";
+import NameSpace from "../../reducer/name-space";
+import {connect} from "react-redux";
+import {reviewShape} from "../../prop-types.jsx";
+import ReviewPostError from "../review-post-error/review-post-error.jsx";
 
 class Property extends PureComponent {
-  constructor(props) {
-    super(props);
-    this._offers = null;
+  componentDidMount() {
+    const {loadPropertyData} = this.props;
+    loadPropertyData(this.props.offer.id);
   }
 
   render() {
-    const {offers, onCardTitleClick, onCardHover} = this.props;
+    const {authorizationStatus, isPropertyLoading, nearbyOffers, onCardTitleClick, onCardHover, reviews} = this.props;
 
+    if (isPropertyLoading) {
+      return false;
+    }
 
     const {
       bedrooms,
       description,
-      host,
       id,
+      host,
       maxAdults,
       goods,
       isPremium,
@@ -34,10 +43,8 @@ class Property extends PureComponent {
       type,
     } = this.props.offer;
 
-    this._offers = offers.filter((it) => it.id !== id).slice(0, MAX_NEARBY_OFFERS);
 
     const cardRating = getRating(rating);
-
     return (
       <main className="page__main page__main--property">
         <section className="property">
@@ -118,17 +125,17 @@ class Property extends PureComponent {
                   <p className="property__text">
                     {description}
                   </p>
-                  <p className="property__text">
-                    {description}
-                  </p>
                 </div>
               </div>
+              <ReviewsList reviews={reviews}/>
+              {authorizationStatus === AuthorizationStatus.AUTH && <ReviewsForm id={id}><ReviewPostError/></ReviewsForm>}
             </div>
           </div>
+
           <section className="property__map map">
             <Map
               activeOffer={this.props.offer}
-              offers={this._offers}
+              offers={nearbyOffers}
               leaflet={leaflet}
             />
           </section>
@@ -137,7 +144,7 @@ class Property extends PureComponent {
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <PlacesList
-              offers={this._offers}
+              offers={nearbyOffers}
               onCardHover={onCardHover}
               onCardTitleClick={onCardTitleClick}
               offersView={OfferType.NEARBY}
@@ -150,10 +157,30 @@ class Property extends PureComponent {
 }
 
 Property.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
+  isPropertyLoading: PropTypes.bool.isRequired,
+  loadPropertyData: PropTypes.func.isRequired,
   offer: offerShape.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(offerShape),
+  nearbyOffers: PropTypes.arrayOf(offerShape),
+  reviews: PropTypes.arrayOf(reviewShape).isRequired,
 };
 
-export default Property;
+const mapStateToProps = (state) => ({
+  authorizationStatus: state[NameSpace.USER].authorizationStatus,
+  isPropertyLoading: state[NameSpace.OFFERS].isPropertyLoading,
+  nearbyOffers: getNearbyOffers(state),
+  reviews: getReviews(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadPropertyData(id) {
+    dispatch(DataOperation.loadNearbyOffers(id));
+    dispatch(DataOperation.loadReviews(id));
+  },
+
+});
+
+export {Property};
+export default connect(mapStateToProps, mapDispatchToProps)(Property);

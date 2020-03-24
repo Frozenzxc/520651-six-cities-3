@@ -36,7 +36,6 @@ class App extends PureComponent {
     return (
       <Property
         offer={activeOffer}
-        offers={availableOffers}
         onCardHover={onCardHover}
         onCardTitleClick={onCardTitleClick}
       />

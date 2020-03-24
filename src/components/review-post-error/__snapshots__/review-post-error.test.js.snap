@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Review Post Error component render correctly 1`] = `
+<div
+  className="reviews__error"
+>
+  Попробуйте еще раз
+</div>
+`;
