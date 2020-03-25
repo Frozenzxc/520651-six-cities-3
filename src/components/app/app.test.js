@@ -20,7 +20,7 @@ it(`Render App without loading screen`, () => {
       offers,
     },
     [NameSpace.USER]: {
-      AuthorizationStatus: AuthorizationStatus.NO_AUTH,
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
       authEmail: null,
     }
   });
@@ -35,7 +35,7 @@ it(`Render App without loading screen`, () => {
                 authEmail={null}
                 currentCity={offers[0].city.name}
                 isLoading={false}
-                isSignIn={false}
+                isSignedIn={false}
                 login={() => {}}
                 offers={offers}
                 onCardHover={() => {}}
@@ -59,7 +59,7 @@ it(`Render App with loading screen`, () => {
       offers,
     },
     [NameSpace.USER]: {
-      AuthorizationStatus: AuthorizationStatus.AUTH,
+      authorizationStatus: AuthorizationStatus.AUTH,
       authEmail: `AAA@adfg.ru`,
       isSignIn: false
     },
@@ -74,7 +74,7 @@ it(`Render App with loading screen`, () => {
                 currentCity={offers[0].city.name}
                 authorizationStatus={AuthorizationStatus.AUTH}
                 authEmail={`AAA@adfg.ru`}
-                isSignIn={false}
+                isSignedIn={false}
                 isLoading={false}
                 offers={offers}
                 onCardHover={() => {}}
@@ -98,7 +98,7 @@ it(`Render App with SignIn screen`, () => {
       offers,
     },
     [NameSpace.USER]: {
-      AuthorizationStatus: AuthorizationStatus.AUTH,
+      authorizationStatus: AuthorizationStatus.AUTH,
       authEmail: `AAA@adfg.ru`,
       isSignIn: false
     },
@@ -113,7 +113,7 @@ it(`Render App with SignIn screen`, () => {
                 currentCity={offers[0].city.name}
                 authorizationStatus={AuthorizationStatus.AUTH}
                 authEmail={`AAA@adfg.ru`}
-                isSignIn={true}
+                isSignedIn={true}
                 isLoading={false}
                 offers={offers}
                 onCardHover={() => {}}

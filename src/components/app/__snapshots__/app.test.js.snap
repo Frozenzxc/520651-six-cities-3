@@ -39,7 +39,8 @@ exports[`Render App with SignIn screen 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorites"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
@@ -268,7 +269,8 @@ exports[`Render App with SignIn screen 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -365,7 +367,8 @@ exports[`Render App with SignIn screen 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -462,7 +465,8 @@ exports[`Render App with SignIn screen 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -581,7 +585,8 @@ exports[`Render App with loading screen 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorites"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
@@ -810,7 +815,8 @@ exports[`Render App with loading screen 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -907,7 +913,8 @@ exports[`Render App with loading screen 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1004,7 +1011,8 @@ exports[`Render App with loading screen 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1123,11 +1131,11 @@ exports[`Render App without loading screen 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/login"
+                onClick={[Function]}
               >
                 <span
                   className="header__login"
-                  onClick={[Function]}
                 >
                   Sign in
                 </span>
@@ -1350,7 +1358,8 @@ exports[`Render App without loading screen 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1447,7 +1456,8 @@ exports[`Render App without loading screen 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1544,7 +1554,8 @@ exports[`Render App without loading screen 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg

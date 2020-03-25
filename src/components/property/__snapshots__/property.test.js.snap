@@ -727,7 +727,8 @@ exports[`Property is rendered correctly with authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -824,7 +825,8 @@ exports[`Property is rendered correctly with authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -921,7 +923,8 @@ exports[`Property is rendered correctly with authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -1018,7 +1021,8 @@ exports[`Property is rendered correctly with authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -1122,7 +1126,8 @@ exports[`Property is rendered correctly with authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -1219,7 +1224,8 @@ exports[`Property is rendered correctly with authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -1316,7 +1322,8 @@ exports[`Property is rendered correctly with authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -1917,7 +1924,8 @@ exports[`Property is rendered correctly without authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -2014,7 +2022,8 @@ exports[`Property is rendered correctly without authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -2111,7 +2120,8 @@ exports[`Property is rendered correctly without authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -2208,7 +2218,8 @@ exports[`Property is rendered correctly without authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -2312,7 +2323,8 @@ exports[`Property is rendered correctly without authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -2409,7 +2421,8 @@ exports[`Property is rendered correctly without authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -2506,7 +2519,8 @@ exports[`Property is rendered correctly without authorized user 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button"
+                className="place-card__bookmark-button button false"
+                onClick={[Function]}
                 type="button"
               >
                 <svg

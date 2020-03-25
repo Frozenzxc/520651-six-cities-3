@@ -39,7 +39,8 @@ exports[`Should Main component render correctly with authorized user 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorites"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
@@ -268,7 +269,8 @@ exports[`Should Main component render correctly with authorized user 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -365,7 +367,8 @@ exports[`Should Main component render correctly with authorized user 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -462,7 +465,8 @@ exports[`Should Main component render correctly with authorized user 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -581,11 +585,11 @@ exports[`Should Main component render correctly with not authorized user 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/login"
+                onClick={[Function]}
               >
                 <span
                   className="header__login"
-                  onClick={[Function]}
                 >
                   Sign in
                 </span>
@@ -808,7 +812,8 @@ exports[`Should Main component render correctly with not authorized user 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -905,7 +910,8 @@ exports[`Should Main component render correctly with not authorized user 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1002,7 +1008,8 @@ exports[`Should Main component render correctly with not authorized user 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
+                    className="place-card__bookmark-button button false"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg

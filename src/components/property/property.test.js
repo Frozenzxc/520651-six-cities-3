@@ -21,7 +21,7 @@ it(`Property is rendered correctly without authorized user`, () => {
       reviews,
     },
     [NameSpace.USER]: {
-      AuthorizationStatus: AuthorizationStatus.NO_AUTH,
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
     }
   });
 
@@ -53,7 +53,7 @@ it(`Property is rendered correctly with authorized user`, () => {
       reviews,
     },
     [NameSpace.USER]: {
-      AuthorizationStatus: AuthorizationStatus.NO_AUTH,
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
     }
   });
 

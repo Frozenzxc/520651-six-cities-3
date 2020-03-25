@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Switch, Route, BrowserRouter, Redirect} from "react-router-dom";
+import {Switch, Route, Router, Redirect} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/offers/actions.js";
@@ -9,7 +9,10 @@ import Property from "../property/property.jsx";
 import {getActiveID, getActiveOffer, getCurrentCity, getAvailableOffers} from "../../reducer/offers/selectors";
 import NameSpace from "../../reducer/name-space";
 import LoginScreen from "../login-screen/login-screen.jsx";
-import {ActionCreator as UserActionCreator} from "../../reducer/user/user";
+import {ActionCreator as UserActionCreator, AuthorizationStatus} from "../../reducer/user/user";
+import {AppRoute} from "../../const";
+import Favorites from "../favorites/favorites.jsx";
+import history from "../../history";
 
 class App extends PureComponent {
   _renderApp() {
@@ -43,19 +46,20 @@ class App extends PureComponent {
   }
 
   render() {
-    // eslint-disable-next-line spaced-comment
-    //const {onCardHover, onCardTitleClick} = this.props;
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={AppRoute.ROOT}>
             {this._renderApp()}
           </Route>
-          <Route exact path="/dev-login">
-            {this.props.isSignIn ? <Redirect to="/"/> : <LoginScreen />}
+          <Route exact path={AppRoute.LOGIN}>
+            {this.props.isSignedIn ? <Redirect to={AppRoute.ROOT}/> : <LoginScreen />}
+          </Route>
+          <Route exact path={AppRoute.FAVORITES}>
+            {this.props.authorizationStatus === AuthorizationStatus.NO_AUTH ? <Redirect to={AppRoute.LOGIN}/> : <Favorites />}
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
@@ -70,7 +74,7 @@ App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   currentCity: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
-  isSignIn: PropTypes.bool.isRequired,
+  isSignedIn: PropTypes.bool.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
   onSignInClick: PropTypes.func.isRequired,
@@ -84,7 +88,7 @@ const mapStateToProps = (state) => ({
   authorizationStatus: state[NameSpace.USER].authorizationStatus,
   currentCity: getCurrentCity(state),
   isLoading: state[NameSpace.OFFERS].isLoading,
-  isSignIn: state[NameSpace.USER].isSignIn,
+  isSignedIn: state[NameSpace.USER].isSignedIn,
 });
 
 const mapDispatchToProps = (dispatch) => ({
