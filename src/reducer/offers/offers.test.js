@@ -9,6 +9,7 @@ import notParsedReviews from "../../test-mocks/not-parsed-reviews";
 import notParsedFavoriteOffers from "../../test-mocks/not-parsed-favorite-offers";
 import {ReviewPostingStatus} from "../../const";
 import afterAddToFavoriteOffers from "../../test-mocks/test-offers-with-added-to-favorite";
+import {parseOffer} from "../../utils";
 
 const getAvailableOffers = ((allOffers, currentCity) => allOffers.filter((offer) => offer.city.name === currentCity));
 
@@ -32,30 +33,20 @@ it(`Reducer without additional parameters should return initial state`, () => {
   });
 });
 
-it(`Reducer should update offers by add to favorites`, () => {
-  expect(reducer({
-    availableOffers: offers,
-  }, {
-    type: ActionType.ADD_TO_FAVORITE,
-    payload: offers[0],
-  })).toEqual({
-    availableOffers: afterAddToFavoriteOffers,
-  });
-});
-
 it(`Reducer should update offers by load offers`, () => {
   expect(reducer({
     availableOffers: [],
-    offers: [],
+    currentCity: `Amsterdam`,
     isLoading: true,
+    offers: [],
   }, {
     type: ActionType.LOAD_OFFERS,
     payload: notParsedOffers,
   })).toEqual({
     availableOffers: getAvailableOffers(offers, offers[0].city.name),
-    offers,
     currentCity: offers[0].city.name,
     isLoading: false,
+    offers,
   });
 });
 
@@ -345,3 +336,13 @@ it(`Reducer should change value by successful post review`, () => {
   });
 });
 
+it(`Reducer should update offers by add to favorites`, () => {
+  expect(reducer({
+    availableOffers: offers,
+  }, {
+    type: ActionType.ADD_TO_FAVORITE,
+    payload: notParsedFavoriteOffers[0],
+  })).toEqual({
+    availableOffers: afterAddToFavoriteOffers,
+  });
+});
