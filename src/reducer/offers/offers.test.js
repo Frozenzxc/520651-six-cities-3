@@ -9,7 +9,6 @@ import notParsedReviews from "../../test-mocks/not-parsed-reviews";
 import notParsedFavoriteOffers from "../../test-mocks/not-parsed-favorite-offers";
 import {ReviewPostingStatus} from "../../const";
 import afterAddToFavoriteOffers from "../../test-mocks/test-offers-with-added-to-favorite";
-import {parseOffer} from "../../utils";
 
 const getAvailableOffers = ((allOffers, currentCity) => allOffers.filter((offer) => offer.city.name === currentCity));
 
