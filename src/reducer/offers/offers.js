@@ -11,6 +11,8 @@ const initialState = {
   activeID: null,
   activeOffer: null,
   currentCity: `Amsterdam`,
+  favoriteOffers: [],
+  isFavoritesLoading: true,
   isFormBlocked: false,
   isLoading: true,
   isPropertyLoading: true,
@@ -20,6 +22,21 @@ const initialState = {
 };
 
 const Operation = {
+  addToFavorite: (offer) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${offer.id}/${+!offer.isFavorite}`, {})
+            .then((response) => {
+              dispatch(ActionCreator.addToFavorite(response.data));
+            });
+  },
+
+
+  loadFavoriteOffers: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+            .then((response) => {
+              dispatch(ActionCreator.loadFavoriteOffers(response.data));
+            });
+  },
+
   loadNearbyOffers: (id) => (dispatch, getState, api) => {
     return api.get(`/hotels/${id}/nearby`)
             .then((response) => {
@@ -61,9 +78,24 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.ADD_TO_FAVORITE:
+      const parsedOffer = parseOffer(action.payload);
+      const index = state.availableOffers.findIndex((offer) => offer.id === parsedOffer.id);
+      state.availableOffers[index].isFavorite = parsedOffer.isFavorite;
+      return extend(state, {
+        availableOffers: state.availableOffers,
+      });
+
     case ActionType.BLOCK_FORM:
       return extend(state, {
         isFormBlocked: action.payload,
+      });
+
+    case ActionType.LOAD_FAVORITE_OFFERS:
+      let parsedFavoriteOffers = action.payload.map((offer) => parseOffer(offer));
+      return extend(state, {
+        favoriteOffers: parsedFavoriteOffers,
+        isFavoritesLoading: false,
       });
 
     case ActionType.LOAD_NEARBY_OFFERS:
@@ -75,6 +107,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_OFFERS:
       let parsedOffers = action.payload.map((offer) => parseOffer(offer));
       return extend(state, {
+        availableOffers: getAvailableOffers(parsedOffers, parsedOffers[0].city.name),
         currentCity: parsedOffers[0].city.name,
         isLoading: false,
         offers: parsedOffers,

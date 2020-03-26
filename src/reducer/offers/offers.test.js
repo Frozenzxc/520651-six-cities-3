@@ -1,11 +1,16 @@
 import offers from "../../test-mocks/test-offers";
+import favoriteOffers from "../../test-mocks/test-favorite-offers";
 import reviews from "../../test-mocks/reviews";
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api.js";
 import {reducer, ActionType, Operation} from "./offers.js";
 import notParsedOffers from "../../test-mocks/not-parsed-offers";
 import notParsedReviews from "../../test-mocks/not-parsed-reviews";
+import notParsedFavoriteOffers from "../../test-mocks/not-parsed-favorite-offers";
 import {ReviewPostingStatus} from "../../const";
+import afterAddToFavoriteOffers from "../../test-mocks/test-offers-with-added-to-favorite";
+
+const getAvailableOffers = ((allOffers, currentCity) => allOffers.filter((offer) => offer.city.name === currentCity));
 
 const api = createAPI(() => {});
 
@@ -15,6 +20,8 @@ it(`Reducer without additional parameters should return initial state`, () => {
     activeID: null,
     activeOffer: null,
     currentCity: `Amsterdam`,
+    favoriteOffers: [],
+    isFavoritesLoading: true,
     isFormBlocked: false,
     isLoading: true,
     offers: [],
@@ -27,15 +34,31 @@ it(`Reducer without additional parameters should return initial state`, () => {
 
 it(`Reducer should update offers by load offers`, () => {
   expect(reducer({
-    offers: [],
+    availableOffers: [],
+    currentCity: `Amsterdam`,
     isLoading: true,
+    offers: [],
   }, {
     type: ActionType.LOAD_OFFERS,
     payload: notParsedOffers,
   })).toEqual({
-    offers,
+    availableOffers: getAvailableOffers(offers, offers[0].city.name),
     currentCity: offers[0].city.name,
     isLoading: false,
+    offers,
+  });
+});
+
+it(`Reducer should update offers by load favorite offers`, () => {
+  expect(reducer({
+    favoriteOffers: [],
+    isFavoritesLoading: true,
+  }, {
+    type: ActionType.LOAD_FAVORITE_OFFERS,
+    payload: notParsedFavoriteOffers,
+  })).toEqual({
+    favoriteOffers,
+    isFavoritesLoading: false,
   });
 });
 
@@ -67,6 +90,25 @@ describe(`Operation work correctly`, () => {
               expect(dispatch).toHaveBeenCalledTimes(1);
               expect(dispatch).toHaveBeenNthCalledWith(1, {
                 type: ActionType.LOAD_OFFERS,
+                payload: [{fake: true}],
+              });
+            });
+  });
+
+  it(`Should make a correct API call to /favorite`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const offersLoader = Operation.loadFavoriteOffers();
+
+    apiMock
+            .onGet(`/favorite`)
+            .reply(200, [{fake: true}]);
+
+    return offersLoader(dispatch, () => {}, api)
+            .then(() => {
+              expect(dispatch).toHaveBeenCalledTimes(1);
+              expect(dispatch).toHaveBeenNthCalledWith(1, {
+                type: ActionType.LOAD_FAVORITE_OFFERS,
                 payload: [{fake: true}],
               });
             });
@@ -293,3 +335,13 @@ it(`Reducer should change value by successful post review`, () => {
   });
 });
 
+it(`Reducer should update offers by add to favorites`, () => {
+  expect(reducer({
+    availableOffers: offers,
+  }, {
+    type: ActionType.ADD_TO_FAVORITE,
+    payload: notParsedFavoriteOffers[0],
+  })).toEqual({
+    availableOffers: afterAddToFavoriteOffers,
+  });
+});

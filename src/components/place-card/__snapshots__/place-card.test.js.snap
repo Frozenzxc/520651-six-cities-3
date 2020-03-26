@@ -42,7 +42,8 @@ exports[`PlaceCard is rendered correctly 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button"
+        className="place-card__bookmark-button button false"
+        onClick={[Function]}
         type="button"
       >
         <svg

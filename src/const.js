@@ -1,5 +1,6 @@
 const OfferType = {
   ALL: `cities`,
+  FAVORITES: `favorites`,
   NEARBY: `near`,
 };
 
@@ -22,4 +23,10 @@ const ReviewPostingStatus = {
   ERROR: `ERROR`,
 };
 
-export {OfferType, SortType, MAX_NEARBY_OFFERS, AuthorizationStatus, ReviewPostingStatus};
+const AppRoute = {
+  FAVORITES: `/favorites`,
+  LOGIN: `/login`,
+  ROOT: `/`,
+};
+
+export {OfferType, SortType, MAX_NEARBY_OFFERS, AuthorizationStatus, AppRoute, ReviewPostingStatus};

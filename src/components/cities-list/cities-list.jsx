@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/offers/actions";
 import {offerShape} from "../../prop-types.jsx";
 import {getOffers, getCurrentCity} from "../../reducer/offers/selectors";
+import {getCitiesList} from "../../utils";
 
 class CitiesList extends PureComponent {
   constructor(props) {
@@ -21,7 +22,7 @@ class CitiesList extends PureComponent {
   render() {
 
     const {currentCity, offers} = this.props;
-    const citiesList = [...new Set(offers.map((offer) => offer.city.name))];
+    const citiesList = getCitiesList(offers);
     return (
       <div className="tabs">
         <section className="locations container">

@@ -1,4 +1,5 @@
 import React from "react";
+import {BrowserRouter} from "react-router-dom";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
 import offers from "../../test-mocks/test-offers";
@@ -18,7 +19,7 @@ it(`Should Main component render correctly with not authorized user`, () => {
       currentCity: offers[0].city.name,
     },
     [NameSpace.USER]: {
-      AuthorizationStatus: AuthorizationStatus.NO_AUTH,
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
       authEmail: null,
     },
   });
@@ -26,16 +27,17 @@ it(`Should Main component render correctly with not authorized user`, () => {
   const tree = renderer
         .create(
             <Provider store={store}>
-              <Main
-                activeOffer={offers[0]}
-                availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
-                authEmail={null}
-                authorizationStatus={AuthorizationStatus.NO_AUTH}
-                onCardHover={() => {}}
-                onCardTitleClick={() => {}}
-                currentCity={offers[0].city.name}
-                onSignInClick={() => {}}
-              />
+              <BrowserRouter>
+                <Main
+                  activeOffer={offers[0]}
+                  availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
+                  authEmail={null}
+                  authorizationStatus={AuthorizationStatus.NO_AUTH}
+                  onCardHover={() => {}}
+                  onCardTitleClick={() => {}}
+                  currentCity={offers[0].city.name}
+                />
+              </BrowserRouter>
             </Provider>
         )
         .toJSON();
@@ -52,7 +54,7 @@ it(`Should Main component render correctly with authorized user`, () => {
       currentCity: offers[0].city.name,
     },
     [NameSpace.USER]: {
-      AuthorizationStatus: AuthorizationStatus.AUTH,
+      authorizationStatus: AuthorizationStatus.AUTH,
       authEmail: `AAA@adfg.ru`,
     },
   });
@@ -60,16 +62,17 @@ it(`Should Main component render correctly with authorized user`, () => {
   const tree = renderer
         .create(
             <Provider store={store}>
-              <Main
-                activeOffer={offers[0]}
-                availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
-                authEmail={`AAA@adfg.ru`}
-                authorizationStatus={AuthorizationStatus.AUTH}
-                onCardHover={() => {}}
-                onCardTitleClick={() => {}}
-                currentCity={offers[0].city.name}
-                onSignInClick={() => {}}
-              />
+              <BrowserRouter>
+                <Main
+                  activeOffer={offers[0]}
+                  availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
+                  authEmail={`AAA@adfg.ru`}
+                  authorizationStatus={AuthorizationStatus.AUTH}
+                  onCardHover={() => {}}
+                  onCardTitleClick={() => {}}
+                  currentCity={offers[0].city.name}
+                />
+              </BrowserRouter>
             </Provider>
         )
         .toJSON();

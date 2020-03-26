@@ -1,10 +1,12 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 import {offerShape} from "../../prop-types.jsx";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
 import {OfferType} from "../../const";
 import CitiesList from "../cities-list/cities-list.jsx";
+import {getRoute} from "../../utils";
 import Sort from "../sort/sort.jsx";
 import withSortingComponent from "../../hocs/with-sorting-component/with-sorting-component";
 import PlacesList from "../places-list/places-list.jsx";
@@ -13,7 +15,7 @@ import {AuthorizationStatus} from "../../const";
 
 const SortWrapped = withSortingComponent(Sort);
 
-const Main = ({activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, onCardHover, onCardTitleClick, onSignInClick}) => {
+const Main = ({activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, onCardHover, onCardTitleClick}) => {
 
   return (
     <div className="page page--gray page--main">
@@ -28,18 +30,18 @@ const Main = ({activeOffer, availableOffers, authEmail, authorizationStatus, cur
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
+                  <Link
+                    className="header__nav-link header__nav-link--profile"
+                    to={getRoute(authorizationStatus)}>
                     {authorizationStatus === AuthorizationStatus.NO_AUTH ?
-                      <span className="header__login"
-                        onClick={onSignInClick}
-                      >Sign in</span> :
+                      <span className="header__login">Sign in</span> :
                       <Fragment>
                         <div className="header__avatar-wrapper user__avatar-wrapper">
                         </div>
                         <span className="header__user-name user__name">{authEmail}</span>
                       </Fragment>
                     }
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -88,7 +90,6 @@ Main.propTypes = {
   currentCity: PropTypes.string.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerShape),
 };
 

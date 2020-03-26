@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export default [
   {
     bedrooms: 3,
@@ -24,8 +25,8 @@ export default [
     host: {
       id: 25,
       name: `Angelina`,
-      avatar: `img/avatar-angelina.jpg`,
-      isPro: true
+      avatar_url: `img/avatar-angelina.jpg`,
+      is_pro: true
     },
     id: 1,
     images: [
@@ -44,15 +45,15 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/5.jpg`
     ],
-    isFavorite: false,
-    isPremium: false,
+    is_favorite: true,
+    is_premium: false,
     location: {
       latitude: 50.932361,
       longitude: 6.937974,
       zoom: 16
     },
-    maxAdults: 7,
-    previewImage: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`,
+    max_adults: 7,
+    preview_image: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`,
     price: 160,
     rating: 4.8,
     title: `The house among olive `,
@@ -78,8 +79,8 @@ export default [
     host: {
       id: 25,
       name: `Angelina`,
-      avatar: `img/avatar-angelina.jpg`,
-      isPro: true
+      avatar_url: `img/avatar-angelina.jpg`,
+      is_pro: true
     },
     id: 2,
     images: [
@@ -98,15 +99,15 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/20.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/13.jpg`
     ],
-    isFavorite: false,
-    isPremium: false,
+    is_favorite: true,
+    is_premium: false,
     location: {
       latitude: 50.913361,
       longitude: 6.9509739999999995,
       zoom: 16
     },
-    maxAdults: 1,
-    previewImage: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/11.jpg`,
+    max_adults: 1,
+    preview_image: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/11.jpg`,
     price: 192,
     rating: 4.2,
     title: `Waterfront with extraordinary view`,
@@ -133,8 +134,8 @@ export default [
     host: {
       id: 25,
       name: `Angelina`,
-      avatar: `img/avatar-angelina.jpg`,
-      isPro: true
+      avatar_url: `img/avatar-angelina.jpg`,
+      is_pro: true
     },
     id: 3,
     images: [
@@ -153,15 +154,15 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/4.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/18.jpg`
     ],
-    isFavorite: false,
-    isPremium: false,
+    is_favorite: true,
+    is_premium: false,
     location: {
       latitude: 48.87961000000001,
       longitude: 2.353499,
       zoom: 16
     },
-    maxAdults: 4,
-    previewImage: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/7.jpg`,
+    max_adults: 4,
+    preview_image: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/7.jpg`,
     price: 350,
     rating: 4.4,
     title: `Nice, cozy, warm big bed apartment`,
@@ -186,8 +187,8 @@ export default [
     host: {
       id: 25,
       name: `Angelina`,
-      avatar: `img/avatar-angelina.jpg`,
-      isPro: true
+      avatar_url: `img/avatar-angelina.jpg`,
+      is_pro: true
     },
     id: 4,
     images: [
@@ -206,15 +207,15 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/4.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/3.jpg`
     ],
-    isFavorite: false,
-    isPremium: false,
+    is_favorite: true,
+    is_premium: false,
     location: {
       latitude: 50.949361,
       longitude: 6.976974,
       zoom: 16
     },
-    maxAdults: 3,
-    previewImage: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/7.jpg`,
+    max_adults: 3,
+    preview_image: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/7.jpg`,
     price: 196,
     rating: 3.3,
     title: `Loft Studio in the Central Area`,
@@ -242,8 +243,8 @@ export default [
     host: {
       id: 25,
       name: `Angelina`,
-      avatar: `img/avatar-angelina.jpg`,
-      isPro: true
+      avatar_url: `img/avatar-angelina.jpg`,
+      is_pro: true
     },
     id: 5,
     images: [
@@ -262,15 +263,15 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/10.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/14.jpg`
     ],
-    isFavorite: false,
-    isPremium: true,
+    is_favorite: true,
+    is_premium: true,
     location: {
       latitude: 53.563341,
       longitude: 9.975654,
       zoom: 16
     },
-    maxAdults: 7,
-    previewImage: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/7.jpg`,
+    max_adults: 7,
+    preview_image: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/7.jpg`,
     price: 116,
     rating: 4.2,
     title: `Penthouse, 4-5 rooms + 5 balconies`,
@@ -301,8 +302,8 @@ export default [
     host: {
       id: 25,
       name: `Angelina`,
-      avatar: `img/avatar-angelina.jpg`,
-      isPro: true
+      avatar_url: `img/avatar-angelina.jpg`,
+      is_pro: true
     },
     id: 6,
     images: [
@@ -321,15 +322,15 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/15.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/9.jpg`
     ],
-    isFavorite: false,
-    isPremium: false,
+    is_favorite: true,
+    is_premium: false,
     location: {
       latitude: 50.869557,
       longitude: 4.332697,
       zoom: 16
     },
-    maxAdults: 9,
-    previewImage: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/6.jpg`,
+    max_adults: 9,
+    preview_image: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/6.jpg`,
     price: 892,
     rating: 3,
     title: `Loft Studio in the Central Area`,
@@ -358,8 +359,8 @@ export default [
     host: {
       id: 25,
       name: `Angelina`,
-      avatar: `img/avatar-angelina.jpg`,
-      isPro: true
+      avatar_url: `img/avatar-angelina.jpg`,
+      is_pro: true
     },
     id: 7,
     images: [
@@ -378,15 +379,15 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/12.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/15.jpg`
     ],
-    isFavorite: false,
-    isPremium: false,
+    is_favorite: true,
+    is_premium: false,
     location: {
       latitude: 53.528341000000005,
       longitude: 10.018654000000002,
       zoom: 16
     },
-    maxAdults: 9,
-    previewImage: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`,
+    max_adults: 9,
+    preview_image: `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`,
     price: 136,
     rating: 5,
     title: `Waterfront with extraordinary view`,

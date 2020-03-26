@@ -14,6 +14,10 @@ const getActiveOffer = (state) => {
   return state[NameSpace.OFFERS].activeOffer;
 };
 
+const getFavoriteOffers = (state) => {
+  return state[NameSpace.OFFERS].favoriteOffers;
+};
+
 const getNearbyOffers = (state) => {
   return state[NameSpace.OFFERS].nearbyOffers.slice(0, MAX_NEARBY_OFFERS);
 };
@@ -34,4 +38,4 @@ const getAvailableOffers = createSelector(
     }
 );
 
-export {getActiveID, getCurrentCity, getActiveOffer, getNearbyOffers, getOffers, getReviews, getAvailableOffers};
+export {getActiveID, getCurrentCity, getActiveOffer, getNearbyOffers, getOffers, getReviews, getAvailableOffers, getFavoriteOffers};

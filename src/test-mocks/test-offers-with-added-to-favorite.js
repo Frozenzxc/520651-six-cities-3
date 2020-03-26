@@ -44,7 +44,7 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/5.jpg`
     ],
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     location: {
       latitude: 50.932361,
@@ -392,4 +392,5 @@ export default [
     title: `Waterfront with extraordinary view`,
     type: `apartment`
   },
+
 ];

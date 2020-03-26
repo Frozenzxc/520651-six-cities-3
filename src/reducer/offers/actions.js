@@ -1,5 +1,7 @@
 const ActionType = {
+  ADD_TO_FAVORITE: `ADD_TO_FAVORITE`,
   BLOCK_FORM: `BLOCK_FORM`,
+  LOAD_FAVORITE_OFFERS: `LOAD_FAVORITE_OFFERS`,
   LOAD_NEARBY_OFFERS: `LOAD_NEARBY_OFFERS`,
   LOAD_OFFERS: `LOAD_OFFERS`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
@@ -11,10 +13,24 @@ const ActionType = {
 
 const ActionCreator = {
 
+  addToFavorite: (offer) => {
+    return {
+      type: ActionType.ADD_TO_FAVORITE,
+      payload: offer,
+    };
+  },
+
   blockForm: (isBlocked) => {
     return {
       type: ActionType.BLOCK_FORM,
       payload: isBlocked,
+    };
+  },
+
+  loadFavoriteOffers: (offers) => {
+    return {
+      type: ActionType.LOAD_FAVORITE_OFFERS,
+      payload: offers,
     };
   },
 

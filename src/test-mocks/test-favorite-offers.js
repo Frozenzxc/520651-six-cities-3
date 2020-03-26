@@ -44,7 +44,7 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/19.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/5.jpg`
     ],
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     location: {
       latitude: 50.932361,
@@ -98,7 +98,7 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/20.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/13.jpg`
     ],
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     location: {
       latitude: 50.913361,
@@ -153,7 +153,7 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/4.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/18.jpg`
     ],
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     location: {
       latitude: 48.87961000000001,
@@ -206,7 +206,7 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/4.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/3.jpg`
     ],
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     location: {
       latitude: 50.949361,
@@ -262,7 +262,7 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/10.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/14.jpg`
     ],
-    isFavorite: false,
+    isFavorite: true,
     isPremium: true,
     location: {
       latitude: 53.563341,
@@ -321,7 +321,7 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/15.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/9.jpg`
     ],
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     location: {
       latitude: 50.869557,
@@ -378,7 +378,7 @@ export default [
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/12.jpg`,
       `https://htmlacademy-react-3.appspot.com/six-cities/static/hotel/15.jpg`
     ],
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     location: {
       latitude: 53.528341000000005,
@@ -392,4 +392,5 @@ export default [
     title: `Waterfront with extraordinary view`,
     type: `apartment`
   },
+
 ];

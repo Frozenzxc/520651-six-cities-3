@@ -12,7 +12,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     authorizationStatus: AuthorizationStatus.NO_AUTH,
     authEmail: null,
-    isSignIn: false,
+    isSignedIn: false,
   });
 });
 
@@ -63,21 +63,21 @@ it(`Reducer should change authorizationStatus by a given value`, () => {
   });
 
   expect(reducer({
-    isSignIn: false,
+    isSignedIn: false,
   }, {
     type: ActionType.SIGNING_IN,
     payload: null,
   })).toEqual({
-    isSignIn: true,
+    isSignedIn: true,
   });
 
   expect(reducer({
-    isSignIn: true,
+    isSignedIn: true,
   }, {
     type: ActionType.SIGNING_IN,
     payload: null,
   })).toEqual({
-    isSignIn: false,
+    isSignedIn: false,
   });
 });
 

@@ -4,7 +4,7 @@ import {extend} from "../../utils";
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   authEmail: null,
-  isSignIn: false,
+  isSignedIn: false,
 };
 
 const ActionType = {
@@ -46,7 +46,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.SIGNING_IN:
       return extend(state, {
-        isSignIn: !state.isSignIn,
+        isSignedIn: !state.isSignedIn,
       });
   }
 

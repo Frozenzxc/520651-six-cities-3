@@ -5,6 +5,7 @@ import configureStore from "redux-mock-store";
 import withSortingComponent from "./with-sorting-component";
 import offers from "../../test-mocks/test-offers";
 import NameSpace from "../../reducer/name-space";
+import {AuthorizationStatus} from "../../const";
 
 const mockStore = configureStore([]);
 
@@ -25,11 +26,15 @@ it(`withSortingComponent is rendered correctly`, () => {
       availableOffers: offers,
       offers,
       currentCity: offers[0].city.name,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: AuthorizationStatus.AUTH,
     }
   });
   const tree = renderer.create((
     <Provider store={store}>
       <MockComponentWrapped
+        authorizationStatus={AuthorizationStatus.AUTH}
         render={() => {}}
         availableOffers={offers}
         offers={offers}
