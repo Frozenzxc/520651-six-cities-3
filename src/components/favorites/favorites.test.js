@@ -25,11 +25,14 @@ it(`Should Favorites component render correctly`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <Favorites
+          addToFavorite={() => {}}
           favoriteOffers={favoriteOffers}
           loadFavoriteOffers={() => {}}
           isFavoritesLoading={false}
           authorizationStatus={AuthorizationStatus.AUTH}
           authEmail={`AAA@adfg.ru`}
+          onCardHover={() => {}}
+          onCardTitleClick={() => {}}
         />
       </Provider>
   )

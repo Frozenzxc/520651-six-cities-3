@@ -19,6 +19,7 @@ it(`PlacesList is rendered correctly`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <PlacesList
+          addToFavorite={() => {}}
           authorizationStatus={AuthorizationStatus.AUTH}
           offers={offers}
           onCardHover={() => {}}
@@ -41,6 +42,7 @@ it(`PlacesList is rendered correctly without offers`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <PlacesList
+          addToFavorite={() => {}}
           authorizationStatus={AuthorizationStatus.AUTH}
           offers={[]}
           onCardHover={() => {}}

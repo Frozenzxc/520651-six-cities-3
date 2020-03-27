@@ -1,8 +1,7 @@
-import React, {Fragment} from "react";
-import {AuthorizationStatus} from "../../const";
+import React from "react";
+import {AppRoute, AuthorizationStatus} from "../../const";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import {getRoute} from "../../utils";
 
 const FavoritesEmpty = ({authEmail, authorizationStatus}) => {
   return (
@@ -19,18 +18,20 @@ const FavoritesEmpty = ({authEmail, authorizationStatus}) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <Link
-                    className="header__nav-link header__nav-link--profile"
-                    to={getRoute(authorizationStatus)}>
-                    {authorizationStatus === AuthorizationStatus.NO_AUTH ?
-                      <span className="header__login">Sign in</span> :
-                      <Fragment>
-                        <div className="header__avatar-wrapper user__avatar-wrapper">
-                        </div>
-                        <span className="header__user-name user__name">{authEmail}</span>
-                      </Fragment>
-                    }
-                  </Link>
+                  {authorizationStatus === AuthorizationStatus.NO_AUTH ?
+                    <Link
+                      className="header__nav-link header__nav-link--profile"
+                      to={AppRoute.LOGIN}>
+                      <span className="header__login">Sign in</span>
+                    </Link> :
+                    <Link
+                      className="header__nav-link header__nav-link--profile"
+                      to={AppRoute.FAVORITES}>
+                      <div className="header__avatar-wrapper user__avatar-wrapper">
+                      </div>
+                      <span className="header__user-name user__name">{authEmail}</span>
+                    </Link>
+                  }
                 </li>
               </ul>
             </nav>

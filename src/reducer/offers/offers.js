@@ -2,13 +2,13 @@ import {extend} from "../../utils.js";
 import {parseOffer, parseReview} from "../../utils";
 import {ActionCreator, ActionType} from "../offers/actions";
 import {ReviewPostingStatus} from "../../const";
+import produce from "immer";
 
 const getAvailableOffers = ((allOffers, currentCity) => allOffers.filter((offer) => offer.city.name === currentCity));
 
 const initialState = {
   offers: [],
   availableOffers: [],
-  activeID: null,
   activeOffer: null,
   currentCity: `Amsterdam`,
   favoriteOffers: [],
@@ -81,9 +81,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.ADD_TO_FAVORITE:
       const parsedOffer = parseOffer(action.payload);
       const index = state.availableOffers.findIndex((offer) => offer.id === parsedOffer.id);
-      state.availableOffers[index].isFavorite = parsedOffer.isFavorite;
+      const nextState = produce(state, (draft) => {
+        draft.availableOffers[index].isFavorite = parsedOffer.isFavorite;
+      });
       return extend(state, {
-        availableOffers: state.availableOffers,
+        availableOffers: nextState.availableOffers,
       });
 
     case ActionType.BLOCK_FORM:
@@ -118,11 +120,6 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         isPropertyLoading: false,
         reviews: parsedReviews,
-      });
-
-    case ActionType.SELECT_CARD:
-      return extend(state, {
-        activeID: action.payload,
       });
 
     case ActionType.SELECT_CITY:

@@ -6,7 +6,7 @@ import {ActionCreator} from "../../reducer/offers/actions.js";
 import Main from "../main/main.jsx";
 import {offerShape} from "../../prop-types.jsx";
 import Property from "../property/property.jsx";
-import {getActiveID, getActiveOffer, getCurrentCity, getAvailableOffers} from "../../reducer/offers/selectors";
+import {getActiveOffer, getCurrentCity, getAvailableOffers} from "../../reducer/offers/selectors";
 import NameSpace from "../../reducer/name-space";
 import LoginScreen from "../login-screen/login-screen.jsx";
 import {ActionCreator as UserActionCreator, AuthorizationStatus} from "../../reducer/user/user";
@@ -16,36 +16,29 @@ import history from "../../history";
 
 class App extends PureComponent {
   _renderApp() {
-    const {activeID, activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, isLoading, onCardHover, onCardTitleClick, onSignInClick} = this.props;
+    const {activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, isLoading, onCardHover, onCardTitleClick, onSignInClick} = this.props;
 
 
     if (isLoading) {
       return false;
-    } else if (activeID === null) {
-      return (
-        <Main
-          activeOffer={activeOffer}
-          availableOffers={availableOffers}
-          authEmail={authEmail}
-          authorizationStatus={authorizationStatus}
-          currentCity={currentCity}
-          onCardHover={onCardHover}
-          onCardTitleClick={onCardTitleClick}
-          onSignInClick={onSignInClick}
-        />
-      );
     }
-
     return (
-      <Property
-        offer={activeOffer}
+      <Main
+        activeOffer={activeOffer}
+        availableOffers={availableOffers}
+        authEmail={authEmail}
+        authorizationStatus={authorizationStatus}
+        currentCity={currentCity}
         onCardHover={onCardHover}
         onCardTitleClick={onCardTitleClick}
+        onSignInClick={onSignInClick}
       />
     );
   }
 
   render() {
+    const {activeOffer, authorizationStatus, isSignedIn, onCardHover, onCardTitleClick} = this.props;
+
     return (
       <Router history={history}>
         <Switch>
@@ -53,10 +46,21 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path={AppRoute.LOGIN}>
-            {this.props.isSignedIn ? <Redirect to={AppRoute.ROOT}/> : <LoginScreen />}
+            {isSignedIn ? <Redirect to={AppRoute.ROOT}/> : <LoginScreen />}
           </Route>
           <Route exact path={AppRoute.FAVORITES}>
-            {this.props.authorizationStatus === AuthorizationStatus.NO_AUTH ? <Redirect to={AppRoute.LOGIN}/> : <Favorites />}
+            {authorizationStatus === AuthorizationStatus.NO_AUTH ? <Redirect to={AppRoute.LOGIN}/> :
+              <Favorites
+                onCardHover={onCardHover}
+                onCardTitleClick={onCardTitleClick}
+              />}
+          </Route>
+          <Route path={AppRoute.PROPERTY}>
+            <Property
+              offer={activeOffer}
+              onCardHover={onCardHover}
+              onCardTitleClick={onCardTitleClick}
+            />
           </Route>
         </Switch>
       </Router>
@@ -65,9 +69,6 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  activeID: PropTypes.oneOfType([
-    PropTypes.oneOf([null]),
-    PropTypes.number.isRequired]),
   activeOffer: PropTypes.object,
   availableOffers: PropTypes.arrayOf(offerShape).isRequired,
   authEmail: PropTypes.string,
@@ -81,7 +82,6 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeID: getActiveID(state),
   activeOffer: getActiveOffer(state),
   availableOffers: getAvailableOffers(state),
   authEmail: state[NameSpace.USER].authEmail,
@@ -99,7 +99,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.selectOffer(offer));
   },
   onCardTitleClick(offer) {
-    dispatch(ActionCreator.selectCard(offer));
     dispatch(ActionCreator.selectOffer(offer));
   },
   onCityClick(city) {

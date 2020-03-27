@@ -1,13 +1,9 @@
 import React, {PureComponent} from "react";
 import history from "../../history";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
 import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
 import {AppRoute, AuthorizationStatus, OfferType} from "../../const";
-import {Operation} from "../../reducer/offers/offers";
-import NameSpace from "../../reducer/name-space";
-
 
 class PlaceCard extends PureComponent {
   constructor(props) {
@@ -45,6 +41,7 @@ class PlaceCard extends PureComponent {
   _handleTitleClick() {
     const {offer, onClick} = this.props;
     onClick(offer);
+    history.push(AppRoute.PROPERTY + offer.id);
   }
 
   render() {
@@ -110,8 +107,8 @@ class PlaceCard extends PureComponent {
 }
 
 PlaceCard.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
   addToFavorite: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   onCardHover: PropTypes.func,
   onMouseEnter: PropTypes.func,
@@ -119,16 +116,4 @@ PlaceCard.propTypes = {
   offersView: PropTypes.string,
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: state[NameSpace.USER].authorizationStatus,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  addToFavorite(offer) {
-    dispatch(Operation.addToFavorite(offer));
-  },
-});
-
-export {PlaceCard};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlaceCard);
+export default PlaceCard;

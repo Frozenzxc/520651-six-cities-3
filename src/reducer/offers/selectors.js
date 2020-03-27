@@ -2,10 +2,6 @@ import {createSelector} from "reselect";
 import NameSpace from "../name-space.js";
 import {MAX_NEARBY_OFFERS} from "../../const";
 
-const getActiveID = (state) => {
-  return state[NameSpace.OFFERS].activeID;
-};
-
 const getCurrentCity = (state) => {
   return state[NameSpace.OFFERS].currentCity;
 };
@@ -38,4 +34,4 @@ const getAvailableOffers = createSelector(
     }
 );
 
-export {getActiveID, getCurrentCity, getActiveOffer, getNearbyOffers, getOffers, getReviews, getAvailableOffers, getFavoriteOffers};
+export {getCurrentCity, getActiveOffer, getNearbyOffers, getOffers, getReviews, getAvailableOffers, getFavoriteOffers};
