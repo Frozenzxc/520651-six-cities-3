@@ -32,7 +32,7 @@ const Main = ({activeOffer, availableOffers, authEmail, authorizationStatus, cur
                   {authorizationStatus === AuthorizationStatus.NO_AUTH ?
                     <Link
                       className="header__nav-link header__nav-link--profile"
-                      to={AppRoute.LOGIN}>
+                      to={AppRoute.FAVORITES}>
                       <span className="header__login">Sign in</span>
                     </Link> :
                     <Link

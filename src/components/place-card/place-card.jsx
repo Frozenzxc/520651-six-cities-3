@@ -3,7 +3,7 @@ import history from "../../history";
 import PropTypes from "prop-types";
 import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
-import {AppRoute, AuthorizationStatus, OfferType} from "../../const";
+import {AppRoute, OfferType} from "../../const";
 
 class PlaceCard extends PureComponent {
   constructor(props) {
@@ -24,18 +24,15 @@ class PlaceCard extends PureComponent {
   }
 
   _handleFavoriteClick() {
-    const {addToFavorite, authorizationStatus, offer} = this.props;
+    const {addToFavorite, offer} = this.props;
 
-    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      return history.push(AppRoute.LOGIN);
-    }
     addToFavorite(offer);
 
     this.setState((prevState) => ({
       isFavorite: !prevState.isFavorite,
     }));
 
-    return false;
+    return history.push(AppRoute.FAVORITES);
   }
 
   _handleTitleClick() {

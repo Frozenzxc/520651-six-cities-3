@@ -9,10 +9,11 @@ import Property from "../property/property.jsx";
 import {getActiveOffer, getCurrentCity, getAvailableOffers} from "../../reducer/offers/selectors";
 import NameSpace from "../../reducer/name-space";
 import LoginScreen from "../login-screen/login-screen.jsx";
-import {ActionCreator as UserActionCreator, AuthorizationStatus} from "../../reducer/user/user";
+import {ActionCreator as UserActionCreator} from "../../reducer/user/user";
 import {AppRoute} from "../../const";
 import Favorites from "../favorites/favorites.jsx";
 import history from "../../history";
+import PrivateRoute from "../private-route/private-route.jsx";
 
 class App extends PureComponent {
   _renderApp() {
@@ -37,7 +38,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {activeOffer, authorizationStatus, isSignedIn, onCardHover, onCardTitleClick} = this.props;
+    const {activeOffer, isSignedIn, onCardHover, onCardTitleClick} = this.props;
 
     return (
       <Router history={history}>
@@ -48,13 +49,6 @@ class App extends PureComponent {
           <Route exact path={AppRoute.LOGIN}>
             {isSignedIn ? <Redirect to={AppRoute.ROOT}/> : <LoginScreen />}
           </Route>
-          <Route exact path={AppRoute.FAVORITES}>
-            {authorizationStatus === AuthorizationStatus.NO_AUTH ? <Redirect to={AppRoute.LOGIN}/> :
-              <Favorites
-                onCardHover={onCardHover}
-                onCardTitleClick={onCardTitleClick}
-              />}
-          </Route>
           <Route path={AppRoute.PROPERTY}>
             <Property
               offer={activeOffer}
@@ -62,6 +56,18 @@ class App extends PureComponent {
               onCardTitleClick={onCardTitleClick}
             />
           </Route>
+          <PrivateRoute
+            exact
+            path={AppRoute.FAVORITES}
+            render={() => {
+              return (
+                <Favorites
+                  onCardHover={onCardHover}
+                  onCardTitleClick={onCardTitleClick}
+                />
+              );
+            }}
+          />
         </Switch>
       </Router>
     );

@@ -585,7 +585,7 @@ exports[`Should Main component render correctly with not authorized user 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="/login"
+                href="/favorites"
                 onClick={[Function]}
               >
                 <span
