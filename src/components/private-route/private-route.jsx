@@ -36,6 +36,5 @@ const mapStateToProps = (state) => ({
   authorizationStatus: state[NameSpace.USER].authorizationStatus,
 });
 
-
 export {PrivateRoute};
 export default connect(mapStateToProps)(PrivateRoute);

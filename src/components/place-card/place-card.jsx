@@ -3,7 +3,12 @@ import history from "../../history";
 import PropTypes from "prop-types";
 import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
-import {AppRoute, OfferType} from "../../const";
+import {AppRoute, AuthorizationStatus, OfferType} from "../../const";
+import {Link} from "react-router-dom";
+
+const getPropertyPath = (id) => {
+  return `/offer/${id}`;
+};
 
 class PlaceCard extends PureComponent {
   constructor(props) {
@@ -24,7 +29,11 @@ class PlaceCard extends PureComponent {
   }
 
   _handleFavoriteClick() {
-    const {addToFavorite, offer} = this.props;
+    const {addToFavorite, authorizationStatus, offer} = this.props;
+
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      return history.push(AppRoute.LOGIN);
+    }
 
     addToFavorite(offer);
 
@@ -32,13 +41,12 @@ class PlaceCard extends PureComponent {
       isFavorite: !prevState.isFavorite,
     }));
 
-    return history.push(AppRoute.FAVORITES);
+    return false;
   }
 
   _handleTitleClick() {
     const {offer, onClick} = this.props;
     onClick(offer);
-    history.push(AppRoute.PROPERTY + offer.id);
   }
 
   render() {
@@ -94,7 +102,7 @@ class PlaceCard extends PureComponent {
           <h2
             onClick={this._handleTitleClick}
             className="place-card__name">
-            <a href="#">{title}</a>
+            <Link to={getPropertyPath(this.props.offer.id)}>{title}</Link>
           </h2>
           <p className="place-card__type">{type}</p>
         </div>

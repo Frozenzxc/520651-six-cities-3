@@ -38,7 +38,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {activeOffer, isSignedIn, onCardHover, onCardTitleClick} = this.props;
+    const {activeOffer, authEmail, isSignedIn, onCardHover, onCardTitleClick} = this.props;
 
     return (
       <Router history={history}>
@@ -49,12 +49,17 @@ class App extends PureComponent {
           <Route exact path={AppRoute.LOGIN}>
             {isSignedIn ? <Redirect to={AppRoute.ROOT}/> : <LoginScreen />}
           </Route>
-          <Route path={AppRoute.PROPERTY}>
+          <Route path={AppRoute.PROPERTY} render={(routeProps) =>
             <Property
+              id={routeProps.match.params.id}
+              offers={this.props.offers}
+              authEmail={authEmail}
               offer={activeOffer}
               onCardHover={onCardHover}
               onCardTitleClick={onCardTitleClick}
             />
+          }
+          >
           </Route>
           <PrivateRoute
             exact
@@ -82,6 +87,7 @@ App.propTypes = {
   currentCity: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
   isSignedIn: PropTypes.bool.isRequired,
+  offers: PropTypes.arrayOf(offerShape).isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
   onSignInClick: PropTypes.func.isRequired,
@@ -95,6 +101,7 @@ const mapStateToProps = (state) => ({
   currentCity: getCurrentCity(state),
   isLoading: state[NameSpace.OFFERS].isLoading,
   isSignedIn: state[NameSpace.USER].isSignedIn,
+  offers: state[NameSpace.OFFERS].offers,
 });
 
 const mapDispatchToProps = (dispatch) => ({

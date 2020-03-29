@@ -22,6 +22,7 @@ it(`Property is rendered correctly without authorized user`, () => {
     },
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
+      authEmail: null,
     }
   });
 
@@ -29,6 +30,7 @@ it(`Property is rendered correctly without authorized user`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <Property
+          authEmail={null}
           authorizationStatus={AuthorizationStatus.NO_AUTH}
           isPropertyLoading={false}
           loadPropertyData={() => {}}
@@ -54,6 +56,7 @@ it(`Property is rendered correctly with authorized user`, () => {
     },
     [NameSpace.USER]: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
+      authEmail: `AAA@adfg.ru`,
     }
   });
 
@@ -61,6 +64,7 @@ it(`Property is rendered correctly with authorized user`, () => {
   const tree = renderer.create(
       <Provider store={store}>
         <Property
+          authEmail={`AAA@adfg.ru`}
           authorizationStatus={AuthorizationStatus.AUTH}
           isPropertyLoading={false}
           loadPropertyData={() => {}}

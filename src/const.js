@@ -26,7 +26,7 @@ const ReviewPostingStatus = {
 const AppRoute = {
   FAVORITES: `/favorites`,
   LOGIN: `/login`,
-  PROPERTY: `/offer/`,
+  PROPERTY: `/offer/:id`,
   ROOT: `/`,
 };
 

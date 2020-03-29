@@ -12,11 +12,11 @@ class Map extends PureComponent {
     this.map = {};
     this.leaflet = this.props.leaflet;
     this.activeIcon = this.leaflet.icon({
-      iconUrl: `img/pin-active.svg`,
+      iconUrl: `../img/pin-active.svg`,
       iconSize: [30, 40],
     });
     this.standartIcon = this.leaflet.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: `../img/pin.svg`,
       iconSize: [30, 40],
     });
     this.markers = [];
