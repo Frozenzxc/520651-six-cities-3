@@ -10,6 +10,10 @@ import NameSpace from "../../reducer/name-space";
 const PrivateRoute = (props) => {
   const {render, path, exact, authorizationStatus} = props;
 
+  if (authorizationStatus === null) {
+    return false;
+  }
+
   return (
     <Route
       path={path}

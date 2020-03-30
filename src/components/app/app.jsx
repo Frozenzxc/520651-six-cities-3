@@ -20,7 +20,7 @@ class App extends PureComponent {
     const {activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, isLoading, onCardHover, onCardTitleClick, onSignInClick} = this.props;
 
 
-    if (isLoading) {
+    if (isLoading && authorizationStatus === null) {
       return false;
     }
     return (
@@ -82,7 +82,10 @@ App.propTypes = {
   activeOffer: PropTypes.object,
   availableOffers: PropTypes.arrayOf(offerShape).isRequired,
   authEmail: PropTypes.string,
-  authorizationStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.oneOfType([
+    PropTypes.oneOf([null]),
+    PropTypes.string.isRequired
+  ]),
   currentCity: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
   isSignedIn: PropTypes.bool.isRequired,

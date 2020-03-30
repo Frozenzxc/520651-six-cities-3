@@ -2,7 +2,7 @@ import {AuthorizationStatus} from "../../const";
 import {extend} from "../../utils";
 
 const initialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  authorizationStatus: null,
   authEmail: null,
   isSignedIn: false,
 };
@@ -61,6 +61,7 @@ const Operation = {
               dispatch(ActionCreator.successfulAuthorization(response));
             })
             .catch((err) => {
+              dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
               throw err;
             });
   },
