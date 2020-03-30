@@ -23,8 +23,9 @@ it(`Reducer without additional parameters should return initial state`, () => {
     isFavoritesLoading: true,
     isFormBlocked: false,
     isLoading: true,
+    isNearbyOffersLoading: true,
+    isReviewsLoading: true,
     offers: [],
-    isPropertyLoading: true,
     nearbyOffers: [],
     reviews: [],
     reviewPostingStatus: null,
@@ -63,13 +64,13 @@ it(`Reducer should update offers by load favorite offers`, () => {
 
 it(`Reducer should update reviews by load reviews`, () => {
   expect(reducer({
-    isPropertyLoading: true,
+    isReviewsLoading: true,
     reviews: [],
   }, {
     type: ActionType.LOAD_REVIEWS,
     payload: notParsedReviews,
   })).toEqual({
-    isPropertyLoading: false,
+    isReviewsLoading: false,
     reviews,
   });
 });
@@ -186,33 +187,37 @@ it(`Reducer should change current city by a given new value`, () => {
 
 it(`Reducer should load nearby offers by a given new value`, () => {
   expect(reducer({
-    nearbyOffers: []
+    nearbyOffers: [],
+    isNearbyOffersLoading: true,
   }, {
     type: ActionType.LOAD_NEARBY_OFFERS,
     payload: notParsedOffers,
   })).toEqual({
     nearbyOffers: offers,
+    isNearbyOffersLoading: false,
   });
 
   expect(reducer({
     nearbyOffers: [],
+    isNearbyOffersLoading: true,
   }, {
     type: ActionType.LOAD_NEARBY_OFFERS,
     payload: [],
   })).toEqual({
     nearbyOffers: [],
+    isNearbyOffersLoading: false,
   });
 });
 
 it(`Reducer should load reviews by a given new value`, () => {
   expect(reducer({
-    isPropertyLoading: true,
+    isReviewsLoading: true,
     reviews: [],
   }, {
     type: ActionType.LOAD_REVIEWS,
     payload: notParsedReviews,
   })).toEqual({
-    isPropertyLoading: false,
+    isReviewsLoading: false,
     reviews,
   });
 });
@@ -292,10 +297,12 @@ it(`Reducer should change value by successful post review`, () => {
 it(`Reducer should update offers by add to favorites`, () => {
   expect(reducer({
     availableOffers: offers,
+    favoriteOffers,
   }, {
     type: ActionType.ADD_TO_FAVORITE,
     payload: notParsedFavoriteOffers[0],
   })).toEqual({
     availableOffers: afterAddToFavoriteOffers,
+    favoriteOffers,
   });
 });

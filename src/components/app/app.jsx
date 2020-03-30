@@ -52,7 +52,6 @@ class App extends PureComponent {
           <Route path={AppRoute.PROPERTY} render={(routeProps) =>
             <Property
               id={routeProps.match.params.id}
-              offers={this.props.offers}
               authEmail={authEmail}
               offer={activeOffer}
               onCardHover={onCardHover}
@@ -87,7 +86,6 @@ App.propTypes = {
   currentCity: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
   isSignedIn: PropTypes.bool.isRequired,
-  offers: PropTypes.arrayOf(offerShape).isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
   onSignInClick: PropTypes.func.isRequired,
@@ -101,7 +99,6 @@ const mapStateToProps = (state) => ({
   currentCity: getCurrentCity(state),
   isLoading: state[NameSpace.OFFERS].isLoading,
   isSignedIn: state[NameSpace.USER].isSignedIn,
-  offers: state[NameSpace.OFFERS].offers,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -4,6 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 import PlaceCard from "./place-card";
 import offers from "../../test-mocks/test-offers";
 import {AuthorizationStatus} from "../../const";
+import {BrowserRouter} from "react-router-dom";
 
 configure({adapter: new Adapter()});
 const offer = offers[0];
@@ -14,13 +15,15 @@ it(`should hover over the PlaceCard, information about the property appears in t
   const handleCardTitleClick = jest.fn();
 
   const placeCard = mount(
-      <PlaceCard
-        addToFavorite={() => {}}
-        authorizationStatus={AuthorizationStatus.AUTH}
-        onMouseEnter={handleMouseEnter}
-        onClick={handleCardTitleClick}
-        offer={offer}
-      />
+      <BrowserRouter>
+        <PlaceCard
+          addToFavorite={() => {}}
+          authorizationStatus={AuthorizationStatus.AUTH}
+          onMouseEnter={handleMouseEnter}
+          onClick={handleCardTitleClick}
+          offer={offer}
+        />
+      </BrowserRouter>
   );
 
   const title = placeCard.find(`h2.place-card__name`);

@@ -15,7 +15,8 @@ const initialState = {
   isFavoritesLoading: true,
   isFormBlocked: false,
   isLoading: true,
-  isPropertyLoading: true,
+  isNearbyOffersLoading: true,
+  isReviewsLoading: true,
   nearbyOffers: [],
   reviews: [],
   reviewPostingStatus: null,
@@ -83,9 +84,14 @@ const reducer = (state = initialState, action) => {
       const index = state.availableOffers.findIndex((offer) => offer.id === parsedOffer.id);
       const nextState = produce(state, (draft) => {
         draft.availableOffers[index].isFavorite = parsedOffer.isFavorite;
+        if (!parsedOffer.isFavorite) {
+          const offerIndex = state.favoriteOffers.findIndex((offer) => offer.id === parsedOffer.id);
+          draft.favoriteOffers.splice([offerIndex], 1);
+        }
       });
       return extend(state, {
         availableOffers: nextState.availableOffers,
+        favoriteOffers: nextState.favoriteOffers,
       });
 
     case ActionType.BLOCK_FORM:
@@ -104,6 +110,7 @@ const reducer = (state = initialState, action) => {
       let parsedNearbyOffers = action.payload.map((offer) => parseOffer(offer));
       return extend(state, {
         nearbyOffers: parsedNearbyOffers,
+        isNearbyOffersLoading: false,
       });
 
     case ActionType.LOAD_OFFERS:
@@ -118,7 +125,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_REVIEWS:
       let parsedReviews = action.payload.map((review) => parseReview(review));
       return extend(state, {
-        isPropertyLoading: false,
+        isReviewsLoading: false,
         reviews: parsedReviews,
       });
 

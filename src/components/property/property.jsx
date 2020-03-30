@@ -9,7 +9,7 @@ import Map from "../map/map.jsx";
 import leaflet from "leaflet";
 import ReviewsForm from "../reviews-form/reviews-form.jsx";
 import {Operation as DataOperation} from "../../reducer/offers/offers";
-import {getNearbyOffers, getReviews} from "../../reducer/offers/selectors";
+import {getNearbyOffers, getOffers, getReviews} from "../../reducer/offers/selectors";
 import NameSpace from "../../reducer/name-space";
 import {connect} from "react-redux";
 import {reviewShape} from "../../prop-types.jsx";
@@ -17,24 +17,19 @@ import ReviewPostError from "../review-post-error/review-post-error.jsx";
 import {Link} from "react-router-dom";
 
 class Property extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.offer = this.props.offers.find((offer) => offer.id === +this.props.id);
-
-  }
-
   componentDidMount() {
     const {loadPropertyData, id} = this.props;
     loadPropertyData(id);
   }
 
   render() {
-    const {authEmail, authorizationStatus, isPropertyLoading, nearbyOffers, onCardTitleClick, onCardHover, reviews} = this.props;
+    const {authEmail, authorizationStatus, isLoading, isNearbyOffersLoading, isReviewsLoading, nearbyOffers, offers, onCardTitleClick, onCardHover, reviews} = this.props;
 
-    if (isPropertyLoading) {
+    if (isLoading || isNearbyOffersLoading || isReviewsLoading) {
       return false;
     }
+
+    this.offer = offers.find((offer) => offer.id === +this.props.id);
 
     const {
       bedrooms,
@@ -201,7 +196,9 @@ Property.propTypes = {
   authEmail: PropTypes.string,
   authorizationStatus: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  isPropertyLoading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isNearbyOffersLoading: PropTypes.bool.isRequired,
+  isReviewsLoading: PropTypes.bool.isRequired,
   loadPropertyData: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerShape).isRequired,
   onCardHover: PropTypes.func.isRequired,
@@ -212,15 +209,19 @@ Property.propTypes = {
 
 const mapStateToProps = (state) => ({
   authorizationStatus: state[NameSpace.USER].authorizationStatus,
-  isPropertyLoading: state[NameSpace.OFFERS].isPropertyLoading,
+  isLoading: state[NameSpace.OFFERS].isLoading,
+  isNearbyOffersLoading: state[NameSpace.OFFERS].isNearbyOffersLoading,
+  isReviewsLoading: state[NameSpace.OFFERS].isReviewsLoading,
   nearbyOffers: getNearbyOffers(state),
+  offers: getOffers(state),
   reviews: getReviews(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   loadPropertyData(id) {
-    dispatch(DataOperation.loadNearbyOffers(id));
+    dispatch(DataOperation.loadOffers());
     dispatch(DataOperation.loadReviews(id));
+    dispatch(DataOperation.loadNearbyOffers(id));
   },
 
 });
