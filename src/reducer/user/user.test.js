@@ -1,4 +1,4 @@
-import {reducer, ActionCreator, ActionType} from "./user.js";
+import {reducer, ActionCreator, ActionType} from "./user";
 import {AuthorizationStatus} from "../../const";
 
 const response = {

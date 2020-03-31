@@ -1,5 +1,5 @@
 import {createSelector} from "reselect";
-import NameSpace from "../name-space.js";
+import NameSpace from "../name-space";
 import {MAX_NEARBY_OFFERS} from "../../const";
 
 const getCurrentCity = (state) => {

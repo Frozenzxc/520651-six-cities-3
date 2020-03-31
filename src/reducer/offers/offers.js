@@ -1,4 +1,4 @@
-import {extend} from "../../utils.js";
+import {extend} from "../../utils";
 import {parseOffer, parseReview} from "../../utils";
 import {ActionCreator, ActionType} from "../offers/actions";
 import {ReviewPostingStatus} from "../../const";

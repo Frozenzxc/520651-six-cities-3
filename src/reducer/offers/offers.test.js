@@ -1,9 +1,9 @@
-import offers from "../../test-mocks/test-offers";
+import {offers} from "../../test-mocks/test-offers";
 import favoriteOffers from "../../test-mocks/test-favorite-offers";
-import reviews from "../../test-mocks/reviews";
+import {reviews} from "../../test-mocks/reviews";
 import MockAdapter from "axios-mock-adapter";
-import {createAPI} from "../../api.js";
-import {reducer, ActionType, Operation} from "./offers.js";
+import {createAPI} from "../../api";
+import {reducer, ActionType, Operation} from "./offers";
 import notParsedOffers from "../../test-mocks/not-parsed-offers";
 import notParsedReviews from "../../test-mocks/not-parsed-reviews";
 import notParsedFavoriteOffers from "../../test-mocks/not-parsed-favorite-offers";

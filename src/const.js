@@ -4,13 +4,6 @@ const OfferType = {
   NEARBY: `near`,
 };
 
-const SortType = {
-  POPULAR: `Popular`,
-  PRICE_TO_HIGH: `Price: low to high`,
-  PRICE_TO_LOW: `Price: high to low`,
-  RATING: `Top rated first`,
-};
-
 const MAX_NEARBY_OFFERS = 3;
 
 const AuthorizationStatus = {
@@ -30,4 +23,4 @@ const AppRoute = {
   ROOT: `/`,
 };
 
-export {OfferType, SortType, MAX_NEARBY_OFFERS, AuthorizationStatus, AppRoute, ReviewPostingStatus};
+export {MAX_NEARBY_OFFERS, AuthorizationStatus, AppRoute, ReviewPostingStatus, OfferType};
