@@ -87,7 +87,8 @@ exports[`PlaceCard is rendered correctly 1`] = `
       onClick={[Function]}
     >
       <a
-        href="#"
+        href="/offer/1"
+        onClick={[Function]}
       >
         The house among olive 
       </a>

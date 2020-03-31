@@ -52,7 +52,6 @@ it(`Render App with loading screen`, () => {
 
   const store = mockStore({
     [NameSpace.OFFERS]: {
-      activeID: null,
       activeOffer: offers[1],
       currentCity: offers[0].city.name,
       availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
@@ -68,7 +67,6 @@ it(`Render App with loading screen`, () => {
         .create(
             <Provider store={store}>
               <App
-                activeID={null}
                 activeOffer={offers[0]}
                 availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
                 currentCity={offers[0].city.name}
@@ -91,7 +89,6 @@ it(`Render App with SignIn screen`, () => {
 
   const store = mockStore({
     [NameSpace.OFFERS]: {
-      activeID: null,
       activeOffer: offers[1],
       currentCity: offers[0].city.name,
       availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
@@ -107,7 +104,6 @@ it(`Render App with SignIn screen`, () => {
         .create(
             <Provider store={store}>
               <App
-                activeID={null}
                 activeOffer={offers[0]}
                 availableOffers={offers.filter((offer) => offer.city.name === offers[0].city.name)}
                 currentCity={offers[0].city.name}

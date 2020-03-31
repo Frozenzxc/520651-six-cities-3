@@ -34,8 +34,7 @@ class CitiesList extends PureComponent {
                 className="locations__item">
                 <a
                   data-city={city}
-                  className={`locations__item-link tabs__item ${city === currentCity ? `tabs__item--active` : ``}`}
-                  href="#">
+                  className={`locations__item-link tabs__item ${city === currentCity ? `tabs__item--active` : ``}`}>
                   <span data-city={city}>{city}</span>
                 </a>
               </li>);

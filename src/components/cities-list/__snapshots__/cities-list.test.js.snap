@@ -17,7 +17,6 @@ exports[`CitiesList is rendered correctly 1`] = `
         <a
           className="locations__item-link tabs__item tabs__item--active"
           data-city="Cologne"
-          href="#"
         >
           <span
             data-city="Cologne"
@@ -33,7 +32,6 @@ exports[`CitiesList is rendered correctly 1`] = `
         <a
           className="locations__item-link tabs__item "
           data-city="Paris"
-          href="#"
         >
           <span
             data-city="Paris"
@@ -49,7 +47,6 @@ exports[`CitiesList is rendered correctly 1`] = `
         <a
           className="locations__item-link tabs__item "
           data-city="Hamburg"
-          href="#"
         >
           <span
             data-city="Hamburg"
@@ -65,7 +62,6 @@ exports[`CitiesList is rendered correctly 1`] = `
         <a
           className="locations__item-link tabs__item "
           data-city="Brussels"
-          href="#"
         >
           <span
             data-city="Brussels"

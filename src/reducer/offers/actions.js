@@ -55,11 +55,6 @@ const ActionCreator = {
     };
   },
 
-  selectCard: (offer) => ({
-    type: ActionType.SELECT_CARD,
-    payload: offer.id,
-  }),
-
   selectCity: (city) => ({
     type: ActionType.SELECT_CITY,
     payload: city,

@@ -6,6 +6,7 @@ import {AuthorizationStatus, OfferType} from "../../const";
 import offers from "../../test-mocks/test-offers";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
+import {BrowserRouter} from "react-router-dom";
 
 const mockStore = configureStore([]);
 
@@ -18,13 +19,16 @@ it(`PlacesList is rendered correctly`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <PlacesList
-          authorizationStatus={AuthorizationStatus.AUTH}
-          offers={offers}
-          onCardHover={() => {}}
-          onCardTitleClick={() => {}}
-          offersView={OfferType.ALL}
-        />
+        <BrowserRouter>
+          <PlacesList
+            addToFavorite={() => {}}
+            authorizationStatus={AuthorizationStatus.AUTH}
+            offers={offers}
+            onCardHover={() => {}}
+            onCardTitleClick={() => {}}
+            offersView={OfferType.ALL}
+          />
+        </BrowserRouter>
       </Provider>
   ).toJSON();
 
@@ -40,13 +44,16 @@ it(`PlacesList is rendered correctly without offers`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <PlacesList
-          authorizationStatus={AuthorizationStatus.AUTH}
-          offers={[]}
-          onCardHover={() => {}}
-          onCardTitleClick={() => {}}
-          offersView={OfferType.ALL}
-        />
+        <BrowserRouter>
+          <PlacesList
+            addToFavorite={() => {}}
+            authorizationStatus={AuthorizationStatus.AUTH}
+            offers={[]}
+            onCardHover={() => {}}
+            onCardTitleClick={() => {}}
+            offersView={OfferType.ALL}
+          />
+        </BrowserRouter>
       </Provider>
   ).toJSON();
 

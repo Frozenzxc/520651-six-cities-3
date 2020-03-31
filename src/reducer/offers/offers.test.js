@@ -17,15 +17,15 @@ const api = createAPI(() => {});
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     availableOffers: [],
-    activeID: null,
     activeOffer: null,
     currentCity: `Amsterdam`,
     favoriteOffers: [],
     isFavoritesLoading: true,
     isFormBlocked: false,
     isLoading: true,
+    isNearbyOffersLoading: true,
+    isReviewsLoading: true,
     offers: [],
-    isPropertyLoading: true,
     nearbyOffers: [],
     reviews: [],
     reviewPostingStatus: null,
@@ -64,13 +64,13 @@ it(`Reducer should update offers by load favorite offers`, () => {
 
 it(`Reducer should update reviews by load reviews`, () => {
   expect(reducer({
-    isPropertyLoading: true,
+    isReviewsLoading: true,
     reviews: [],
   }, {
     type: ActionType.LOAD_REVIEWS,
     payload: notParsedReviews,
   })).toEqual({
-    isPropertyLoading: false,
+    isReviewsLoading: false,
     reviews,
   });
 });
@@ -153,46 +153,8 @@ describe(`Operation work correctly`, () => {
   });
 });
 
-it(`Reducer should select offer by a given value`, () => {
-  expect(reducer({
-    activeID: null,
-    activeOffer: null,
-    availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
-    currentCity: offers[0].city.name,
-    offers,
-  }, {
-    type: ActionType.SELECT_CARD,
-    payload: 23,
-  })).toEqual({
-    activeID: 23,
-    activeOffer: null,
-    availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
-    currentCity: offers[0].city.name,
-    offers,
-  });
-
-  expect(reducer({
-    activeID: null,
-    activeOffer: null,
-    availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
-    currentCity: offers[0].city.name,
-    offers,
-  }, {
-    type: ActionType.SELECT_CARD,
-    payload: null,
-  })).toEqual({
-    activeID: null,
-    activeOffer: null,
-    availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
-    currentCity: offers[0].city.name,
-    offers,
-  });
-});
-
-
 it(`Reducer should change current city by a given new value`, () => {
   expect(reducer({
-    activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
     currentCity: offers[0].city.name,
@@ -201,7 +163,6 @@ it(`Reducer should change current city by a given new value`, () => {
     type: ActionType.SELECT_CITY,
     payload: offers[1].city.name,
   })).toEqual({
-    activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
     currentCity: offers[1].city.name,
@@ -209,7 +170,6 @@ it(`Reducer should change current city by a given new value`, () => {
   });
 
   expect(reducer({
-    activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
     currentCity: offers[0].city.name,
@@ -218,7 +178,6 @@ it(`Reducer should change current city by a given new value`, () => {
     type: ActionType.SELECT_CITY,
     payload: offers[0].city.name,
   })).toEqual({
-    activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
     currentCity: offers[0].city.name,
@@ -228,33 +187,37 @@ it(`Reducer should change current city by a given new value`, () => {
 
 it(`Reducer should load nearby offers by a given new value`, () => {
   expect(reducer({
-    nearbyOffers: []
+    nearbyOffers: [],
+    isNearbyOffersLoading: true,
   }, {
     type: ActionType.LOAD_NEARBY_OFFERS,
     payload: notParsedOffers,
   })).toEqual({
     nearbyOffers: offers,
+    isNearbyOffersLoading: false,
   });
 
   expect(reducer({
     nearbyOffers: [],
+    isNearbyOffersLoading: true,
   }, {
     type: ActionType.LOAD_NEARBY_OFFERS,
     payload: [],
   })).toEqual({
     nearbyOffers: [],
+    isNearbyOffersLoading: false,
   });
 });
 
 it(`Reducer should load reviews by a given new value`, () => {
   expect(reducer({
-    isPropertyLoading: true,
+    isReviewsLoading: true,
     reviews: [],
   }, {
     type: ActionType.LOAD_REVIEWS,
     payload: notParsedReviews,
   })).toEqual({
-    isPropertyLoading: false,
+    isReviewsLoading: false,
     reviews,
   });
 });
@@ -281,7 +244,6 @@ it(`Reducer should block form on submit`, () => {
 
 it(`Reducer should change active offer by a given new value`, () => {
   expect(reducer({
-    activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
     currentCity: offers[0].city.name,
@@ -290,7 +252,6 @@ it(`Reducer should change active offer by a given new value`, () => {
     type: ActionType.SELECT_OFFER,
     payload: offers[1],
   })).toEqual({
-    activeID: null,
     activeOffer: offers[1],
     availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
     currentCity: offers[0].city.name,
@@ -298,7 +259,6 @@ it(`Reducer should change active offer by a given new value`, () => {
   });
 
   expect(reducer({
-    activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
     currentCity: offers[0].city.name,
@@ -307,7 +267,6 @@ it(`Reducer should change active offer by a given new value`, () => {
     type: ActionType.SELECT_OFFER,
     payload: null,
   })).toEqual({
-    activeID: null,
     activeOffer: null,
     availableOffers: offers.filter((offer) => offer.city.name === offers[0].city.name),
     currentCity: offers[0].city.name,
@@ -338,10 +297,12 @@ it(`Reducer should change value by successful post review`, () => {
 it(`Reducer should update offers by add to favorites`, () => {
   expect(reducer({
     availableOffers: offers,
+    favoriteOffers,
   }, {
     type: ActionType.ADD_TO_FAVORITE,
     payload: notParsedFavoriteOffers[0],
   })).toEqual({
     availableOffers: afterAddToFavoriteOffers,
+    favoriteOffers,
   });
 });

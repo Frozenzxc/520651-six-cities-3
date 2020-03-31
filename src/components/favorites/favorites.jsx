@@ -17,7 +17,7 @@ class Favorites extends PureComponent {
   }
 
   render() {
-    const {authorizationStatus, authEmail, isFavoritesLoading, favoriteOffers} = this.props;
+    const {authorizationStatus, addToFavorite, authEmail, isFavoritesLoading, favoriteOffers, onCardHover, onCardTitleClick} = this.props;
 
 
     if (isFavoritesLoading) {
@@ -49,10 +49,10 @@ class Favorites extends PureComponent {
                       {favoriteOffers.filter((offer) => offer.city.name === city).map((card) => {
                         return (
                           <PlaceCard
-                            onMouseEnter={() => {
-                            }}
-                            onClick={() => {
-                            }}
+                            authorizationStatus={authorizationStatus}
+                            addToFavorite={addToFavorite}
+                            onMouseEnter={onCardHover}
+                            onClick={onCardTitleClick}
                             offer={card}
                             key={card.id}
                             offersView={OfferType.FAVORITES}
@@ -71,11 +71,14 @@ class Favorites extends PureComponent {
 }
 
 Favorites.propTypes = {
+  addToFavorite: PropTypes.func.isRequired,
   authEmail: PropTypes.string,
   authorizationStatus: PropTypes.string.isRequired,
   isFavoritesLoading: PropTypes.bool.isRequired,
   loadFavoriteOffers: PropTypes.func.isRequired,
   favoriteOffers: PropTypes.arrayOf(offerShape),
+  onCardHover: PropTypes.func.isRequired,
+  onCardTitleClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -86,6 +89,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  addToFavorite(offer) {
+    dispatch(Operation.addToFavorite(offer));
+  },
   loadFavoriteOffers() {
     dispatch(Operation.loadFavoriteOffers());
   },

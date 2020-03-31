@@ -6,6 +6,7 @@ import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
 import {AuthorizationStatus} from "../../const";
 import favoriteOffers from "../../test-mocks/test-favorite-offers";
+import {BrowserRouter} from "react-router-dom";
 
 const mockStore = configureStore([]);
 
@@ -24,13 +25,18 @@ it(`Should Favorites component render correctly`, () => {
 
   const tree = renderer.create(
       <Provider store={store}>
-        <Favorites
-          favoriteOffers={favoriteOffers}
-          loadFavoriteOffers={() => {}}
-          isFavoritesLoading={false}
-          authorizationStatus={AuthorizationStatus.AUTH}
-          authEmail={`AAA@adfg.ru`}
-        />
+        <BrowserRouter>
+          <Favorites
+            addToFavorite={() => {}}
+            favoriteOffers={favoriteOffers}
+            loadFavoriteOffers={() => {}}
+            isFavoritesLoading={false}
+            authorizationStatus={AuthorizationStatus.AUTH}
+            authEmail={`AAA@adfg.ru`}
+            onCardHover={() => {}}
+            onCardTitleClick={() => {}}
+          />
+        </BrowserRouter>
       </Provider>
   )
         .toJSON();

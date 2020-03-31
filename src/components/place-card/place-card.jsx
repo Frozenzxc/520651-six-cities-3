@@ -1,13 +1,14 @@
 import React, {PureComponent} from "react";
 import history from "../../history";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
 import {offerShape} from "../../prop-types.jsx";
 import {getRating} from "../../common";
 import {AppRoute, AuthorizationStatus, OfferType} from "../../const";
-import {Operation} from "../../reducer/offers/offers";
-import NameSpace from "../../reducer/name-space";
+import {Link} from "react-router-dom";
 
+const getPropertyPath = (id) => {
+  return `/offer/${id}`;
+};
 
 class PlaceCard extends PureComponent {
   constructor(props) {
@@ -33,6 +34,7 @@ class PlaceCard extends PureComponent {
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       return history.push(AppRoute.LOGIN);
     }
+
     addToFavorite(offer);
 
     this.setState((prevState) => ({
@@ -100,7 +102,7 @@ class PlaceCard extends PureComponent {
           <h2
             onClick={this._handleTitleClick}
             className="place-card__name">
-            <a href="#">{title}</a>
+            <Link to={getPropertyPath(this.props.offer.id)}>{title}</Link>
           </h2>
           <p className="place-card__type">{type}</p>
         </div>
@@ -110,8 +112,8 @@ class PlaceCard extends PureComponent {
 }
 
 PlaceCard.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
   addToFavorite: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   onCardHover: PropTypes.func,
   onMouseEnter: PropTypes.func,
@@ -119,16 +121,4 @@ PlaceCard.propTypes = {
   offersView: PropTypes.string,
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: state[NameSpace.USER].authorizationStatus,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  addToFavorite(offer) {
-    dispatch(Operation.addToFavorite(offer));
-  },
-});
-
-export {PlaceCard};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlaceCard);
+export default PlaceCard;

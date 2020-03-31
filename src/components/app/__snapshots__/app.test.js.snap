@@ -18,6 +18,8 @@ exports[`Render App with SignIn screen 1`] = `
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
@@ -81,7 +83,6 @@ exports[`Render App with SignIn screen 1`] = `
             <a
               className="locations__item-link tabs__item tabs__item--active"
               data-city="Cologne"
-              href="#"
             >
               <span
                 data-city="Cologne"
@@ -97,7 +98,6 @@ exports[`Render App with SignIn screen 1`] = `
             <a
               className="locations__item-link tabs__item "
               data-city="Paris"
-              href="#"
             >
               <span
                 data-city="Paris"
@@ -113,7 +113,6 @@ exports[`Render App with SignIn screen 1`] = `
             <a
               className="locations__item-link tabs__item "
               data-city="Hamburg"
-              href="#"
             >
               <span
                 data-city="Hamburg"
@@ -129,7 +128,6 @@ exports[`Render App with SignIn screen 1`] = `
             <a
               className="locations__item-link tabs__item "
               data-city="Brussels"
-              href="#"
             >
               <span
                 data-city="Brussels"
@@ -314,7 +312,8 @@ exports[`Render App with SignIn screen 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
+                    onClick={[Function]}
                   >
                     The house among olive 
                   </a>
@@ -412,7 +411,8 @@ exports[`Render App with SignIn screen 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
+                    onClick={[Function]}
                   >
                     Waterfront with extraordinary view
                   </a>
@@ -510,7 +510,8 @@ exports[`Render App with SignIn screen 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/4"
+                    onClick={[Function]}
                   >
                     Loft Studio in the Central Area
                   </a>
@@ -564,6 +565,8 @@ exports[`Render App with loading screen 1`] = `
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
@@ -627,7 +630,6 @@ exports[`Render App with loading screen 1`] = `
             <a
               className="locations__item-link tabs__item tabs__item--active"
               data-city="Cologne"
-              href="#"
             >
               <span
                 data-city="Cologne"
@@ -643,7 +645,6 @@ exports[`Render App with loading screen 1`] = `
             <a
               className="locations__item-link tabs__item "
               data-city="Paris"
-              href="#"
             >
               <span
                 data-city="Paris"
@@ -659,7 +660,6 @@ exports[`Render App with loading screen 1`] = `
             <a
               className="locations__item-link tabs__item "
               data-city="Hamburg"
-              href="#"
             >
               <span
                 data-city="Hamburg"
@@ -675,7 +675,6 @@ exports[`Render App with loading screen 1`] = `
             <a
               className="locations__item-link tabs__item "
               data-city="Brussels"
-              href="#"
             >
               <span
                 data-city="Brussels"
@@ -860,7 +859,8 @@ exports[`Render App with loading screen 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
+                    onClick={[Function]}
                   >
                     The house among olive 
                   </a>
@@ -958,7 +958,8 @@ exports[`Render App with loading screen 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
+                    onClick={[Function]}
                   >
                     Waterfront with extraordinary view
                   </a>
@@ -1056,7 +1057,8 @@ exports[`Render App with loading screen 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/4"
+                    onClick={[Function]}
                   >
                     Loft Studio in the Central Area
                   </a>
@@ -1110,6 +1112,8 @@ exports[`Render App without loading screen 1`] = `
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
@@ -1131,7 +1135,7 @@ exports[`Render App without loading screen 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="/login"
+                href="/favorites"
                 onClick={[Function]}
               >
                 <span
@@ -1170,7 +1174,6 @@ exports[`Render App without loading screen 1`] = `
             <a
               className="locations__item-link tabs__item tabs__item--active"
               data-city="Cologne"
-              href="#"
             >
               <span
                 data-city="Cologne"
@@ -1186,7 +1189,6 @@ exports[`Render App without loading screen 1`] = `
             <a
               className="locations__item-link tabs__item "
               data-city="Paris"
-              href="#"
             >
               <span
                 data-city="Paris"
@@ -1202,7 +1204,6 @@ exports[`Render App without loading screen 1`] = `
             <a
               className="locations__item-link tabs__item "
               data-city="Hamburg"
-              href="#"
             >
               <span
                 data-city="Hamburg"
@@ -1218,7 +1219,6 @@ exports[`Render App without loading screen 1`] = `
             <a
               className="locations__item-link tabs__item "
               data-city="Brussels"
-              href="#"
             >
               <span
                 data-city="Brussels"
@@ -1403,7 +1403,8 @@ exports[`Render App without loading screen 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
+                    onClick={[Function]}
                   >
                     The house among olive 
                   </a>
@@ -1501,7 +1502,8 @@ exports[`Render App without loading screen 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
+                    onClick={[Function]}
                   >
                     Waterfront with extraordinary view
                   </a>
@@ -1599,7 +1601,8 @@ exports[`Render App without loading screen 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/4"
+                    onClick={[Function]}
                   >
                     Loft Studio in the Central Area
                   </a>

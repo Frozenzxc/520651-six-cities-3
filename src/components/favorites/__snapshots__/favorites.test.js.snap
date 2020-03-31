@@ -127,7 +127,8 @@ exports[`Should Favorites component render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
+                    onClick={[Function]}
                   >
                     The house among olive 
                   </a>
@@ -226,7 +227,8 @@ exports[`Should Favorites component render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
+                    onClick={[Function]}
                   >
                     Waterfront with extraordinary view
                   </a>
@@ -325,7 +327,8 @@ exports[`Should Favorites component render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/4"
+                    onClick={[Function]}
                   >
                     Loft Studio in the Central Area
                   </a>
@@ -448,7 +451,8 @@ exports[`Should Favorites component render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/3"
+                    onClick={[Function]}
                   >
                     Nice, cozy, warm big bed apartment
                   </a>
@@ -571,7 +575,8 @@ exports[`Should Favorites component render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/5"
+                    onClick={[Function]}
                   >
                     Penthouse, 4-5 rooms + 5 balconies
                   </a>
@@ -670,7 +675,8 @@ exports[`Should Favorites component render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/7"
+                    onClick={[Function]}
                   >
                     Waterfront with extraordinary view
                   </a>
@@ -793,7 +799,8 @@ exports[`Should Favorites component render correctly 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/6"
+                    onClick={[Function]}
                   >
                     Loft Studio in the Central Area
                   </a>

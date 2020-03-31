@@ -1,12 +1,11 @@
-import React, {Fragment} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {offerShape} from "../../prop-types.jsx";
 import Map from "../map/map.jsx";
 import leaflet from "leaflet";
-import {OfferType} from "../../const";
+import {AppRoute, OfferType} from "../../const";
 import CitiesList from "../cities-list/cities-list.jsx";
-import {getRoute} from "../../utils";
 import Sort from "../sort/sort.jsx";
 import withSortingComponent from "../../hocs/with-sorting-component/with-sorting-component";
 import PlacesList from "../places-list/places-list.jsx";
@@ -23,25 +22,27 @@ const Main = ({activeOffer, availableOffers, authEmail, authorizationStatus, cur
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link header__logo-link--active">
+              <Link to={AppRoute.ROOT} className="header__logo-link header__logo-link--active">
                 <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-              </a>
+              </Link>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <Link
-                    className="header__nav-link header__nav-link--profile"
-                    to={getRoute(authorizationStatus)}>
-                    {authorizationStatus === AuthorizationStatus.NO_AUTH ?
-                      <span className="header__login">Sign in</span> :
-                      <Fragment>
-                        <div className="header__avatar-wrapper user__avatar-wrapper">
-                        </div>
-                        <span className="header__user-name user__name">{authEmail}</span>
-                      </Fragment>
-                    }
-                  </Link>
+                  {authorizationStatus === AuthorizationStatus.NO_AUTH ?
+                    <Link
+                      className="header__nav-link header__nav-link--profile"
+                      to={AppRoute.FAVORITES}>
+                      <span className="header__login">Sign in</span>
+                    </Link> :
+                    <Link
+                      className="header__nav-link header__nav-link--profile"
+                      to={AppRoute.FAVORITES}>
+                      <div className="header__avatar-wrapper user__avatar-wrapper">
+                      </div>
+                      <span className="header__user-name user__name">{authEmail}</span>
+                    </Link>
+                  }
                 </li>
               </ul>
             </nav>
