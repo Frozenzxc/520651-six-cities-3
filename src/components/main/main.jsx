@@ -87,7 +87,10 @@ Main.propTypes = {
   activeOffer: PropTypes.object,
   availableOffers: PropTypes.arrayOf(offerShape),
   authEmail: PropTypes.string,
-  authorizationStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.oneOfType([
+    PropTypes.oneOf([null]),
+    PropTypes.string.isRequired
+  ]),
   currentCity: PropTypes.string.isRequired,
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,

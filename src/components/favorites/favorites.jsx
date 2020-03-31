@@ -9,6 +9,9 @@ import {connect} from "react-redux";
 import NameSpace from "../../reducer/name-space";
 import {Operation} from "../../reducer/offers/offers";
 import FavoritesEmpty from "../favorites-empty/favorites-empty.jsx";
+import withPlaceCardComponent from "../../hocs/with-place-card-component/with-place-card-component";
+
+const PlaceCardWrapped = withPlaceCardComponent(PlaceCard);
 
 class Favorites extends PureComponent {
   componentDidMount() {
@@ -48,7 +51,7 @@ class Favorites extends PureComponent {
                     <div className="favorites__places">
                       {favoriteOffers.filter((offer) => offer.city.name === city).map((card) => {
                         return (
-                          <PlaceCard
+                          <PlaceCardWrapped
                             authorizationStatus={authorizationStatus}
                             addToFavorite={addToFavorite}
                             onMouseEnter={onCardHover}

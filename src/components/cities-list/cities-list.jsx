@@ -10,11 +10,11 @@ class CitiesList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._handleCityClick = this._handleCityClick.bind(this);
+    this.handleCityClick = this.handleCityClick.bind(this);
   }
 
 
-  _handleCityClick(evt) {
+  handleCityClick(evt) {
     const {onCityClick} = this.props;
     onCityClick(evt.target.dataset.city);
   }
@@ -29,7 +29,7 @@ class CitiesList extends PureComponent {
           <ul className="locations__list tabs__list">
             {citiesList.map((city) => {
               return (<li
-                onClick={this._handleCityClick}
+                onClick={this.handleCityClick}
                 key={city}
                 className="locations__item">
                 <a

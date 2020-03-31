@@ -1,38 +1,41 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import PlaceCard from "../place-card/place-card.jsx";
 import {offerShape} from "../../prop-types.jsx";
 import NameSpace from "../../reducer/name-space";
 import {Operation} from "../../reducer/offers/offers";
 import {connect} from "react-redux";
+import withPlaceCardComponent from "../../hocs/with-place-card-component/with-place-card-component";
 
-class PlacesList extends PureComponent {
-  render() {
-    const {addToFavorite, authorizationStatus, onCardTitleClick, onCardHover, offers, offersView} = this.props;
+const PlaceCardWrapped = withPlaceCardComponent(PlaceCard);
 
-    return (
-      <div className={`${offersView}-places__list places__list tabs__content`}>
-        {offers.length ?
-          offers.map((offer) =>
-            <PlaceCard
-              addToFavorite={addToFavorite}
-              authorizationStatus={authorizationStatus}
-              onMouseEnter={onCardHover}
-              onClick={onCardTitleClick}
-              offer={offer}
-              key={offer.id}
-              offersView={offersView}
-            />
-          ) : `No places to stay available`
-        }
-      </div>
-    );
-  }
-}
+const PlacesList = ({addToFavorite, authorizationStatus, onCardTitleClick, onCardHover, offers, offersView}) => {
+
+  return (
+    <div className={`${offersView}-places__list places__list tabs__content`}>
+      {offers.length ?
+        offers.map((offer) =>
+          <PlaceCardWrapped
+            addToFavorite={addToFavorite}
+            authorizationStatus={authorizationStatus}
+            onMouseEnter={onCardHover}
+            onClick={onCardTitleClick}
+            offer={offer}
+            key={offer.id}
+            offersView={offersView}
+          />
+        ) : `No places to stay available`
+      }
+    </div>
+  );
+};
 
 PlacesList.propTypes = {
   addToFavorite: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.oneOfType([
+    PropTypes.oneOf([null]),
+    PropTypes.string.isRequired
+  ]),
   onCardHover: PropTypes.func.isRequired,
   onCardTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerShape),

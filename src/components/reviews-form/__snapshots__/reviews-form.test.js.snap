@@ -44,7 +44,7 @@ exports[`ReviewForm is rendered correctly 1`] = `
       </svg>
     </label>
     <input
-      checked={false}
+      checked={true}
       className="form__rating-input visually-hidden"
       disabled={false}
       id="4-stars"
@@ -158,7 +158,7 @@ exports[`ReviewForm is rendered correctly 1`] = `
     placeholder="Tell how was your stay, what you like and what can be improved"
     readOnly={false}
     required={true}
-    value=""
+    value="What an amazing view! The house is stunning and in an amazing location. The large glass wall had an amazing view of the river!"
   />
   <div
     className="reviews__button-wrapper"
@@ -182,7 +182,7 @@ exports[`ReviewForm is rendered correctly 1`] = `
     </p>
     <button
       className="reviews__submit form__submit button"
-      disabled={true}
+      disabled={false}
       type="submit"
     >
       Submit

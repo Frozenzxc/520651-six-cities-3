@@ -22,20 +22,6 @@ class Map extends PureComponent {
     this.markers = [];
   }
 
-  addMarkers(activeOffer, offers) {
-    if (activeOffer) {
-      this.markers.push(this.leaflet
-              .marker([activeOffer.location.latitude, activeOffer.location.longitude], {icon: this.activeIcon})
-              .addTo(this.map));
-    }
-
-    offers.forEach((offer) => {
-      this.markers.push(this.leaflet
-              .marker([offer.location.latitude, offer.location.longitude], {icon: this.standartIcon})
-              .addTo(this.map));
-    });
-  }
-
   componentDidMount() {
     const {activeOffer, offers} = this.props;
 
@@ -68,14 +54,28 @@ class Map extends PureComponent {
     if (prevProps.activeOffer !== this.props.activeOffer) {
       if (prevProps.activeOffer !== null) {
         this.leaflet
-                .marker([prevProps.activeOffer.location.latitude, prevProps.activeOffer.location.longitude], {icon: this.standartIcon})
-                .addTo(this.map);
+                    .marker([prevProps.activeOffer.location.latitude, prevProps.activeOffer.location.longitude], {icon: this.standartIcon})
+                    .addTo(this.map);
       }
       this.leaflet
-            .marker([this.props.activeOffer.location.latitude, this.props.activeOffer.location.longitude], {icon: this.activeIcon})
-            .addTo(this.map);
+                .marker([this.props.activeOffer.location.latitude, this.props.activeOffer.location.longitude], {icon: this.activeIcon})
+                .addTo(this.map);
     }
 
+  }
+
+  addMarkers(activeOffer, offers) {
+    if (activeOffer) {
+      this.markers.push(this.leaflet
+              .marker([activeOffer.location.latitude, activeOffer.location.longitude], {icon: this.activeIcon})
+              .addTo(this.map));
+    }
+
+    offers.forEach((offer) => {
+      this.markers.push(this.leaflet
+              .marker([offer.location.latitude, offer.location.longitude], {icon: this.standartIcon})
+              .addTo(this.map));
+    });
   }
 
   render() {

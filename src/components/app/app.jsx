@@ -20,7 +20,7 @@ class App extends PureComponent {
     const {activeOffer, availableOffers, authEmail, authorizationStatus, currentCity, isLoading, onCardHover, onCardTitleClick, onSignInClick} = this.props;
 
 
-    if (isLoading && authorizationStatus === null) {
+    if (isLoading) {
       return false;
     }
     return (

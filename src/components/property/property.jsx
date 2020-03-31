@@ -15,6 +15,9 @@ import {connect} from "react-redux";
 import {reviewShape} from "../../prop-types.jsx";
 import ReviewPostError from "../review-post-error/review-post-error.jsx";
 import {Link} from "react-router-dom";
+import withReviewFormComponent from "../../hocs/with-review-form-component/with-review-form-component";
+
+const ReviewFormWrapped = withReviewFormComponent(ReviewsForm);
 
 class Property extends PureComponent {
   componentDidMount() {
@@ -163,7 +166,7 @@ class Property extends PureComponent {
                   </div>
                 </div>
                 <ReviewsList reviews={reviews}/>
-                {authorizationStatus === AuthorizationStatus.AUTH && <ReviewsForm id={id}><ReviewPostError/></ReviewsForm>}
+                {authorizationStatus === AuthorizationStatus.AUTH && <ReviewFormWrapped id={id}><ReviewPostError/></ReviewFormWrapped>}
               </div>
             </div>
 
@@ -194,7 +197,10 @@ class Property extends PureComponent {
 
 Property.propTypes = {
   authEmail: PropTypes.string,
-  authorizationStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.oneOfType([
+    PropTypes.oneOf([null]),
+    PropTypes.string.isRequired
+  ]),
   id: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isNearbyOffersLoading: PropTypes.bool.isRequired,

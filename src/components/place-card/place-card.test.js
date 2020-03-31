@@ -14,8 +14,11 @@ it(`PlaceCard is rendered correctly`, () => {
         <PlaceCard
           addToFavorite={() => {}}
           authorizationStatus={AuthorizationStatus.NO_AUTH}
+          isFavorite={true}
           offer={offer}
-          onCardTitleClick={() => {}}
+          onCardHover={() => {}}
+          onFavoriteClick={() => {}}
+          onTitleClick={() => {}}
           offersView={OfferType.ALL}
         />
       </BrowserRouter>

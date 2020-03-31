@@ -1,12 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {Provider} from "react-redux";
-import configureStore from "redux-mock-store";
-import NameSpace from "../../reducer/name-space";
-import {ReviewsForm} from "./reviews-form";
+import ReviewsForm from "./reviews-form";
 import {ReviewPostingStatus} from "../../const";
-
-const mockStore = configureStore([]);
+import reviews from "../../test-mocks/reviews";
 
 const MockComponent = () => {
 
@@ -17,26 +13,22 @@ const MockComponent = () => {
 };
 
 it(`ReviewForm is rendered correctly`, () => {
-  const store = mockStore({
-    [NameSpace.OFFERS]: {
-      isFormBlocked: false,
-      reviewPostingStatus: null,
-    },
-  });
 
   const tree = renderer.create(
-      <Provider store={store}>
-        <ReviewsForm
-          blockForm={() => {}}
-          id={4}
-          isFormBlocked={false}
-          postReview={() => {}}
-          resetFormStatus={() => {}}
-          reviewPostingStatus={ReviewPostingStatus.POSTED}
-        >
-          <MockComponent/>
-        </ReviewsForm>
-      </Provider>
+      <ReviewsForm
+        blockForm={() => {}}
+        id={4}
+        isFormBlocked={false}
+        onInputChange={() => {}}
+        onTextAreaChange={() => {}}
+        ratingValue={String(reviews[0].rating)}
+        reviewValue={reviews[0].comment}
+        postReview={() => {}}
+        resetFormStatus={() => {}}
+        reviewPostingStatus={ReviewPostingStatus.POSTED}
+      >
+        <MockComponent/>
+      </ReviewsForm>
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

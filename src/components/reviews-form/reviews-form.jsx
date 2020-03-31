@@ -1,8 +1,5 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {ActionCreator, Operation as UserOperation} from "../../reducer/offers/offers";
-import NameSpace from "../../reducer/name-space";
 import {ReviewPostingStatus as PostingStatus} from "../../const";
 
 const MIN_LENGTH = 50;
@@ -19,46 +16,6 @@ class ReviewsForm extends PureComponent {
     this.form = createRef();
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleTextAreaChange = this.handleTextAreaChange.bind(this);
-    this.state = {
-      ratingValue: ``,
-      reviewValue: ``,
-    };
-  }
-
-  componentDidUpdate() {
-    const {resetFormStatus, reviewPostingStatus} = this.props;
-    if (reviewPostingStatus === PostingStatus.POSTED) {
-      this.setState(() => ({
-        ratingValue: ``,
-        reviewValue: ``,
-      }));
-
-      resetFormStatus(null);
-    }
-
-    return false;
-  }
-
-  handleInputChange(evt) {
-    const ratingValue = evt.target.value;
-
-    this.setState(() => ({
-      ratingValue,
-    }));
-
-    return false;
-  }
-
-  handleTextAreaChange(evt) {
-    const reviewValue = evt.target.value;
-
-    this.setState(() => ({
-      reviewValue,
-    }));
-
-    return false;
   }
 
   handleSubmit(evt) {
@@ -78,8 +35,7 @@ class ReviewsForm extends PureComponent {
   }
 
   render() {
-    const {isFormBlocked, children, reviewPostingStatus} = this.props;
-    const {ratingValue, reviewValue} = this.state;
+    const {isFormBlocked, children, onInputChange, onTextAreaChange, reviewPostingStatus, ratingValue, reviewValue} = this.props;
 
     return (
       <form
@@ -93,7 +49,7 @@ class ReviewsForm extends PureComponent {
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
         <div className="reviews__rating-form form__rating">
           <input className="form__rating-input visually-hidden" name="rating" value="5" checked={ratingValue === `5`} id="5-stars"
-            type="radio" required={true} disabled={isFormBlocked} onChange={this.handleInputChange}/>
+            type="radio" required={true} disabled={isFormBlocked} onChange={onInputChange}/>
           <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
             <svg className="form__star-image" width="37" height="33">
               <use xlinkHref="#icon-star"/>
@@ -101,7 +57,7 @@ class ReviewsForm extends PureComponent {
           </label>
 
           <input className="form__rating-input visually-hidden" name="rating" value="4" checked={ratingValue === `4`} id="4-stars"
-            type="radio" required={true} disabled={isFormBlocked} onChange={this.handleInputChange}/>
+            type="radio" required={true} disabled={isFormBlocked} onChange={onInputChange}/>
           <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
             <svg className="form__star-image" width="37" height="33">
               <use xlinkHref="#icon-star"/>
@@ -109,7 +65,7 @@ class ReviewsForm extends PureComponent {
           </label>
 
           <input className="form__rating-input visually-hidden" name="rating" value="3" checked={ratingValue === `3`} id="3-stars"
-            type="radio" required={true} disabled={isFormBlocked} onChange={this.handleInputChange}/>
+            type="radio" required={true} disabled={isFormBlocked} onChange={onInputChange}/>
           <label htmlFor="3-stars" className="reviews__rating-label form__rating-label"
             title="not bad">
             <svg className="form__star-image" width="37" height="33">
@@ -118,7 +74,7 @@ class ReviewsForm extends PureComponent {
           </label>
 
           <input className="form__rating-input visually-hidden" name="rating" value="2" checked={ratingValue === `2`}
-            id="2-stars" type="radio" required={true} disabled={isFormBlocked} onChange={this.handleInputChange}/>
+            id="2-stars" type="radio" required={true} disabled={isFormBlocked} onChange={onInputChange}/>
           <label htmlFor="2-stars" className="reviews__rating-label form__rating-label"
             title="badly">
             <svg className="form__star-image" width="37" height="33">
@@ -127,7 +83,7 @@ class ReviewsForm extends PureComponent {
           </label>
 
           <input className="form__rating-input visually-hidden" name="rating" value="1" checked={ratingValue === `1`}
-            id="1-star" type="radio" required={true} disabled={isFormBlocked} onChange={this.handleInputChange}/>
+            id="1-star" type="radio" required={true} disabled={isFormBlocked} onChange={onInputChange}/>
           <label htmlFor="1-star" className="reviews__rating-label form__rating-label"
             title="terribly">
             <svg className="form__star-image" width="37" height="33">
@@ -136,7 +92,7 @@ class ReviewsForm extends PureComponent {
           </label>
         </div>
         <textarea className="reviews__textarea form__textarea" id="review" name="review" maxLength={MAX_LENGTH} minLength={MIN_LENGTH}
-          placeholder="Tell how was your stay, what you like and what can be improved" required={true} readOnly={isFormBlocked} onChange={this.handleTextAreaChange} value={reviewValue}/>
+          placeholder="Tell how was your stay, what you like and what can be improved" required={true} readOnly={isFormBlocked} onChange={onTextAreaChange} value={reviewValue}/>
         <div className="reviews__button-wrapper">
           <p className="reviews__help">
                         To submit review please make sure to set <span className="reviews__star">rating</span> and
@@ -158,30 +114,15 @@ ReviewsForm.propTypes = {
   ]).isRequired,
   id: PropTypes.number.isRequired,
   isFormBlocked: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onTextAreaChange: PropTypes.func.isRequired,
   postReview: PropTypes.func.isRequired,
+  ratingValue: PropTypes.string.isRequired,
+  reviewValue: PropTypes.string.isRequired,
   resetFormStatus: PropTypes.func.isRequired,
   reviewPostingStatus: PropTypes.oneOfType([
     PropTypes.oneOf([null]),
     PropTypes.string]),
 };
 
-const mapStateToProps = (state) => ({
-  isFormBlocked: state[NameSpace.OFFERS].isFormBlocked,
-  reviewPostingStatus: state[NameSpace.OFFERS].reviewPostingStatus,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  blockForm(isBlocked) {
-    dispatch(ActionCreator.blockForm(isBlocked));
-  },
-  postReview(id, formData) {
-    dispatch(UserOperation.postReview(id, formData));
-  },
-  resetFormStatus(status) {
-    dispatch(ActionCreator.successfulPostReview(status));
-  }
-});
-
-export {ReviewsForm};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReviewsForm);
+export default ReviewsForm;
