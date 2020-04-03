@@ -296,13 +296,13 @@ it(`Reducer should change value by successful post review`, () => {
 
 it(`Reducer should update offers by add to favorites`, () => {
   expect(reducer({
-    availableOffers: offers,
+    offers,
     favoriteOffers,
   }, {
     type: ActionType.ADD_TO_FAVORITE,
     payload: notParsedFavoriteOffers[0],
   })).toEqual({
-    availableOffers: afterAddToFavoriteOffers,
+    offers: afterAddToFavoriteOffers,
     favoriteOffers,
   });
 });

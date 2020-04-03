@@ -8,6 +8,8 @@ import {Operation} from "../../reducer/offers/offers";
 import FavoritesEmpty from "../favorites-empty/favorites-empty";
 import withPlaceCardComponent from "../../hocs/with-place-card-component/with-place-card-component";
 import {Offer} from "../../types";
+import {Link} from "react-router-dom";
+import {AppRoute, AuthorizationStatus} from "../../const";
 
 interface Props {
   addToFavorite: () => void;
@@ -44,42 +46,82 @@ class Favorites extends React.PureComponent<Props, {}> {
 
     const citiesList = getCitiesList(favoriteOffers);
     return (
-      <main className="page__main page__main--favorites">
-        <div className="page__favorites-container container">
-          <section className="favorites">
-            <h1 className="favorites__title">Saved listing</h1>
-            <ul className="favorites__list">
-              {citiesList.map((city) => {
-                return (
-                  <li className="favorites__locations-items" key={city}>
-                    <div className="favorites__locations locations locations--current">
-                      <div className="locations__item">
-                        <a className="locations__item-link" href="#">
-                          <span>{city}</span>
-                        </a>
+      <div className="page">
+        <header className="header">
+          <div className="container">
+            <div className="header__wrapper">
+              <div className="header__left">
+                <Link to={AppRoute.ROOT} className="header__logo-link header__logo-link--active">
+                  <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
+                </Link>
+              </div>
+              <nav className="header__nav">
+                <ul className="header__nav-list">
+                  <li className="header__nav-item user">
+                    {authorizationStatus === AuthorizationStatus.NO_AUTH ?
+                      <Link
+                        className="header__nav-link header__nav-link--profile"
+                        to={AppRoute.FAVORITES}>
+                        <span className="header__login">Sign in</span>
+                      </Link> :
+                      <Link
+                        className="header__nav-link header__nav-link--profile"
+                        to={AppRoute.FAVORITES}>
+                        <div className="header__avatar-wrapper user__avatar-wrapper">
+                        </div>
+                        <span className="header__user-name user__name">{authEmail}</span>
+                      </Link>
+                    }
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </header>
+
+        <main className="page__main page__main--favorites">
+          <div className="page__favorites-container container">
+            <section className="favorites">
+              <h1 className="favorites__title">Saved listing</h1>
+              <ul className="favorites__list">
+                {citiesList.map((city) => {
+                  return (
+                    <li className="favorites__locations-items" key={city}>
+                      <div className="favorites__locations locations locations--current">
+                        <div className="locations__item">
+                          <a className="locations__item-link" href="#">
+                            <span>{city}</span>
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                    <div className="favorites__places">
-                      {favoriteOffers.filter((offer) => offer.city.name === city).map((card) => {
-                        return (
-                          <PlaceCardWrapped
-                            authorizationStatus={authorizationStatus}
-                            addToFavorite={addToFavorite}
-                            onMouseEnter={onCardHover}
-                            onClick={onCardTitleClick}
-                            offer={card}
-                            key={card.id}
-                            offersView={FavoriteOfferType}
-                          />);
-                      })}
-                    </div>
-                  </li>);
-              }
-              )}
-            </ul>
-          </section>
-        </div>
-      </main>
+                      <div className="favorites__places">
+                        {favoriteOffers.filter((offer) => offer.city.name === city).map((card) => {
+                          return (
+                            <PlaceCardWrapped
+                              authorizationStatus={authorizationStatus}
+                              addToFavorite={addToFavorite}
+                              onMouseEnter={onCardHover}
+                              onClick={onCardTitleClick}
+                              offer={card}
+                              key={card.id}
+                              offersView={FavoriteOfferType}
+                            />);
+                        })}
+                      </div>
+                    </li>);
+                }
+                )}
+              </ul>
+            </section>
+          </div>
+        </main>
+
+        <footer className="footer">
+          <Link to={AppRoute.ROOT} className="header__logo-link header__logo-link--active">
+            <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33"/>
+          </Link>
+        </footer>
+      </div>
     );
   }
 }

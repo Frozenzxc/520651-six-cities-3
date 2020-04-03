@@ -81,16 +81,16 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.ADD_TO_FAVORITE:
       const parsedOffer = parseOffer(action.payload);
-      const index = state.availableOffers.findIndex((offer) => offer.id === parsedOffer.id);
+      const index = state.offers.findIndex((offer) => offer.id === parsedOffer.id);
       const nextState = produce(state, (draft) => {
-        draft.availableOffers[index].isFavorite = parsedOffer.isFavorite;
+        draft.offers[index].isFavorite = parsedOffer.isFavorite;
         if (!parsedOffer.isFavorite) {
           const offerIndex = state.favoriteOffers.findIndex((offer) => offer.id === parsedOffer.id);
           draft.favoriteOffers.splice([offerIndex], 1);
         }
       });
       return extend(state, {
-        availableOffers: nextState.availableOffers,
+        offers: nextState.offers,
         favoriteOffers: nextState.favoriteOffers,
       });
 

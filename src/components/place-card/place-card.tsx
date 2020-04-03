@@ -45,7 +45,7 @@ const PlaceCard: React.FunctionComponent<Props> = (props: Props) => {
         <span>Premium</span>
       </div>}
       <div className={`${offersView}-image-wrapper place-card__image-wrapper`}>
-        <a href="#">
+        <a href="#" onClick={(evt) => evt.preventDefault()}>
           <img className="place-card__image" src={previewImage} width={offersView === OfferType.FAVORITES ? `150` : `260`}
             height={offersView === OfferType.FAVORITES ? `110` : `200`} alt="Place image"/>
         </a>
