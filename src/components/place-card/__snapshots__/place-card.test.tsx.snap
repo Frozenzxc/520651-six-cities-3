@@ -10,6 +10,7 @@ exports[`PlaceCard is rendered correctly 1`] = `
   >
     <a
       href="#"
+      onClick={[Function]}
     >
       <img
         alt="Place image"

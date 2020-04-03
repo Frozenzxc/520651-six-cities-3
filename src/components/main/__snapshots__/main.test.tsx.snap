@@ -235,6 +235,7 @@ exports[`Should Main component render correctly with authorized user 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -334,6 +335,7 @@ exports[`Should Main component render correctly with authorized user 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -433,6 +435,7 @@ exports[`Should Main component render correctly with authorized user 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -779,6 +782,7 @@ exports[`Should Main component render correctly with not authorized user 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -878,6 +882,7 @@ exports[`Should Main component render correctly with not authorized user 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -977,6 +982,7 @@ exports[`Should Main component render correctly with not authorized user 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"

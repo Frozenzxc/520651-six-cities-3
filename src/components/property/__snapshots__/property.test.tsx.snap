@@ -733,6 +733,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -832,6 +833,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -931,6 +933,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -1030,6 +1033,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -1136,6 +1140,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -1235,6 +1240,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -1334,6 +1340,7 @@ exports[`Property is rendered correctly with authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -1973,6 +1980,7 @@ exports[`Property is rendered correctly without authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -2072,6 +2080,7 @@ exports[`Property is rendered correctly without authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -2171,6 +2180,7 @@ exports[`Property is rendered correctly without authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -2270,6 +2280,7 @@ exports[`Property is rendered correctly without authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -2376,6 +2387,7 @@ exports[`Property is rendered correctly without authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -2475,6 +2487,7 @@ exports[`Property is rendered correctly without authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -2574,6 +2587,7 @@ exports[`Property is rendered correctly without authorized user 1`] = `
             >
               <a
                 href="#"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"

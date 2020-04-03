@@ -235,6 +235,7 @@ exports[`Render App with SignIn screen 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -334,6 +335,7 @@ exports[`Render App with SignIn screen 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -433,6 +435,7 @@ exports[`Render App with SignIn screen 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -782,6 +785,7 @@ exports[`Render App with loading screen 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -881,6 +885,7 @@ exports[`Render App with loading screen 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -980,6 +985,7 @@ exports[`Render App with loading screen 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -1326,6 +1332,7 @@ exports[`Render App without loading screen 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -1425,6 +1432,7 @@ exports[`Render App without loading screen 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
@@ -1524,6 +1532,7 @@ exports[`Render App without loading screen 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Place image"
